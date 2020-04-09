@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: 549209c40c2332bdc197375ce4e501467280fa18
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.openlocfilehash: 752df5de208887b149460a204bbb6ff74393e809
+ms.sourcegitcommit: b140ac14124e4bee3c7f31a7f8274d4a0ccb2dda
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78853887"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80929977"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -184,7 +184,7 @@ wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:false /q:true
 
 一般的に、これらが使用されるのは、Microsoft サポートによって要求された場合のみです。 
 
-[HcsTraceProfile.wprp](https://gist.github.com/jhowardmsft/71b37956df0b4248087c3849b97d8a71) をダウンロードします。
+[HcsTraceProfile.wprp](https://github.com/MicrosoftDocs/Virtualization-Documentation/blob/master/windows-server-container-tools/wpr-profiles/HcsTraceProfile.wprp) をダウンロードします。
 
 ```PowerShell
 # Enable tracing
