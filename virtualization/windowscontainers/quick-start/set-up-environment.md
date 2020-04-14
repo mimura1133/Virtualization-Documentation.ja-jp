@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 2c52dd96b3bf2402d41ec5b178af36521d00a649
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 13d8f1ead90b2c2c86afe9f596717c1c09905895
+ms.sourcegitcommit: b140ac14124e4bee3c7f31a7f8274d4a0ccb2dda
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909562"
+ms.lasthandoff: 04/08/2020
+ms.locfileid: "80929979"
 ---
 # <a name="get-started-prep-windows-for-containers"></a>作業の開始:コンテナー用の Windows を準備する
 
