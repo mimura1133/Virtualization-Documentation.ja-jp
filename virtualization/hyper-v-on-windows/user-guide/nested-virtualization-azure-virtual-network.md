@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1ecb85a6-d938-4c30-a29b-d18bd007ba08
-ms.openlocfilehash: b7944e34cab66df07df0ccc78947a774d775c9a7
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.openlocfilehash: 63007d21fcc046f384405c7d85143bfc576ecc07
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78853946"
+ms.lasthandoff: 04/15/2020
+ms.locfileid: "81395755"
 ---
 # <a name="configure-nested-vms-to-communicate-with-resources-in-an-azure-virtual-network"></a>Azure 仮想ネットワーク内のリソースと通信するために入れ子になった VM を構成する
 
@@ -121,7 +121,7 @@ ms.locfileid: "78853946"
 
 1. サーバー マネージャーを開き、[ツール] を選択し、[ルーティングとリモート アクセス] を選択します。
 2. [ルーティングとリモート アクセス] 管理パネルの左側には、その横にサーバー名が示されたアイコンが表示されます。それを右クリックし、[ルーティングとリモート アクセスの構成と有効化] を選択します。
-3. ウィザードで [次へ] を選択し、[カスタム構成] の放射状ボタンを選択して、[次へ] を選択します。
+3. ウィザードで [次へ] を選択し、[カスタム構成] を選択して、[次へ] を選択します。
 4. [NAT] と [LAN ルーティング] のチェック ボックスをオンにしてから [次へ] を選択し、[完了] を選択します。 サービスを開始するよう指示された場合は、それを実行します。
 5. 次に、[IPv4] ノードに移動し、[NAT] ノードが使用可能になるように展開します。
 6. [NAT] を右クリックし、[新しいインターフェイス...]、[イーサネット] の順に選択します。これは、IP が "10.0.0.4" である最初の NIC であるはずなので、インターネットに接続するパブリック インターフェイスを選択し、このインターフェイスで NAT を有効にします。 
