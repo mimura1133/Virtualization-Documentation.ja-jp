@@ -8,10 +8,10 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: b13a3594-d168-448b-b0a1-7d77153759a8
 ms.openlocfilehash: 963a1cc356c34c8d051c427a069c49021e3c0d27
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "77439339"
 ---
 # <a name="move-from-hyper-v-wmi-v1-to-wmi-v2"></a>Hyper-V WMI v1 から WMI v2 への移行

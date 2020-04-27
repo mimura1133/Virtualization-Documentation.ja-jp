@@ -8,10 +8,10 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.assetid: ae4a18ed-996b-4104-90c5-539c90798e4c
 ms.openlocfilehash: 25c72b910af15fc0b498a5b2abce72d32e6d1efd
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "77439599"
 ---
 # <a name="supported-windows-guests"></a>サポートされる Windows ゲスト
@@ -32,14 +32,14 @@ Microsoft では、次のようにサポートを提供します。
 
 ## <a name="supported-guest-operating-systems"></a>サポートされているゲスト オペレーティング システム
 
-| ゲスト オペレーティング システム |  仮想プロセッサの最大数 | メモ |
+| ゲスト オペレーティング システム |  仮想プロセッサの最大数 | 説明 |
 |:-----|:-----|:-----|
 | Windows 10 | 32 |拡張セッション モードは、Windows 10 Home エディションでは機能しません |
 | Windows 8.1 | 32 | |
 | Windows 8 | 32 ||
 | Windows 7 Service Pack 1 (SP 1) | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
 | Windows 7 | 4 | Ultimate、Enterprise、および Professional Edition (32 ビットおよび 64 ビット)。 |
-| Windows Vista Service Pack 2 (SP2) | 2 で保護されたプロセスとして起動されました | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 |
+| Windows Vista Service Pack 2 (SP2) | 2 | Business、Enterprise、および Ultimate (N および KN エディションを含む)。 |
 | - | | |
 | [Windows Server 半期チャネル](https://docs.microsoft.com/windows-server/get-started/semi-annual-channel-overview) | 64 | |
 | Windows Server 2019 | 64 | |

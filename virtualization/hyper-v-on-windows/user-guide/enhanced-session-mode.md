@@ -9,10 +9,10 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d1aeb9cb-b18f-43cb-a568-46b33346a188
 ms.openlocfilehash: c891a723d43a9e6e0a0a8bc7bfc2b47a960732d1
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "77439589"
 ---
 # <a name="share-devices-with-your-virtual-machine"></a>仮想マシンとのデバイスの共有
@@ -91,7 +91,7 @@ vmconnect.exe
 
 ![](media/esm-button-location.png)
 
-| アイコン | 接続状態 |
+| icon | 接続状態 |
 |:-----|:---------|
 |![](media/esm-basic.png)| 現在、拡張セッション モードで実行しています。  このアイコンをクリックすると、仮想マシンが基本モードで再接続されます。 |
 |![](media/esm-connect.png)| 現在、基本セッション モードで実行していますが、拡張セッション モードが利用可能です。  このアイコンをクリックすると、仮想マシンが拡張セッション モードで再接続されます。  |

@@ -9,10 +9,10 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
 ms.openlocfilehash: c84a6652b5918238ee8ef6e1fa7a9b2aa596aefd
-ms.sourcegitcommit: 8eedfdc1fda9d0abb36e28dc2b5fb39891777364
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "79402883"
 ---
 # <a name="docker-engine-on-windows"></a>Windows 上の Docker エンジン

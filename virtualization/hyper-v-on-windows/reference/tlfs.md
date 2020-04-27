@@ -9,10 +9,10 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: aee64ad0-752f-4075-a115-2d6b983b4f49
 ms.openlocfilehash: 6af2002d06258e2a4d89d1f5d2698d22d2f46049
-ms.sourcegitcommit: b140ac14124e4bee3c7f31a7f8274d4a0ccb2dda
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "80929962"
 ---
 # <a name="hypervisor-specifications"></a>ハイパーバイザーの仕様
@@ -24,7 +24,7 @@ Hyper-V ハイパーバイザー トップレベル機能仕様 (TLFS) では、
 > この仕様は、Microsoft Open Specification Promise の下で提供されます。  [Microsoft Open Specification Promise](https://docs.microsoft.com/openspecs/dev_center/ms-devcentlp/51a0d3ff-9f77-464c-b83f-2de08ed28134) の詳細については、以下をご覧ください。  
 
 #### <a name="download"></a>ダウンロード
-リリース | マニュアル名の正式名称
+リリース | ドキュメント
 --- | ---
 Windows Server 2019 (リビジョン B) | [Hypervisor Top Level Functional Specification v6.0b.pdf](https://github.com/MicrosoftDocs/Virtualization-Documentation/raw/master/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v6.0b.pdf)
 Windows Server 2016 (リビジョン C) | [Hypervisor Top Level Functional Specification v5.0c.pdf](https://github.com/MicrosoftDocs/Virtualization-Documentation/raw/live/tlfs/Hypervisor%20Top%20Level%20Functional%20Specification%20v5.0C.pdf)

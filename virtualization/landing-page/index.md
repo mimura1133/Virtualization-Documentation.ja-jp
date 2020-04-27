@@ -11,10 +11,10 @@ ms.prod: virtualization
 ms.service: virtualization
 ms.assetid: addcfda8-1522-4137-bc02-14cbb1ff838f
 ms.openlocfilehash: 760828b18d21df0a9b2168508fea6181bfc64a4e
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "74909332"
 ---
 <div id="main" class="v2">

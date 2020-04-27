@@ -9,10 +9,10 @@ ms.prod: virtualization
 ms.service: virtualization
 ms.assetid: 59950aac-d13b-499c-83b3-5f48f72cdd24
 ms.openlocfilehash: 12f32de1669e347aa279711c65929fb2c246f411
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "77439619"
 ---
 # <a name="virtualization-team-blog"></a>仮想化チームのブログ

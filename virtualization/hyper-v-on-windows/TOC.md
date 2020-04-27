@@ -18,7 +18,7 @@
 ## [Hyper-V WMI の移植](user-guide/refactor-wmiv1-to-wmiv2.md)
 ## [Azure 仮想ネットワーク内の入れ子になった VM](user-guide/nested-virtualization-azure-virtual-network.md) 
 
-# 参照先
+# リファレンス
 ## [Hyper-V の要件](reference/hyper-v-requirements.md)
 ## [サポートされているゲスト オペレーティング システム](about/supported-guest-os.md)
 ## [Hyper-V PowerShell](https://docs.microsoft.com/powershell/module/hyper-v/index?view=win10-ps)

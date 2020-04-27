@@ -9,10 +9,10 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d9c398c4-ee72-45c6-9ce8-4f06569dae6c
 ms.openlocfilehash: 8cdbd7b9881c973b6b5d269f986a03bdb21e276a
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "74911232"
 ---
 # <a name="using-checkpoints-to-revert-virtual-machines-to-a-previous-state"></a>チェックポイントを使用して仮想マシンを以前の状態に戻す
@@ -96,9 +96,9 @@ Get-VMCheckpoint -VMName <VMName>
 1. **HYPER-V Manager**,  **の仮想マシン**, 、仮想マシンを選択します。
 2. [チェックポイント] セクションで、使用するチェックポイントを右クリックし、 **[適用]** をクリックします。
 3. 次のオプションを示すダイアログ ボックスが表示されます。  
-  * **[チェックポイントを作成して適用]** :以前のチェックポイントを適用する前に仮想マシンの新しいチェックポイントを作成します。 
-  * **[適用]** :選択したチェックポイントのみを適用します。 この操作を取り消すことはできません。
-  * **[キャンセル]** :何もせずにダイアログ ボックスを閉じます。
+  * **[チェックポイントを作成して適用]** : 以前のチェックポイントを適用する前に仮想マシンの新しいチェックポイントを作成します。 
+  * **[適用]** : 選択したチェックポイントのみを適用します。 この操作を取り消すことはできません。
+  * **[キャンセル]** : 何もせずにダイアログ ボックスを閉じます。
   
   チェックポイントを作成して適用するには、いずれかの適用オプションを選択してください。
 
@@ -170,7 +170,7 @@ Remove-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name>
 Export-VMCheckpoint -VMName <virtual machine name> -Name <checkpoint name> -Path <path for export>
 ```
 
-## <a name="enable-or-disable-checkpoints"></a>有効にするか、チェックポイントを無効にします。
+## <a name="enable-or-disable-checkpoints"></a>チェックポイントを有効または無効にする
 
 1. **Hyper-V マネージャー**で、仮想マシンの名前を右クリックして **[設定]** をクリックします。
 2. **[管理]** セクションで **[チェックポイント]** を選択します。

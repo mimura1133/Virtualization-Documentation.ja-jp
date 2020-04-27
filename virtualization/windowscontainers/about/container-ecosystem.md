@@ -9,10 +9,10 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
 ms.openlocfilehash: 67fdbd813fbd2fa2911d8f5aff6637a85b9855ec
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "77439319"
 ---
 # <a name="about-building-container-ecosystems"></a>コンテナー エコシステムの構築について

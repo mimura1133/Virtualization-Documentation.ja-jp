@@ -9,10 +9,10 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: d75b96a9-f430-492e-95d4-b05135ec9b9e
 ms.openlocfilehash: 5dd61a2482290cc9b41d55445c2c63816321ff0f
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "77439689"
 ---
 # <a name="resource-controls-missing-on-windows-10"></a>Windows 10 にないリソース制御とは
