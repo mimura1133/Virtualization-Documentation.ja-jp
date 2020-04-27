@@ -9,10 +9,10 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.openlocfilehash: 23dd1e56ba68a679945779f5e7dbc15225412934
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "78853908"
 ---
 # <a name="windows-container-orchestration-overview"></a>Windows コンテナーのオーケストレーションの概要

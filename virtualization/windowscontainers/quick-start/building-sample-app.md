@@ -12,7 +12,7 @@ ms.openlocfilehash: d81c6cb99b1d12b1df87e83220b39eef80f066c0
 ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "81395765"
 ---
 # <a name="containerize-a-net-core-app"></a>.NET Core アプリをコンテナー化する

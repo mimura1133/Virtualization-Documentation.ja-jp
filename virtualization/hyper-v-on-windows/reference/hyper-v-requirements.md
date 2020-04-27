@@ -9,10 +9,10 @@ ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 6e5e6b01-7a9d-4123-8cc7-f986e10cd372
 ms.openlocfilehash: ebc9be132f05c20eb8daf9b5e6713b9258012305
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "78853992"
 ---
 # <a name="windows-10-hyper-v-system-requirements"></a>Windows 10 Hyper-V のシステム要件

@@ -9,10 +9,10 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 ms.openlocfilehash: a52c18f13d0d6bd2102f045827285821a187579b
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "74909582"
 ---
 # <a name="linux-containers-on-windows-10"></a>Windows 10 上の Linux コンテナー

@@ -10,10 +10,10 @@ ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
 ms.openlocfilehash: 551d405d836cfb16b587ef78bc2d5f5abbd8648f
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "78853816"
 ---
 # <a name="get-started-run-your-first-windows-container"></a>作業の開始:最初の Windows コンテナーを実行する
