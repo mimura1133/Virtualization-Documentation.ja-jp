@@ -9,10 +9,10 @@ ms.prod: virtualization
 ms.service: virtualization
 ms.assetid: 9ee0be0c-fc79-4099-b6db-52873589f09e
 ms.openlocfilehash: 3a8594be664803e87e668041b37db8ba77c28b9d
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
+ms.lasthandoff: 04/24/2020
 ms.locfileid: "74909082"
 ---
 # <a name="virtualization-community"></a>仮想化コミュニティ
