@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 4fad299db2c897a6be860ef0cc71e80969c75357
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: 67ac6e39ca4b3c485d1bb376be1893e871317fac
+ms.sourcegitcommit: 85e257cfd543bf5a37680cde07e184cbdd573bd7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "74909412"
+ms.lasthandoff: 05/13/2020
+ms.locfileid: "83368013"
 ---
 # <a name="windows-and-containers"></a>Windows とコンテナー
 
@@ -30,7 +30,7 @@ Microsoft では、コンテナーでのアプリの開発とデプロイに役�
 - Visual Studio と Visual Studio Code 内から直接プッシュおよびプルして、他のユーザーが使用できるようにパブリック DockerHub に、または組織の独自の開発とデプロイのためにプライベート [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) に<strong>アプリをコンテナー イメージとして発行</strong>します。
 - <strong>Azure (またはその他のクラウド) に大規模にコンテナーをデプロイします</strong>。
 
-  - Azure Container Registry などのコンテナー レジストリからアプリ (コンテナー イメージ) をプルし、[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes) (Windows ベース アプリでのプレビュー段階) や [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/) などのオーケストレーターを使用して大規模にデプロイおよび管理します。
+  - Azure Container Registry などのコンテナー レジストリからアプリ (コンテナー イメージ) をプルし、[Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/intro-kubernetes) や [Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/) などのオーケストレーターを使用して大規模にデプロイおよび管理します。
   - Azure Kubernetes Service は、コンテナーを Azure の仮想マシンにデプロイし、数十、数百、または数千個であってもそれらを大規模に管理します。 Azure の仮想マシンは、カスタマイズされた Windows Server イメージ (Windows ベースのアプリをデプロイしている場合)、またはカスタマイズされた Ubuntu Linux イメージ (Linux ベースのアプリをデプロイしている場合) のいずれかを実行します。
 - [AKS エンジンを使用した Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview) (Linux コンテナーでのプレビュー段階) または [OpenShift を使用した Azure Stack](https://docs.microsoft.com/azure/virtual-machines/linux/openshift-azure-stack) を使って、<strong>コンテナーをオンプレミスにデプロイ</strong>します。 また、Windows Server に自分で Kubernetes をセットアップすることもできます (「[Windows で使用する Kubernetes](../kubernetes/getting-started-kubernetes-windows.md)」を参照)。さらに、Microsoft では、[RedHat OpenShift Container Platform で Windows コンテナー](https://techcommunity.microsoft.com/t5/Networking-Blog/Managing-Windows-containers-with-Red-Hat-OpenShift-Container/ba-p/339821)を実行するためのサポートについても取り組んでいます。
 
