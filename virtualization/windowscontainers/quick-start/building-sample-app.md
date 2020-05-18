@@ -8,12 +8,12 @@ ms.date: 11/12/2019
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: d81c6cb99b1d12b1df87e83220b39eef80f066c0
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: c9e175a7ced0f328e342f3cdd4f99adc717d5700
+ms.sourcegitcommit: 62f4bcca4e07f2a34a927e5c4d786e505821d559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "81395765"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82784401"
 ---
 # <a name="containerize-a-net-core-app"></a>.NET Core アプリをコンテナー化する
 
@@ -123,7 +123,7 @@ Dockerfile が記述されたので、Docker に Dockerfile を指し示して�
 
    * `-d` により、Docker は 'デタッチ' されたコンテナーを実行します。これは、コンテナー内のコンソールにフックされるコンソールがないということです。 コンテナーはバックグラウンドで実行されます。 
    * `-p 5000:80` により、ホスト上のポート 5000 をコンテナーのポート 80 にマップするよう Docker に指示します。 各コンテナーは、独自の IP アドレスを取得します。 ASP .NET は既定で、ポート 80 でリッスンします。 ポート マッピングを使用すると、マップされたポートでホストの IP アドレスに移動することができ、Docker はすべてのトラフィックをコンテナー内の宛先ポートに転送するようになります。
-   * `--name myapp` では、Docker によって実行時に割り当てられるコンテナー ID を検索する代わりに、このコンテナーにクエリで使用するのに便利な名前を割り当てるよう Docker に指示します。
+   * `--name myapp` では、Docker によって実行時に割り当てられるコンテナー ID を検索する代わりに、クエリで使用するのに便利な名前をこのコンテナーに割り当てるよう Docker に指示します。
    * `my-asp-app` は、Docker の実行対象となるイメージです。 これは、`docker build` プロセスの結果として生成されるコンテナー イメージです。
 
 3. Web ブラウザーを開いて `http://localhost:5000` に移動し、次のスクリーンショットに示すように、コンテナー化されたアプリケーションを表示します。

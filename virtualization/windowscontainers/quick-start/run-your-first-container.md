@@ -9,12 +9,12 @@ ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 551d405d836cfb16b587ef78bc2d5f5abbd8648f
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: 859ef38380e536a79a3dcd63397af8fd841253ee
+ms.sourcegitcommit: 62f4bcca4e07f2a34a927e5c4d786e505821d559
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "78853816"
+ms.lasthandoff: 05/05/2020
+ms.locfileid: "82784411"
 ---
 # <a name="get-started-run-your-first-windows-container"></a>作業の開始:最初の Windows コンテナーを実行する
 
@@ -89,8 +89,7 @@ ms.locfileid: "78853816"
    ```console
    docker run --rm helloworld cmd.exe /s /c type Hello.txt
    ```
-
-   この結果、"HelloWorld" イメージからコンテナーが作成され、そのコンテナーで、ファイルを読み取ってそのファイルの内容をシェルに出力する cmd.exe のインスタンスが開始されました。その後、コンテナーは停止し、削除されています。
+   この結果、Docker は "HelloWorld" イメージからコンテナーを作成し、Docker はそのコンテナーで cmd.exe のインスタンスを開始し、cmd.exe はファイルを読み取り、シェルにそのコンテンツを出力しました。 最後の手順として、Docker はコンテナーを停止し、削除しました。
 
 ## <a name="next-steps"></a>次の手順
 
