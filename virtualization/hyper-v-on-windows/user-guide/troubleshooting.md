@@ -36,4 +36,4 @@ PowerShell に表示されるエラー メッセージは、"システムで '\[
 ## <a name="i-get-this-message-when-i-try-to-install-hyper-v-cannot-be-installed-the-processor-does-not-support-second-level-address-translation-slat"></a>インストールしようとすると、このメッセージが表示されます。"Hyper-V をインストールできません:プロセッサは、第 2 レベルのアドレス変換 (SLAT) をサポートしていません。"
 Hyper-V では、仮想マシンを実行するために SLAT が必要です。 コンピューターが SLAT をサポートしていない場合、仮想マシンのホストにすることはできません。
 
-管理ツールのインストールのみを行う場合は、 **[プログラムと機能]**  >  **[Windows の機能の有効化または無効化]** で、 **[Hyper-V プラットフォーム]** の選択を解除します。
+管理ツールのインストールのみを行う場合は、**[プログラムと機能]** > **[Windows の機能の有効化または無効化]** で、**[Hyper-V プラットフォーム]** の選択を解除します。

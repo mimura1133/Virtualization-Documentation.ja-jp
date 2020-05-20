@@ -96,7 +96,7 @@ PowerShell を使用してチェックポイントを作成するには、`Get-V
 次の例は、PowerShell Integrated Scripting Environment (ISE) で新しい仮想マシンを作成する方法を示すものです。 これは単純な例であり、拡張して PowerShell 機能やより高度な VM 展開を追加できます。
 
 1. PowerShell ISE を開くには、[開始] をクリックし、「**PowerShell ISE**」と入力します。
-2. 次のコードを実行し、仮想マシンを作成します。 [ コマンドの詳細については、](https://docs.microsoft.com/powershell/module/hyper-v/new-vm?view=win10-ps)New-VM`New-VM` ドキュメントを参照してください。
+2. 次のコードを実行し、仮想マシンを作成します。 `New-VM` コマンドの詳細については、[New-VM](https://docs.microsoft.com/powershell/module/hyper-v/new-vm?view=win10-ps) ドキュメントを参照してください。
 
  ```powershell
   $VMName = "VMNAME"

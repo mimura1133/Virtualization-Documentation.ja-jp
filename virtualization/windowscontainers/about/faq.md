@@ -57,7 +57,7 @@ Windows Server コンテナーは、入れ子になった構成と比較して�
 
 ## <a name="can-i-run-windows-containers-in-process-isolated-mode-on-windows-10"></a>Windows 10 でプロセス分離モードで Windows コンテナーを実行できますか。
 
-Windows 10 2018 年 10 月アップデート以降では、プロセス分離を使用して Windows コンテナーを実行できますが、まず、`--isolation=process` でコンテナーを実行するときに `docker run` フラグを使用してプロセス分離を直接要求する必要があります。 プロセス分離は、Windows 10 Pro、Windows 10 Enterprise、Windows 10 IoT Core、Windows 10 IoT Enterprise と互換性があります。
+Windows 10 2018 年 10 月アップデート以降では、プロセス分離を使用して Windows コンテナーを実行できますが、まず、`docker run` でコンテナーを実行するときに `--isolation=process` フラグを使用してプロセス分離を直接要求する必要があります。 プロセス分離は、Windows 10 Pro、Windows 10 Enterprise、Windows 10 IoT Core、Windows 10 IoT Enterprise と互換性があります。
 
 この方法で Windows コンテナーを実行する場合は、ホストで Windows 10 build 17763 以降が実行されていること、およびエンジン 18.09 以降の Docker バージョンがあることを確認する必要があります。
 
