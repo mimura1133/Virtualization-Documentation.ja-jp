@@ -10,7 +10,7 @@ ms.service: windows-containers
 ms.assetid: 5ceb9626-7c48-4d42-81f8-9c936595ad85
 ms.openlocfilehash: 560e9ffc92728628268d7d557b8fa8428316c8ec
 ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/04/2019
 ms.locfileid: "74909682"
@@ -24,19 +24,19 @@ swarm モードは、Docker ホストのネイティブなクラスタリング�
 1 つの swarm は、*マネージャー ノード*と*ワーカー ノード*の 2 種類のコンテナー ホストで構成されます。 すべての swarm はマネージャー ノードを介して初期化され、swarm を制御および監視するためのすべての Docker CLI コマンドは、いずれかのマネージャー ノードから実行する必要があります。 マネージャー ノードは、swarm の状態の ”管理ノード” と考えることができます。マネージャー ノードは連携してコンセンサス・グループを形成し、その swarm で実行されているサービスの状態を常に監視します。マネージャー ノードの役目は、swarm の実際の状態が、開発者や管理者によって定義される意図した状態に常に一致するように維持することがです。 
 
 >[!NOTE]
->特定の群れは複数のマネージャーノードを持つことができますが、常に少なくとも*1 つ*は必要です。 
+>swarm は複数のマネージャー ノードを持つことができますが、*1 つ以上*のマネージャー ノードが必要です。 
 
 ワーカー ノードは、マネージャー ノードを介して Docker swarm によってオーケストレーションされます。 ワーカー ノードを swarm に参加させるには、swarm の初期化時にマネージャー ノードで生成された "join トークン" を使う必要があります。 ワーカー ノードは、マネージャー ノードから単純にタスクを単に受信して実行するノードであるため、swarm の状態を認識 (および保持) する必要はありません。
 
 ## <a name="swarm-mode-system-requirements"></a>swarm モードのシステム要件
 
-少なくとも1つの物理または仮想コンピューターシステム (*すべての最新の更新プログラム*を使用して windows 10 の**更新**プログラムまたは**windows server 2016**を実行することをお勧めします)\*、コンテナーホストとしてセットアップします (windows 10 で Docker コンテナーを開始する方法の詳細については、「windows 10 の windows[コンテナー](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10) [」または](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)「
+**Windows 10 Creators Update** または **Windows Server 2016** *とすべての最新の更新プログラム\** を実行し、コンテナー ホストとしてセットアップされた (Windows 10 で Docker コンテナーを使い始める方法の詳細については、「[Windows 10 の Windows コンテナー](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-10)」または「[Windows Server の Windows コンテナー](https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server)」を参照してください) 1 台以上の物理または仮想コンピューター システム (swarm の機能をフルに活用するには、複数ノードの使用をお勧めします)。
 
-\***注**: Windows Server 2016 上の Docker は[KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217)が必要です
+\***注**:Windows Server 2016 で Docker swarm を使用するには [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217) が必要です。
 
-**Docker Engine v 1.13.0 以降**
+**Docker Engine v1.13.0 以降**
 
-空きポート: 各ホストの次のポートが利用できる必要があります。 システムによっては、これらのポートは既定で空きポートです。
+次のポートが開いている各ホストの次のポートが利用できる必要があります。 システムによっては、これらのポートは既定で空きポートです。
 - TCP ポート 2377 (クラスター管理通信用)
 - TCP および UDP ポート 7946 (ノード間通信用)
 - UDP ポート 4789 (オーバーレイ ネットワーク トラフィック用)
@@ -53,7 +53,7 @@ C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADD
 
 ## <a name="adding-nodes-to-a-swarm"></a>swarm へのノードの追加
 
-複数のノードで、群れモードおよびオーバーレイネットワークモード機能を利用する必要は*ありません*。 すべての swarm 機能やオーバーレイ機能は、swarm ノードで実行する 1 つのホスト (つまり、`docker swarm init`コマンドで swarm モードに設定したマネージャー ノード) で使用できます。
+swarm モードやオーバーレイ ネットワーク機能の使用には、複数のノードは必要 "*ありません*"。 すべての swarm 機能やオーバーレイ機能は、swarm ノードで実行する 1 つのホスト (つまり、`docker swarm init`コマンドで swarm モードに設定したマネージャー ノード) で使用できます。
 
 ### <a name="adding-workers-to-a-swarm"></a>swarm へのワーカーの追加
 
@@ -109,10 +109,10 @@ C:\> docker network create --driver=overlay <NETWORKNAME>
 C:\> docker service create --name=<SERVICENAME> --endpoint-mode dnsrr --network=<NETWORKNAME> <CONTAINERIMAGE> [COMMAND] [ARGS…]
 ```
 
-ここで、\<SERVICENAME\> は、指定するサービス名です。この名前は、サービス ディスカバリでサービスを参照するために使います (サービス ディスカバリには、Docker のネイティブな DNS サーバーが使われます)。 \<NETWORKNAME\> は、このサービスの接続先となるネットワークの名前です (たとえば、"myOverlayNet")。 \<GET-CONTAINERIMAGE\> は、サービスを定義するコンテナーイメージの名前です。
+ここで、\<SERVICENAME\> は、指定するサービス名です。この名前は、サービス ディスカバリでサービスを参照するために使います (サービス ディスカバリには、Docker のネイティブな DNS サーバーが使われます)。 \<NETWORKNAME\> は、このサービスを接続するネットワークの名前です (例: "myOverlayNet")。 \<CONTAINERIMAGE\> は、サービスを定義するコンテナー イメージの名前です。
 
 >[!NOTE]
->このコマンドの2番目の引数である `--endpoint-mode dnsrr`は、DNS ラウンドロビンポリシーを使用してサービスコンテナーのエンドポイント間でネットワークトラフィックを分散するように Docker エンジンに指定する必要があります。 現時点では、DNS ラウンドロビンは、Windows Server 2016 でサポートされている唯一の負荷分散戦略です。Windows docker ホストの[ルーティングメッシュ](https://docs.docker.com/engine/swarm/ingress/)は、windows server 2019 (以降) ではサポートされていますが、windows server 2016 ではサポートされていません。 現在 Windows Server 2016 で別の負荷分散戦略を模索しているユーザーは、外部ロードバランサー (例: NGINX) をセットアップし、群れの[発行ポートモード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使用して、トラフィックの分散に使用するコンテナーホストポートを公開できます。
+>このコマンドの 2 番目の引数 `--endpoint-mode dnsrr` は、Docker エンジンに対し、サービス コンテナー エンドポイント間でのネットワーク トラフィックの負荷分散に、DNS ラウンド ロビン ポリシーが使用されることを指定するために必要です。 現在、DNS ラウンドロビンは、Windows Server 2016 でサポートされている唯一の負荷分散方法です。Windows Docker ホストの[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)は、Windows Server 2019 以降でサポートされていますが、Windows Server 2016 ではサポートされていません。 Windows Server 2016 上で他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、トラフィック分散の際に経由するコンテナー ホスト ポートを公開します。
 
 ## <a name="scaling-a-service"></a>サービスの縮小拡大
 swarm クラスターにサービスが展開されると、そのサービスを構成するコンテナー インスタンスがクラスターに展開されます。 既定では、サービスをサポートするコンテナー インスタンスの数 ("レプリカ"、つまりサービス用の "タスク" の数) は 1 つです。 ただし、`docker service create` コマンドで `--replicas`オプションを使って、複数のタスクを持つサービスを作成したり、サービスの作成後にサービスを拡大縮小したりすることができます。
@@ -162,9 +162,9 @@ C:\> docker service ps <SERVICENAME>
 ## <a name="linuxwindows-mixed-os-clusters"></a>Linux+Windows 混在 OS クラスター
 
 最近、チームのメンバーの 1 人が、Docker Swarm を使用して Windows+Linux 混在 OS アプリケーションを設定する方法について、短い 3 部構成のデモを投稿しました。 Docker Swarm を初めて使用する場合や、Docker Swarm を使用して混在 OS アプリケーションを実行するのが初めてである場合は、このデモを見ることをお勧めします。 今すぐ確認してください。
-- [Docker の群れを使用して Windows + Linux のコンテナー化されたアプリケーションを実行する (パート 1/3)](https://www.youtube.com/watch?v=ZfMV5JmkWCY&t=170s)
-- [Docker の群れを使用して Windows + Linux のコンテナー化されたアプリケーションを実行する (パート 2/3)](https://www.youtube.com/watch?v=VbzwKbcC_Mg&t=406s)
-- [Docker の群れを使用して Windows + Linux のコンテナー化されたアプリケーションを実行する (パート 3/3)](https://www.youtube.com/watch?v=I9oDD78E_1E&t=354s)
+- [Docker Swarm を使用して Windows+Linux のコンテナー化されたアプリケーションを実行する (パート 1/3)](https://www.youtube.com/watch?v=ZfMV5JmkWCY&t=170s)
+- [Docker Swarm を使用して Windows+Linux のコンテナー化されたアプリケーションを実行する (パート 2/3)](https://www.youtube.com/watch?v=VbzwKbcC_Mg&t=406s)
+- [Docker Swarm を使用して Windows+Linux のコンテナー化されたアプリケーションを実行する (パート 3/3)](https://www.youtube.com/watch?v=I9oDD78E_1E&t=354s)
 
 ### <a name="initializing-a-linuxwindows-mixed-os-cluster"></a>Linux+Windows 混在 OS クラスターの初期化
 ファイアウォール規則が正しく構成されており、ホストが相互にアクセスできる限り、混在 OS の swarm クラスターの初期化は簡単です。Linux ホストを swarm に追加するのに必要なものは、`docker swarm join` コマンドのみです。
@@ -181,7 +181,7 @@ C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADD
 混在 OS swarm クラスターに対して Docker サービスを起動するには、そのサービスの対象となる OS を実行している swarm ノードと、それ以外のノードを判別する方法が必要です。 [Docker オブジェクト ラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)は、ノードにラベル付けするのに便利な方法であり、OS に一致するノードでのみ実行されるように、サービスを作成および構成できます。 
 
 >[!NOTE]
->[Docker オブジェクトラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)は、さまざまな docker オブジェクト (コンテナーイメージを含む) にメタデータを適用するために使用できます。 [コンテナー]、[ボリュームとネットワーク])、およびさまざまな目的 (ラベルなど) では、フロントエンドのマイクロサービスを "フロントエンド" のラベルが付けられたノードとバックエンドの mircoservices にのみ secheduled して、"バックエンド" というラベルが付いたノードでのみスケジュールされるようにします。 ここでは、ノードのラベルを使用して、Windows OS ノードと Linux OS ノードを区別します。
+>[Docker オブジェクト ラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)は、さまざまな Docker オブジェクト (コンテナー イメージ、コンテナー、ボリューム、ネットワークなど) にメタデータを適用するために使用できるほか、さまざまな目的に使用できます。たとえば、ラベルを使用してアプリケーションの "フロントエンド" と "バックエンド" のコンポーネントを区別することで、フロントエンドのマイクロサービスを "front-end" のラベルが付けられたノードでのみスケジュールし、バックエンドのマイクロサービスを "back-end" のラベルが付けられたノードでのみスケジュールすることができます。 ここでは、ノードのラベルを使用して、Windows OS ノードと Linux OS ノードを区別します。
 
 既存の swarm ノードにラベルを付けるには、次の構文を使います。
 
@@ -189,7 +189,7 @@ C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADD
 C:\> docker node update --label-add <LABELNAME>=<LABELVALUE> <NODENAME>
 ```
 
-ここで、`<LABELNAME>` は作成するラベルの名前です。この例では、OS によってノードを区別するため、ラベルの論理名を "os" とすることができます。 `<LABELVALUE>` はラベルの値です。この場合は、値 "windows" と "linux" を使用することを選択できます。 (もちろん、一貫性がある限り、ラベルとラベルの値には任意の名前付けを選択できます)。 `<NODENAME>` には、ラベルを付けるノードの名前を指定します。`docker node ls`を実行して、ノードの名前を通知することができます。 
+ここで、`<LABELNAME>` は作成するラベルの名前です。この例では、OS によってノードを区別するため、ラベルの論理名を "os" とすることができます。 `<LABELVALUE>` は、ラベルの値です。この例では、"windows" や "linux" などの値を使用できます (もちろん、一貫性がある限り、ラベルとラベルの値には任意の名前付けを選択できます)。 `<NODENAME>` は、ラベルを付けるノードの名前です。`docker node ls` を実行することによって、ノードの名前を確認できます。 
 
 **たとえば**、クラスター内に 4 つの swarm ノードがあり、2 つが Windows ノードで、2 つが Linux ノードである場合、ラベルの更新コマンドは次のようになります。
 
@@ -224,13 +224,13 @@ C:\> docker service create --name=linux_s1 --endpoint-mode dnsrr --network testo
 ## <a name="limitations"></a>制限事項
 現在、Windows 上の swarm モードには次の制限があります。
 - データプレーンの暗号化 (`--opt encrypted`オプションを使用したコンテナー間のトラフィック) はサポートされていません。
-- Windows docker ホストの[ルーティングメッシュ](https://docs.docker.com/engine/swarm/ingress/)は、windows server 2016 ではサポートされていませんが、windows server 2019 以降ではサポートされていません。 他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、負荷分散の際に経由するコンテナー ホスト ポートを公開します。 以下で詳しく説明します。
+- Windows Docker ホストの[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)は、Windows Server 2016 ではサポートされていませんが、Windows Server 2019 以降ではサポートされています。 他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、負荷分散の際に経由するコンテナー ホスト ポートを公開します。 以下で詳しく説明します。
 
  >[!NOTE]
->Docker の群れルーティングメッシュの設定方法の詳細については、こちらの[ブログ投稿](https://docs.microsoft.com/en-us/virtualization/community/team-blog/2017/20170926-docker-s-routing-mesh-available-with-windows-server-version-1709)を参照してください。
+>Docker Swarm のルーティング メッシュの設定方法の詳細については、この[ブログの投稿](https://docs.microsoft.com/en-us/virtualization/community/team-blog/2017/20170926-docker-s-routing-mesh-available-with-windows-server-version-1709)を参照してください。
 
 ## <a name="publish-ports-for-service-endpoints"></a>サービス エンドポイントのポートの公開
- サービスエンドポイントのためにポートを発行しようとしているユーザーは、現在、発行ポートモードまたは Docker モデルの[ルーティングメッシュ](https://docs.docker.com/engine/swarm/ingress/)機能を使用して、この処理を行うことができます。 
+ サービス エンドポイントのポートを公開する場合、publish-port モードまたは Docker Swarm の[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)機能を使用して実現できるようになりました。 
 
 サービスを定義するタスク/コンテナー エンドポイントのそれぞれについて、ホスト ポートを公開するには、`docker service create` コマンドで `--publish mode=host,target=<CONTAINERPORT>` 引数を使用します。
 
@@ -250,19 +250,19 @@ C:\ > docker service create --name=s1 --publish mode=host,target=80 --endpoint-m
 ```
 C:\ > docker service ps <SERVICENAME>
 ```
-上記のコマンドは、(すべての swarm ホストにわたって) サービス用に実行されているすべてのコンテナー インスタンスに関する詳細を返します。 出力の1つの列 ("ports" 列) には、\<HOSTPORT\>->\<CONTAINERPORT\>/tcpという形式の各ホストのポート情報が含まれます。 各コンテナーは独自のホストポートで公開されるため、\<HOSTPORT\> の値は、コンテナーインスタンスごとに異なります。
+上記のコマンドは、(すべての swarm ホストにわたって) サービス用に実行されているすべてのコンテナー インスタンスに関する詳細を返します。 出力の列の 1 つである "ports" 列には、\<HOSTPORT\>->\<CONTAINERPORT\>/tcp の形式で各ホストのポート情報が含まれます。 各コンテナーはそれぞれのホスト ポートで公開されるため、\<HOSTPORT\> の値は各コンテナー インスタンスによって異なります。
 
 
 ## <a name="tips--insights"></a>ヒントとインサイト 
 
-#### <a name="existing-transparent-network-can-block-swarm-initializationoverlay-network-creation"></a>*既存の透過ネットワークが、群れを使用した初期化/オーバーレイネットワークの作成をブロックする* 
+#### <a name="existing-transparent-network-can-block-swarm-initializationoverlay-network-creation"></a>*既存の透過ネットワークによって swarm の初期化/オーバーレイ ネットワークの作成がブロックされる場合がある* 
 Windows では、オーバーレイ ネットワーク ドライバーと透過ネットワーク ドライバーはいずれも、外部 vSwitch が (仮想) ホスト ネットワーク アダプターにバインドされている必要があります。 オーバーレイ ネットワークが作成されると、新しいスイッチが作成され、オープンなネットワーク アダプターに接続されます。 透過ネットワーク モードでも、ホスト ネットワーク アダプターが使用されます。 さらに、特定のネットワーク アダプターは一度に 1 つのスイッチのみバインドできます。ホストのネットワーク アダプターが 1 つだけである場合、ネットワーク アダプターは、vSwitch がオーバーレイ ネットワーク用であるか、透過ネットワーク用であるかに関係なく、一度に 1 つの外部 vSwitch にのみ接続できます。 
 
 したがって、コンテナー ホストのネットワーク アダプターが 1 つだけである場合、透過ネットワークによってオーバーレイ ネットワークの作成がブロックされる (またはその逆の) 問題が発生する可能性があります。これは、透過ネットワークが、現在、ホストの唯一の仮想ネットワーク インターフェイスを占有しているためです。
 
 この問題を回避するには、次の 2 つの方法があります。
-- *オプション 1 -既存の透過ネットワークを削除する:* swarm を初期化する前に、コンテナー ホストに既存の透過ネットワークがないことを確認します。 透過ネットワークを削除して、ホストに空いている仮想ネットワーク アダプターがあり、オーバーレイのネットワークの作成に使用できることを確認します。
-- *オプション2 - ホストで追加の (仮想) ネットワーク アダプターを作成する:* ホスト上の透過ネットワークを削除する代わりに、オーバーレイ ネットワークの作成に使用する追加のネットワーク アダプターをホストに作成できます。 これを行うには、(PowerShell または Hyper-V マネージャーを使用して) 新しい外部ネットワーク アダプターを作成するだけです。新しいインターフェイスが作成されると、swarm が初期化されるときに、ホスト ネットワーク サービス (HNS) が自動的にホスト上のインターフェイスを認識し、そのインターフェイスを使用してオーバーレイ ネットワーク作成用の外部 vSwitch をバインドします。
+- *オプション 1 - 既存の透過ネットワークを削除する:* swarm を初期化する前に、コンテナー ホストに既存の透過ネットワークがないことを確認します。 透過ネットワークを削除して、ホストに空いている仮想ネットワーク アダプターがあり、オーバーレイのネットワークの作成に使用できることを確認します。
+- *オプション 2 - ホスト上に追加の (仮想) ネットワーク アダプターを作成する:* ホスト上の透過ネットワークを削除するのではなく、オーバーレイ ネットワークの作成に使用される追加のネットワーク アダプターをホスト上に作成できます。 これを行うには、(PowerShell または Hyper-V マネージャーを使用して) 新しい外部ネットワーク アダプターを作成するだけです。新しいインターフェイスが作成されると、swarm が初期化されるときに、ホスト ネットワーク サービス (HNS) が自動的にホスト上のインターフェイスを認識し、そのインターフェイスを使用してオーバーレイ ネットワーク作成用の外部 vSwitch をバインドします。
 
 
 
