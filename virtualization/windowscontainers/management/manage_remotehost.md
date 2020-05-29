@@ -10,7 +10,7 @@ ms.service: windows-containers
 ms.assetid: 0cc1b621-1a92-4512-8716-956d7a8fe495
 ms.openlocfilehash: 2e1fec6aa7149c801b1c72a0f8a346ca879015c2
 ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/18/2020
 ms.locfileid: "77439519"
@@ -23,7 +23,7 @@ ms.locfileid: "77439519"
 
 * [dockertls](https://hub.docker.com/r/stefanscherer/dockertls-windows/) を使って、サーバー上で証明書を作成します。 IP アドレスに対する証明書を作成する場合は、IP アドレスが変わったときに証明書を再作成しなくて済むように静的 IP の使用を検討することをお勧めします。
 
-* Docker サービスを再起動 `Restart-Service Docker`
+* Docker サービス `Restart-Service Docker` を再起動します。
 * 着信トラフィックを許可する NSG 規則を作成して、port docker の TLS ポート 2375 と 2376 を利用可能に設定します。 セキュリティで保護された接続には、2376 の許可のみが必要です。  
   ポータルは、次のように、NSG 構成を表示します。  
   ![NGSs](media/nsg.png)  
@@ -32,8 +32,8 @@ ms.locfileid: "77439519"
 ```
 New-NetFirewallRule -DisplayName 'Docker SSL Inbound' -Profile @('Domain', 'Public', 'Private') -Direction Inbound -Action Allow -Protocol TCP -LocalPort 2376
 ```
-* コンピューター上にあるユーザーの docker フォルダー (例: `ca.pem`) からファイル `c:\users\chris\.docker`、'cert.pem'、'key.pem' をローカル コンピューターにコピーします。 たとえば、RDP セッションから、Ctrl + C キーと Ctrl + V キーを使ってファイルをコピーできます。 
-* リモート Docker ホストに接続できることを確認します。 Run
+* コンピューター上にあるユーザーの docker フォルダー (例: `c:\users\chris\.docker`) からファイル `ca.pem`、'cert.pem'、'key.pem' をローカル コンピューターにコピーします。 たとえば、RDP セッションから、Ctrl + C キーと Ctrl + V キーを使ってファイルをコピーできます。 
+* リモート Docker ホストに接続できることを確認します。 WMIMgmt.msc
 ```
 docker -D -H tcp://wsdockerhost.southcentralus.cloudapp.azure.com:2376 --tlsverify --tlscacert=c:\
 users\foo\.docker\client\ca.pem --tlscert=c:\users\foo\.docker\client\cert.pem --tlskey=c:\users\foo\.doc
