@@ -2,7 +2,7 @@
 
 # 概要
 ## [Windows コンテナーについて](about/index.md)
-## [コンテナーと VM](about/containers-vs-vm.md)
+## [コンテナーとVM](about/containers-vs-vm.md)
 ## [システム要件](deploy-containers/system-requirements.md)
 ## [FAQ](about/faq.md)
 
@@ -84,6 +84,7 @@
 ## [コンテナー OS イメージの使用許諾契約書 (EULA)](Images_EULA.md)
 
 # 参照情報
+## [既知の問題](manage-containers/known-issues.md)
 ## [コンテナーのサンプル](samples.md)
 ## [トラブルシューティング](troubleshooting.md)
 ## [コンテナーのフォーラム](https://social.msdn.microsoft.com/Forums/home?forum=windowscontainers)

@@ -1,7 +1,7 @@
 ---
-title: Windows コンテナー用に gMSAs を作成する
-description: Windows コンテナーのグループ管理サービスアカウント (gMSAs) を作成する方法。
-keywords: docker、コンテナー、active directory、gmsa、グループの管理されたサービスアカウント、グループの管理されたサービスアカウント
+title: Windows コンテナー用に gMSA を作成する
+description: Windows コンテナー用にグループ管理サービス アカウント (gMSA) を作成する方法。
+keywords: docker, コンテナー, active directory, gmsa, グループ管理サービス アカウント, グループ管理サービス アカウント
 author: rpsqrd
 ms.date: 01/03/2019
 ms.topic: article
@@ -10,90 +10,90 @@ ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
 ms.openlocfilehash: 36061cfc491dd9dd581d1e6bce92a29e4a6f217d
 ms.sourcegitcommit: 530712469552a1ef458883001ee748bab2c65ef7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/26/2020
 ms.locfileid: "77628937"
 ---
-# <a name="create-gmsas-for-windows-containers"></a>Windows コンテナー用に gMSAs を作成する
+# <a name="create-gmsas-for-windows-containers"></a>Windows コンテナー用に gMSA を作成する
 
-Windows ベースのネットワークでは、一般的に Active Directory (AD) を使用して、ユーザー、コンピューター、およびその他のネットワークリソース間の認証と承認を容易にします。 エンタープライズアプリケーション開発者は、統合 Windows 認証を利用するために、アプリを AD に統合され、ドメインに参加しているサーバー上で実行するように設計されていることがよくあります。これにより、ユーザーや他のサービスが自動的に透過的にサインインできるようになります。id を持つアプリケーション。
+Windows ベースのネットワークは、一般的に、Active Directory (AD) を使用して、ユーザー、コンピューター、およびその他のネットワーク リソース間の認証と承認を容易にしています。 エンタープライズ アプリケーション開発者は、多くの場合、アプリケーションを AD に統合し、ドメインに参加しているサーバーで実行するように設計して、統合 Windows 認証を利用しています。これにより、ユーザーや他のサービスは、ID を使用してアプリケーションに自動的かつ透過的にサインインできます。
 
-Windows コンテナーをドメインに参加させることはできませんが、Active Directory ドメイン id を使用してさまざまな認証シナリオをサポートすることができます。
+Windows コンテナーはドメインに参加できませんが、Active Directory ドメイン ID を使用してさまざまな認証シナリオをサポートできます。
 
-これを実現するには、Windows コンテナーを[グループ管理サービスアカウント](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)(gMSA) で実行するように構成します。これは、windows Server 2012 で導入された特別な種類のサービスアカウントで、パスワードを知らなくても複数のコンピューターが id を共有できるように設計されています。
+これを実現するには、[グループ管理サービス アカウント](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) (gMSA) を使用して実行するように Windows コンテナーを構成します。これは、複数のコンピューターでパスワードを知ることなく ID を共有できるように設計された、Windows Server 2012 で導入された特殊な種類のサービス アカウントです。
 
-GMSA を使用してコンテナーを実行すると、コンテナーホストは、Active Directory ドメインコントローラーから gMSA パスワードを取得し、コンテナーインスタンスに渡します。 コンテナーは、コンピューターアカウント (システム) がネットワークリソースにアクセスする必要がある場合は常に、gMSA 資格情報を使用します。
+gMSA を使用してコンテナーを実行すると、コンテナー ホストによって Active Directory ドメイン コントローラーから gMSA パスワードが取得され、コンテナー インスタンスに渡されます。 コンピューター アカウント (SYSTEM) でネットワーク リソースにアクセスする必要がある場合は常に、コンテナーでは gMSA 資格情報が使用されます。
 
-この記事では、Windows コンテナーで Active Directory グループの管理されたサービスアカウントの使用を開始する方法について説明します。
+この記事では、Windows コンテナーで Active Directory グループ管理サービス アカウントを使い始める方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-グループの管理されたサービスアカウントを使用して Windows コンテナーを実行するには、次のものが必要です。
+グループ管理サービス アカウントを使用して Windows コンテナーを実行するには、次のものが必要です。
 
-- Windows Server 2012 以降を実行しているドメインコントローラーが少なくとも1つある Active Directory ドメイン。 GMSAs を使用するためのフォレストまたはドメインの機能レベルの要件はありませんが、gMSA パスワードは、Windows Server 2012 以降を実行しているドメインコントローラーでのみ配布できます。 詳細については、「 [gMSAs の Active Directory の要件](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts#BKMK_gMSA_Req)」を参照してください。
-- GMSA アカウントを作成するためのアクセス許可。 GMSA アカウントを作成するには、ドメイン管理者であるか、または ""*オブジェクトの作成*アクセス許可を委任されたアカウントを使用する必要があります。
-- インターネットにアクセスして、CredentialSpec PowerShell モジュールをダウンロードします。 接続されていない環境で作業している場合は、インターネットにアクセスできるコンピューターに[モジュールを保存](https://docs.microsoft.com/powershell/module/powershellget/save-module?view=powershell-5.1)し、開発用コンピューターまたはコンテナーホストにコピーできます。
+- Windows Server 2012 以降を実行しているドメイン コントローラーが少なくとも 1 つある Active Directory ドメイン。 フォレストまたはドメインには、gMSA を使用するための機能レベルの要件はありませんが、gMSA パスワードを配布するには、Windows Server 2012 以降を実行しているドメイン コントローラーを使用する必要があります。 詳細については、[Active Directory の gMSA に関する要件](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/getting-started-with-group-managed-service-accounts#BKMK_gMSA_Req)に関するページを参照してください。
+- gMSA アカウントを作成するためのアクセス許可。 gMSA アカウントを作成するには、ドメイン管理者であるか、"*msDS-GroupManagedServiceAccount オブジェクトの作成*" のアクセス許可が委任されているアカウントを使用する必要があります。
+- インターネットにアクセスして、CredentialSpec PowerShell モジュールをダウンロードします。 切断された環境で作業している場合は、インターネットにアクセスできるコンピューターに[モジュールを保存](https://docs.microsoft.com/powershell/module/powershellget/save-module?view=powershell-5.1)して、開発マシンまたはコンテナー ホストにコピーできます。
 
-## <a name="one-time-preparation-of-active-directory"></a>Active Directory の1回限りの準備
+## <a name="one-time-preparation-of-active-directory"></a>Active Directory の 1 回限りの準備
 
-ドメインに gMSA をまだ作成していない場合は、キー配布サービス (KDS) のルートキーを生成する必要があります。 KDS は、承認されたホストに対して gMSA パスワードを作成、交換、および解放する役割を担います。 コンテナーホストで gMSA を使用してコンテナーを実行する必要がある場合は、KDS に接続して現在のパスワードを取得します。
+ドメインで gMSA をまだ作成していない場合は、Key Distribution Service (KDS) ルート キーを生成する必要があります。 KDS は、gMSA パスワードの作成、ローテーション、および承認済みホストへのリリースの役割を担います。 コンテナー ホストで gMSA を使用してコンテナーを実行する必要がある場合は、KDS に接続して現在のパスワードを取得します。
 
-KDS ルートキーが既に作成されているかどうかを確認するには、AD PowerShell ツールがインストールされているドメインコントローラーまたはドメインメンバーで、ドメイン管理者として次の PowerShell コマンドレットを実行します。
+KDS ルート キーが既に作成されているかどうかを確認するには、AD PowerShell ツールがインストールされているドメイン コントローラーまたはドメイン メンバー上でドメイン管理者として次の PowerShell コマンドレットを実行します。
 
 ```powershell
 Get-KdsRootKey
 ```
 
-コマンドからキー ID が返された場合は、すべて設定されているので、「[グループの管理](#create-a-group-managed-service-account)されたサービスアカウントの作成」セクションに進むことができます。 それ以外の場合は、続行して KDS ルートキーを作成します。
+コマンドからキー ID が返される場合は準備が完了しているので、「[グループ管理サービス アカウントを作成する](#create-a-group-managed-service-account)」セクションに進みます。 それ以外の場合は、KDS ルート キーの作成に進みます。
 
-複数のドメインコントローラーがある運用環境またはテスト環境では、KDS ルートキーを作成するために、ドメイン管理者として PowerShell で次のコマンドレットを実行します。
+複数のドメイン コントローラーを使用する運用環境またはテスト環境では、PowerShell で次のコマンドレットをドメイン管理者として実行し、KDS ルート キーを作成します。
 
 ```powershell
 # For production environments
 Add-KdsRootKey -EffectiveImmediately
 ```
 
-このコマンドは、キーが直ちに有効になることを意味しますが、KDS ルートキーがレプリケートされ、すべてのドメインコントローラーで使用できるようになるまで10時間待つ必要があります。
+キーがすぐに有効になることを意味するコマンドですが、KDS ルート キーがレプリケートされ、すべてのドメイン コントローラーで使用できるようになるまでに 10 時間かかります。
 
-ドメイン内にドメインコントローラーが1つしかない場合は、10時間前に有効にするようにキーを設定して、プロセスを迅速に実行できます。
+ドメイン内にドメイン コントローラーが 1 つしかない場合は、10 時間前にキーを有効になるように設定すると、プロセスを迅速にすることができます。
 
 >[!IMPORTANT]
->運用環境では、この手法を使用しないでください。
+>運用環境ではこの手法を使用しないでください。
 
 ```powershell
 # For single-DC test environments ONLY
 Add-KdsRootKey -EffectiveTime (Get-Date).AddHours(-10)
 ```
 
-## <a name="create-a-group-managed-service-account"></a>グループの管理されたサービスアカウントを作成する
+## <a name="create-a-group-managed-service-account"></a>グループ管理サービス アカウントを作成する
 
-統合 Windows 認証を使用するすべてのコンテナーには、少なくとも1つの gMSA が必要です。 プライマリ gMSA は、システムまたはネットワークサービスとして実行されているアプリがネットワーク上のリソースにアクセスするときに使用されます。 GMSA の名前は、コンテナーに割り当てられているホスト名に関係なく、ネットワーク上のコンテナーの名前になります。 コンテナーコンピューターアカウントとは別の id としてコンテナー内のサービスまたはアプリケーションを実行する場合は、追加の gMSAs を使用してコンテナーを構成することもできます。
+統合 Windows 認証を使用するすべてのコンテナーには、少なくとも 1 つの gMSA が必要です。 System または Network Service として実行されているアプリからネットワーク上のリソースにアクセスする場合は常に、プライマリ gMSA が使用されます。 コンテナーに割り当てられたホスト名に関係なく、gMSA の名前はネットワーク上のコンテナーの名前になります。 コンテナー コンピューター アカウントとは異なる ID としてコンテナーでサービスまたはアプリケーションを実行する場合に備えて、追加の gMSA を使用してコンテナーを構成することもできます。
 
-GMSA を作成するときに、複数の異なるコンピューターで同時に使用できる共有 id も作成します。 GMSA パスワードへのアクセスは、Active Directory Access Control リストによって保護されています。 GMSA アカウントごとにセキュリティグループを作成し、そのセキュリティグループに関連するコンテナーホストを追加して、パスワードへのアクセスを制限することをお勧めします。
+gMSA を作成するときは、複数の異なるマシンで同時に使用できる共有 ID も作成します。 gMSA パスワードへのアクセスは、Active Directory アクセス制御リストによって保護されています。 gMSA アカウントごとにセキュリティ グループを作成し、関連するコンテナー ホストをセキュリティ グループに追加して、パスワードへのアクセスを制限することをお勧めします。
 
-最後に、コンテナーはサービスプリンシパル名 (SPN) を自動的に登録しないため、少なくとも gMSA アカウント用のホスト SPN を手動で作成する必要があります。
+最後に、コンテナーにはサービス プリンシパル名 (SPN) が自動的に登録されないため、gMSA アカウント用に少なくともホスト SPN を手動で作成する必要があります。
 
-通常、ホストまたは http SPN は、gMSA アカウントと同じ名前を使用して登録されますが、クライアントが、ロードバランサーの背後からコンテナー化されたアプリケーションにアクセスする場合や、gMSA 名とは異なる DNS 名を使用する場合は、別のサービス名を使用することが必要になる場合があります。
+通常、ホストまたは http SPN は gMSA アカウントと同じ名前を使用して登録されますが、クライアントがロード バランサーの背後からコンテナー化されたアプリケーションにアクセスする場合、または gMSA 名とは異なる DNS 名を使用する場合は、別のサービス名の使用が必要になる可能性があります。
 
-たとえば、gMSA アカウントに "WebApp01" という名前が付けられているのに、ユーザーが `mysite.contoso.com`のサイトにアクセスする場合は、gMSA アカウントに `http/mysite.contoso.com` SPN を登録する必要があります。
+たとえば、gMSA アカウントの名前が "WebApp01" で、ユーザーが `mysite.contoso.com` のサイトにアクセスする場合は、gMSA アカウントに `http/mysite.contoso.com` SPN を登録する必要があります。
 
-アプリケーションによっては、独自のプロトコルに対して追加の Spn が必要になる場合があります。 たとえば、SQL Server には `MSSQLSvc/hostname` SPN が必要です。
+アプリケーションによっては、独自のプロトコルのために追加の SPN が必要になる場合があります。 たとえば、SQL Server には `MSSQLSvc/hostname` SPN が必要です。
 
-次の表に、gMSA を作成するために必要な属性を示します。
+gMSA を作成するために必要な属性を次の表に示します。
 
-|gMSA プロパティ | 必須の値 | 例 |
+|gMSA のプロパティ | 必須の値 | 例 |
 |--------------|----------------|--------|
-|Name | 任意の有効なアカウント名。 | `WebApp01` |
-|DnsHostName | アカウント名に追加されたドメイン名。 | `WebApp01.contoso.com` |
+|名前 | 任意の有効なアカウント名。 | `WebApp01` |
+|DnsHostName | アカウント名に付加されるドメイン名。 | `WebApp01.contoso.com` |
 |ServicePrincipalNames | 少なくともホスト SPN を設定し、必要に応じて他のプロトコルを追加します。 | `'host/WebApp01', 'host/WebApp01.contoso.com'` |
-|PrincipalsAllowedToRetrieveManagedPassword | コンテナーホストを含むセキュリティグループ。 | `WebApp01Hosts` |
+|PrincipalsAllowedToRetrieveManagedPassword | コンテナー ホストを含むセキュリティ グループ。 | `WebApp01Hosts` |
 
-GMSA の名前を決定したら、PowerShell で次のコマンドレットを実行して、セキュリティグループと gMSA を作成します。
+gMSA の名前を決定したら、PowerShell で次のコマンドレットを実行して、セキュリティ グループと gMSA を作成します。
 
 > [!TIP]
-> 次のコマンドを実行するには、 **Domain Admins**セキュリティグループに属しているアカウントを使用するか、または、作成中の**GroupManagedServiceAccount オブジェクトの作成**権限を委任されている必要があります。
-> [新しい-ADServiceAccount](https://docs.microsoft.com/powershell/module/addsadministration/new-adserviceaccount?view=win10-ps)コマンドレットは、[リモートサーバー管理ツール](https://aka.ms/rsat)の AD PowerShell ツールの一部です。
+> 次のコマンドを実行するには、**Domain Admins** セキュリティ グループに属するアカウントか、**msDS-GroupManagedServiceAccount オブジェクトの作成**アクセス許可が委任されているアカウントを使用する必要があります。
+> [New-ADServiceAccount](https://docs.microsoft.com/powershell/module/addsadministration/new-adserviceaccount?view=win10-ps) コマンドレットは、[リモート サーバー管理ツール](https://aka.ms/rsat)の AD PowerShell Tools の一部です。
 
 ```powershell
 # Replace 'WebApp01' and 'contoso.com' with your own gMSA and domain names, respectively
@@ -114,15 +114,15 @@ Add-ADGroupMember -Identity "WebApp01Hosts" -Members "ContainerHost01$", "Contai
 
 開発、テスト、運用の各環境用に個別の gMSA アカウントを作成することをお勧めします。
 
-## <a name="prepare-your-container-host"></a>コンテナーホストを準備する
+## <a name="prepare-your-container-host"></a>コンテナー ホストを準備する
 
-GMSA を使用して Windows コンテナーを実行する各コンテナーホストは、ドメインに参加していて、gMSA パスワードを取得するためのアクセス権を持っている必要があります。
+gMSA を使用して Windows コンテナーを実行する各コンテナー ホストは、ドメインに参加し、gMSA パスワードを取得できるアクセス権を持っている必要があります。
 
 1. コンピューターを Active Directory ドメインに参加させます。
-2. ホストが、gMSA パスワードへのアクセスを制御するセキュリティグループに属していることを確認してください。
-3. コンピューターを再起動して、新しいグループメンバーシップを取得します。
-4. Windows 10 または[Docker for Windows Server](https://docs.docker.com/install/windows/docker-ee/)[の Docker Desktop](https://docs.docker.com/docker-for-windows/install/)を設定します。
-5. しない[テスト ADServiceAccount](https://docs.microsoft.com/powershell/module/activedirectory/test-adserviceaccount)を実行して、ホストで gMSA アカウントを使用できることを確認します。 コマンドが**False**を返す場合は、[トラブルシューティングの手順](gmsa-troubleshooting.md#make-sure-the-host-can-use-the-gmsa)に従います。
+2. ホストが gMSA パスワードへのアクセスを制御するセキュリティ グループに属していることを確認します。
+3. コンピューターを再起動して、新しいグループ メンバーシップを取得します。
+4. [Docker Desktop for Windows 10](https://docs.docker.com/docker-for-windows/install/) または [Docker for Windows Server](https://docs.docker.com/install/windows/docker-ee/) を設定します。
+5. (推奨) [Test-ADServiceAccount](https://docs.microsoft.com/powershell/module/activedirectory/test-adserviceaccount) を実行して、ホストで gMSA アカウントを使用できることを確認します。 コマンドから **False** が返される場合は、[トラブルシューティングの手順](gmsa-troubleshooting.md#make-sure-the-host-can-use-the-gmsa)に従ってください。
 
     ```powershell
     # To install the AD module on Windows Server, run Install-WindowsFeature RSAT-AD-PowerShell
@@ -132,37 +132,37 @@ GMSA を使用して Windows コンテナーを実行する各コンテナーホ
     Test-ADServiceAccount WebApp01
     ```
 
-## <a name="create-a-credential-spec"></a>資格情報の仕様を作成する
+## <a name="create-a-credential-spec"></a>資格情報の指定を作成する
 
-資格情報の仕様ファイルは、コンテナーで使用する gMSA アカウントに関するメタデータを含む JSON ドキュメントです。 コンテナーイメージとは別に id 構成を保持することで、資格情報の仕様ファイルを交換するだけでコンテナーが使用する gMSA を変更できます。コードの変更は必要ありません。
+資格情報の指定ファイルは、コンテナーで使用する gMSA アカウントに関するメタデータを含む JSON ドキュメントです。 ID 構成をコンテナー イメージから分離しておくと、資格情報の指定ファイルを交換するだけで、コンテナーに使用する gMSA を変更できます。コードを変更する必要はありません。
 
-資格情報仕様ファイルは、ドメインに参加しているコンテナーホストで、 [Credentialspec PowerShell モジュール](https://aka.ms/credspec)を使用して作成されます。
-作成したファイルは、他のコンテナーホストまたはコンテナー orchestrator にコピーできます。
-コンテナーホストがコンテナーの代わりに gMSA を取得するため、資格情報の仕様ファイルには gMSA パスワードなどのシークレットが含まれていません。
+資格情報の指定ファイルを作成するには、ドメインに参加しているコンテナー ホストで [CredentialSpec PowerShell モジュール](https://aka.ms/credspec)を使用します。
+ファイルを作成したら、それを他のコンテナー ホストまたはコンテナー オーケストレーターにコピーできます。
+コンテナーに代わってコンテナー ホストによって gMSA が取得されるため、資格情報の指定ファイルには gMSA パスワードなどのシークレットは含まれていません。
 
-Docker は、Docker データディレクトリの**Credentialspecs**ディレクトリにある資格情報仕様ファイルを検索することを想定しています。 既定のインストールでは、このフォルダーは `C:\ProgramData\Docker\CredentialSpecs`にあります。
+Docker では、Docker データ ディレクトリ内の **CredentialSpecs** ディレクトリ以下に資格情報の指定ファイルがあると想定されています。 既定のインストールでは、このフォルダーは `C:\ProgramData\Docker\CredentialSpecs` にあります。
 
-コンテナーホストで資格情報仕様ファイルを作成するには、次のようにします。
+コンテナー ホスト上で資格情報の指定ファイルを作成するには、次の手順を実行します。
 
 1. RSAT AD PowerShell ツールをインストールする
-    - Windows Server の場合は、 **Install-add-windowsfeature-AD-PowerShell**を実行します。
-    - Windows 10 バージョン1809以降の場合は、 **"0.0.1.0"** という名前のアドオンを実行します (& ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~ ~)。
-    - 以前のバージョンの Windows 10 については、「<https://aka.ms/rsat>」を参照してください。
-2. 次のコマンドレットを実行して、 [Credentialspec PowerShell モジュール](https://aka.ms/credspec)の最新バージョンをインストールします。
+    - Windows サーバーの場合は、**Install-WindowsFeature RSAT-AD-PowerShell** を実行します。
+    - Windows 10 バージョン 1809 以降の場合、**Add-WindowsCapability -Online -Name 'Rsat.ActiveDirectory.DS-LDS.Tools~~~~0.0.1.0'** を実行します。
+    - 以前のバージョンの Windows 10 については、<https://aka.ms/rsat> を参照してください。
+2. 次のコマンドレットを実行して、[CredentialSpec PowerShell モジュール](https://aka.ms/credspec)の最新バージョンをインストールします。
 
     ```powershell
     Install-Module CredentialSpec
     ```
 
-    コンテナーホストでインターネットにアクセスできない場合は、インターネットに接続されたコンピューターで `Save-Module CredentialSpec` を実行し、モジュールフォルダーを `C:\Program Files\WindowsPowerShell\Modules` またはコンテナーホスト上の `$env:PSModulePath` 内の別の場所にコピーします。
+    コンテナー ホストでインターネットにアクセスできない場合は、インターネットに接続されたマシンで `Save-Module CredentialSpec` を実行し、モジュール フォルダーを `C:\Program Files\WindowsPowerShell\Modules` またはコンテナー ホストの `$env:PSModulePath` の別の場所にコピーします。
 
-3. 次のコマンドレットを実行して、新しい資格情報仕様ファイルを作成します。
+3. 次のコマンドレットを実行して、新しい資格情報の指定ファイルを作成します。
 
     ```powershell
     New-CredentialSpec -AccountName WebApp01
     ```
 
-    既定では、このコマンドレットは、指定された gMSA 名をコンテナーのコンピューターアカウントとして使用して、cred 仕様を作成します。 ファイルは、ファイル名の gMSA ドメインとアカウント名を使用して、Docker CredentialSpecs ディレクトリに保存されます。
+    このコマンドレットを実行すると、既定では、指定した gMSA 名がコンテナーのコンピューター アカウントとして使用され、資格情報の指定が作成されます。 このファイルは、gMSA ドメインとファイル名のアカウント名を使用して、Docker CredentialSpecs ディレクトリに保存されます。
 
     ファイルを別のディレクトリに保存する場合は、`-Path` パラメーターを使用します。
 
@@ -170,31 +170,31 @@ Docker は、Docker データディレクトリの**Credentialspecs**ディレ�
     New-CredentialSpec -AccountName WebApp01 -Path "C:\MyFolder\WebApp01_CredSpec.json"
     ```
 
-    コンテナーでサービスまたはプロセスをセカンダリ gMSA として実行している場合は、追加の gMSA アカウントを含む資格情報仕様を作成することもできます。 これを行うには、`-AdditionalAccounts` パラメーターを使用します。
+    コンテナーでセカンダリ gMSA としてサービスまたはプロセスを実行している場合は、追加の gMSA アカウントを含む資格情報の指定を作成することもできます。 そのためには、`-AdditionalAccounts` パラメーターを使用します。
 
     ```powershell
     New-CredentialSpec -AccountName WebApp01 -AdditionalAccounts LogAgentSvc, OtherSvc
     ```
 
-    サポートされているパラメーターの完全な一覧については、`Get-Help New-CredentialSpec -Full`を実行してください。
+    サポートされているパラメーターの完全な一覧については、`Get-Help New-CredentialSpec -Full` を実行します。
 
-4. 次のコマンドレットを使用して、すべての資格情報の仕様と完全なパスの一覧を表示できます。
+4. 次のコマンドレットを使用して、すべての資格情報の指定とその完全なパスの一覧を表示できます。
 
     ```powershell
     Get-CredentialSpec
     ```
 
-## <a name="next-steps"></a>次のステップ:
+## <a name="next-steps"></a>次の手順
 
-GMSA アカウントの設定が完了したので、次の目的で使用できます。
+gMSA アカウントを設定したので、これを使用して次のことを実行できます。
 
-- [アプリの構成](gmsa-configure-app.md)
-- [コンテナーの実行](gmsa-run-container.md)
-- [コンテナーの調整](gmsa-orchestrate-containers.md)
+- [アプリを構成する](gmsa-configure-app.md)
+- [コンテナーを実行する](gmsa-run-container.md)
+- [コンテナーを調整する](gmsa-orchestrate-containers.md)
 
-セットアップ中に問題が発生した場合は、[トラブルシューティングガイド](gmsa-troubleshooting.md)で解決策を確認してください。
+設定中に問題が発生した場合は、[トラブルシューティング ガイド](gmsa-troubleshooting.md)で考えられる解決策をご確認ください。
 
-## <a name="additional-resources"></a>その他のリソース
+## <a name="additional-resources"></a>その他の資料
 
-- GMSAs の詳細については、「グループの管理された[サービスアカウントの概要](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)」を参照してください。
-- ビデオデモについては、Ignite 2016 からの記録された[デモ](https://youtu.be/cZHPz80I-3s?t=2672)をご覧ください。
+- gMSA の詳細については、「[グループ管理サービス アカウントの概要](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview)」を参照してください。
+- ビデオ デモについては、Ignite 2016 の[録画されたデモ](https://youtu.be/cZHPz80I-3s?t=2672)をご覧ください。
