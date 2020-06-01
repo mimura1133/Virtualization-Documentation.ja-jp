@@ -4,16 +4,16 @@ description: Windows コンテナーの基本イメージのライフサイク�
 keywords: windows コンテナー, コンテナー, ライフサイクル, リリース情報, 基本イメージ, コンテナー基本イメージ
 author: Heidilohr
 ms.author: helohr
-ms.date: 06/17/2019
+ms.date: 05/12/2020
 ms.topic: article
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 2dcd228af0984b55162894555fa21f9e02dd1934
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: c6276db89f093b62a01cadc095f5357d2e5a8eba
+ms.sourcegitcommit: dd80813679df2de89fe523a26600cfe58a2d39a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/15/2020
-ms.locfileid: "81395745"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84023147"
 ---
 # <a name="base-image-servicing-lifecycles"></a>基本イメージのサービス ライフサイクル
 
@@ -30,13 +30,14 @@ Server Core イメージの場合、2、3 年ごとに Windows Server の新し�
 
 |TestVM                       |サービス チャネル|バージョン|OS ビルド|可用性|メインストリーム サポートの終了日|延長サポート日|
 |---------------------------------|-----------------|-------|--------|------------|---------------------------|---------------------|
+|Server Core、Nano Server、Windows|半期      |2004   |19041   |2020 年 5 月 27 日  |2021 年 12 月 14 日                 |なし                  |
 |Server Core、Nano Server、Windows|半期      |1909   |18363   |2019 年 11 月 12 日  |2021 年 5 月 11 日                 |なし                  |
 |Server Core、Nano Server、Windows|半期      |1903   |18362   |2019 年 5 月 21 日  |2020 年 12 月 8 日                 |なし                  |
 |Server Core                      |長期        |2019   |17763   |2018 年 11 月 13 日  |2024 年 1 月 9 日                 |2029 年 1 月 9 日           |
 |Server Core、Nano Server、Windows|半期      |1809   |17763   |2018 年 11 月 13 日  |2020 年 11 月 10 日                 |なし                  |
 |Server Core、Nano Server         |半期      |1803   |17134   |2018 年 4 月 30 日  |2019 年 11 月 12 日                 |なし                  |
 |Server Core、Nano Server         |半期      |1709   |16299   |2017 年 10 月 17 日  |2019 年 4 月 9日                 |なし                  |
-|Server Core                      |長期        |1607   |14393   |2016 年 10 月 15 日  |2022 年 1 月 11 日                 |2027 年 1 月 11 日           |
+|Server Core                      |長期        |2016   |14393   |2016 年 10 月 15 日  |2022 年 1 月 11 日                 |2027 年 1 月 11 日           |
 |Nano Server                      |半期      |1607   |14393   |2016 年 10 月 15 日  |2018 年 10 月 9 日                 |なし                  |
 
-サービスの要件とその他の追加情報については、 [Windows のライフサイクルの FAQ](https://support.microsoft.com/help/18581/lifecycle-faq-windows-products) に関するページ、「[Windows Server のリリース情報](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)」、および [Windows 基本 OS イメージの Docker ハブ リポジトリ](https://hub.docker.com/_/microsoft-windows-base-os-images)に関するページを参照してください。
+サービスの要件とその他の追加情報については、[Windows のライフサイクルの FAQ](https://support.microsoft.com/help/18581/lifecycle-faq-windows-products) に関するページ、「[Windows Server のリリース情報](https://docs.microsoft.com/windows-server/get-started/windows-server-release-info)」、および [Windows 基本 OS イメージの Docker ハブ リポジトリ](https://hub.docker.com/_/microsoft-windows-base-os-images)に関するページを参照してください。

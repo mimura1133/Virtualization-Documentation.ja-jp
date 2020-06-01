@@ -3,12 +3,12 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 917c07e13d6a0ec5b5e73213da4dc4f04ec0d9bb
-ms.sourcegitcommit: 8eedfdc1fda9d0abb36e28dc2b5fb39891777364
+ms.openlocfilehash: 4a219fe614500e06dbeeb82f20e0b3f32eda0ccf
+ms.sourcegitcommit: dd80813679df2de89fe523a26600cfe58a2d39a2
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/10/2020
-ms.locfileid: "79027864"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84023157"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
@@ -19,10 +19,21 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 ## <a name="windows-server-host-os-compatibility"></a>Windows Server ホスト OS の互換性
 
 <!-- start tab view -->
+# <a name="windows-server-version-2004"></a>[Windows Server バージョン 2004](#tab/windows-server-2004)
+
+|コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン 2004|&#10004;|&#10004;|
+|Windows Server バージョン 1909|&#10004;|&#10060;|
+|Windows Server バージョン 1903|&#10004;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
+
 # <a name="windows-server-version-1909"></a>[Windows Server バージョン 1909](#tab/windows-server-1909)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
 |---|:---:|:---:|
+|Windows Server バージョン 2004|&#10060;|&#10060;|
 |Windows Server バージョン 1909|&#10004;|&#10004;|
 |Windows Server バージョン 1903|&#10004;|&#10060;|
 |Windows Server 2019|&#10004;|&#10060;|
@@ -32,6 +43,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 |コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
 |---|:---:|:---:|
+|Windows Server バージョン 2004|&#10060;|&#10060;|
 |Windows Server バージョン 1909|&#10060;|&#10060;|
 |Windows Server バージョン 1903|&#10004;|&#10004;|
 |Windows Server 2019|&#10004;|&#10060;|
@@ -41,6 +53,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 |コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
 |---|:---:|:---:|
+|Windows Server バージョン 2004|&#10060;|&#10060;|
 |Windows Server バージョン 1909|&#10060;|&#10060;|
 |Windows Server バージョン 1903|&#10060;|&#10060;|
 |Windows Server 2019|&#10004;|&#10004;|
@@ -50,6 +63,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 |コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
 |---|:---:|:---:|
+|Windows Server バージョン 2004|&#10060;|&#10060;|
 |Windows Server バージョン 1909|&#10060;|&#10060;|
 |Windows Server バージョン 1903|&#10060;|&#10060;|
 |Windows Server 2019|&#10060;|&#10060;|
@@ -62,10 +76,21 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 <!-- start tab view -->
 
+# <a name="windows-10-version-2004"></a>[Windows 10 バージョン 2004](#tab/windows-10-2004)
+
+|コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
+|---|:---:|:---:|
+|Windows Server バージョン 2004|&#10004;|&#10004;|
+|Windows Server バージョン 1909|&#10004;|&#10060;|
+|Windows Server バージョン 1903|&#10004;|&#10060;|
+|Windows Server 2019|&#10004;|&#10060;|
+|Windows Server 2016|&#10004;|&#10060;|
+
 # <a name="windows-10-version-1909"></a>[Windows 10 バージョン 1909](#tab/windows-10-1909)
 
 |コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
 |---|:---:|:---:|
+|Windows Server バージョン 2004|&#10060;|&#10060;|
 |Windows Server バージョン 1909|&#10004;|&#10060;|
 |Windows Server バージョン 1903|&#10004;|&#10060;|
 |Windows Server 2019|&#10004;|&#10060;|
@@ -75,6 +100,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 |コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
 |---|:---:|:---:|
+|Windows Server バージョン 2004|&#10060;|&#10060;|
 |Windows Server バージョン 1909|&#10060;|&#10060;|
 |Windows Server バージョン 1903|&#10004;|&#10060;|
 |Windows Server 2019|&#10004;|&#10060;|
@@ -84,6 +110,7 @@ Windows コンテナーは、その機能を改善する過程で、互換性に
 
 |コンテナーの基本イメージの OS バージョン|Hyper-V による分離のサポート|プロセスの分離のサポート|
 |---|:---:|:---:|
+|Windows Server バージョン 2004|&#10060;|&#10060;|
 |Windows Server バージョン 1909|&#10060;|&#10060;|
 |Windows Server バージョン 1903|&#10060;|&#10060;|
 |Windows Server 2019|&#10004;|&#10060;|
