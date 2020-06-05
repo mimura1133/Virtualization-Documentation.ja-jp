@@ -21,12 +21,12 @@ ms.locfileid: "82784401"
 
 また、コンピューターに Git ソース管理システムがインストールされている必要があります。 これをインストールするには、[Git](https://git-scm.com/download) にアクセスしてください。
 
-## <a name="clone-the-sample-code-from-github"></a>GitHub からサンプル コードを複製する
+## <a name="clone-the-sample-code-from-github"></a>GitHub からサンプル コードをクローンする
 
 すべてのコンテナー サンプル ソース コードは、`windows-container-samples` という名前のフォルダー内の [Virtualization-Documentation](https://github.com/MicrosoftDocs/Virtualization-Documentation) Git リポジトリ (略式で "リポ" とも呼ばれます) に保管されています。
 
 1. PowerShell セッションを開き、このリポジトリを格納しようとしているフォルダーにディレクトリを移動します。 (他の種類のコマンド プロンプト ウィンドウも同様に機能しますが、このコマンド例では PowerShell を使用しています。)
-2. 現在の作業ディレクトリにリポジトリを複製します。
+2. 現在の作業ディレクトリにリポジトリをクローンします。
 
    ```PowerShell
    git clone https://github.com/MicrosoftDocs/Virtualization-Documentation.git
