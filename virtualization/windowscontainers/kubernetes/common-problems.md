@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、コンパイル
-ms.openlocfilehash: 19b467b657708627dcb6ca93b64fa292d3db8de8
-ms.sourcegitcommit: 8eedfdc1fda9d0abb36e28dc2b5fb39891777364
+ms.openlocfilehash: dfb9be5bb5a5dd3507ee7266346634579df503c0
+ms.sourcegitcommit: 7f3d98da46c73e428565268683691f383c72221f
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/15/2020
-ms.locfileid: "79402923"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84461610"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -50,19 +50,24 @@ Windows では、kube は、クラスター内のすべての Kubernetes サー�
 Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified port already exists.
 ```
 
-ユーザーは、この問題を特定するには、 [Collectlogs. ps1](https://github.com/microsoft/SDN/blob/master/Kubernetes/windows/debug/collectlogs.ps1)スクリプトを実行し、`*portrange.txt` ファイルをコンサルティングします。
+ユーザーは、 [Collectlogs. ps1](https://github.com/microsoft/SDN/blob/master/Kubernetes/windows/debug/collectlogs.ps1)スクリプトを実行してファイルを調べることで、この問題を特定できます。 `*portrange.txt`
 
-また、`CollectLogs.ps1` は、一時的な TCP ポート範囲でポートプールの割り当ての可用性をテストし、`reservedports.txt`で成功/失敗を報告するために、HNS 割り当てロジックを模倣します。 このスクリプトでは、64の TCP 一時ポートの10の範囲 (HNS の動作をエミュレートするため) を予約し、予約の成功 & 失敗数をカウントしてから、割り当てられたポート範囲を解放します。 成功数が10未満の場合は、短期プールの空き領域が不足していることを示します。 Heuristical では、使用可能な 64-ブロックポート予約の数の概要が `reservedports.txt`にも生成されます。
+また、は、 `CollectLogs.ps1` 一時的な TCP ポート範囲でポートプールの割り当ての可用性をテストし、で成功/失敗を報告するために、HNS 割り当てロジックを模倣し `reservedports.txt` ます。 このスクリプトでは、64の TCP 一時ポートの10の範囲 (HNS の動作をエミュレートするため) を予約し、予約の成功 & 失敗数をカウントしてから、割り当てられたポート範囲を解放します。 成功数が10未満の場合は、短期プールの空き領域が不足していることを示します。 では、使用可能な 64-ブロックポート予約の数に関する heuristical の概要もで生成され `reservedports.txt` ます。
 
 この問題を解決するには、いくつかの手順を実行します。
 1.  永続的なソリューションの場合は、kube の負荷分散を[DSR モード](https://techcommunity.microsoft.com/t5/Networking-Blog/Direct-Server-Return-DSR-in-a-nutshell/ba-p/693710)に設定する必要があります。 DSR モードは完全に実装され、新しい[Windows Server Insider build 18945](https://blogs.windows.com/windowsexperience/2019/07/30/announcing-windows-server-vnext-insider-preview-build-18945/#o1bs7T2DGPFpf7HM.97) (またはそれ以降) でのみ使用できます。
-2. 回避策として、ユーザーは `netsh int ipv4 set dynamicportrange TCP <start_port> <port_count>`などのコマンドを使用して、使用可能な一時ポートの既定の Windows 構成を増やすこともできます。 *警告:* 既定の動的ポート範囲を上書きすると、非短期の範囲の使用可能な TCP ポートに依存するホスト上の他のプロセスやサービスに影響が生じる可能性があるため、この範囲は慎重に選択する必要があります。
+2. 回避策として、ユーザーは、などのコマンドを使用して、使用可能な一時ポートの既定の Windows 構成を増やすこともでき `netsh int ipv4 set dynamicportrange TCP <start_port> <port_count>` ます。 *警告:* 既定の動的ポート範囲を上書きすると、非短期の範囲の使用可能な TCP ポートに依存するホスト上の他のプロセスやサービスに影響が生じる可能性があるため、この範囲は慎重に選択する必要があります。
 3. インテリジェントポートプールの共有を使用した DSR モード以外のロードバランサーには、2020年第1四半期の累積的な更新プログラムによってリリースされるようにスケジュールされているため、スケーラビリティが向上しています。
 
 ### <a name="hostport-publishing-is-not-working"></a>HostPort の発行が機能していません ###
-現時点では、Kubernetes `containers.ports.hostPort` フィールドを使用してポートを発行することはできません。このフィールドは Windows CNI プラグインによって受け入れられないためです。 ノードにポートを公開するときは、NodePort publishing を使用してください。
+HostPort 機能を使用するには、CNI プラグインが[0.8.6](https://github.com/containernetworking/plugins/releases/tag/v0.8.6)リリース以降であること、および CNI 構成ファイルに次の機能が設定されていることを確認してください `portMappings` 。
+```
+"capabilities": {
+    "portMappings":  true
+}
+```
 
-### <a name="i-am-seeing-errors-such-as-hnscall-failed-in-win32-the-wrong-diskette-is-in-the-drive"></a>「Win32 でエラーが発生しました。間違ったディスケットがドライブにあります。 " ###
+### <a name="i-am-seeing-errors-such-as-hnscall-failed-in-win32-the-wrong-diskette-is-in-the-drive"></a>"HnsCall が Win32 で失敗しました。ドライブに間違ったディスケットがあります" などのエラーが表示されます。 ###
 このエラーは、古い HNS オブジェクトを破棄せずに、hns オブジェクトに対してカスタム変更を行ったり、HNS を変更する新しい Windows Update をインストールしたりするときに発生する可能性があります。 これは、更新前に以前に作成された HNS オブジェクトが、現在インストールされている HNS バージョンと互換性がないことを示します。
 
 Windows Server 2019 (およびそれ以降) では、ユーザーは、HNS ファイルを削除することで、HNS オブジェクトを削除できます。 
@@ -81,13 +86,13 @@ hnsdiag delete networks <id>
 Restart-Service HNS
 ```
 
-Windows Server バージョン1903のユーザーは、次のレジストリの場所に移動し、ネットワーク名で始まる Nic (`vxlan0` や `cbr0`など) を削除できます。
+Windows Server バージョン1903のユーザーは、次のレジストリの場所に移動し、ネットワーク名で始まる Nic (やなど) を削除でき `vxlan0` `cbr0` ます。
 ```
 \\Computer\HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\vmsmp\parameters\NicList
 ```
 
 ### <a name="containers-on-my-flannel-host-gw-deployment-on-azure-cannot-reach-the-internet"></a>Azure 上の Flannel ホスト-gw デプロイのコンテナーがインターネットに接続できない ###
-Azure で Flannel をホスト gw モードでデプロイする場合、パケットは Azure 物理ホスト vSwitch を経由する必要があります。 ユーザーは、ノードに割り当てられているサブネットごとに、"仮想アプライアンス" 型の[ユーザー定義ルート](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined)をプログラムする必要があります。 これを行うには、Azure portal ([こちら](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal)の例を参照) または `az` Azure CLI を使用します。 次に示すのは、IP 10.0.0.4 が指定されたノードに対して az コマンドを使用し、それぞれのポッドサブネット 10.244.0.0/24 を使用して、"MyRoute" という名前の UDR の一例です。
+Azure で Flannel をホスト gw モードでデプロイする場合、パケットは Azure 物理ホスト vSwitch を経由する必要があります。 ユーザーは、ノードに割り当てられているサブネットごとに、"仮想アプライアンス" 型の[ユーザー定義ルート](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined)をプログラムする必要があります。 これを行うには、Azure portal ([こちら](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal)の例を参照) または Azure CLI を使用 `az` します。 次に示すのは、IP 10.0.0.4 が指定されたノードに対して az コマンドを使用し、それぞれのポッドサブネット 10.244.0.0/24 を使用して、"MyRoute" という名前の UDR の一例です。
 ```
 az network route-table create --resource-group <my_resource_group> --name BridgeRoute 
 az network route-table route create  --resource-group <my_resource_group> --address-prefix 10.244.0.0/24 --route-table-name BridgeRoute  --name MyRoute --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.0.4 
@@ -97,12 +102,12 @@ az network route-table route create  --resource-group <my_resource_group> --add
 > 他のクラウドプロバイダーから自分で Kubernetes を Azure または IaaS Vm にデプロイしている場合は、代わりに[オーバーレイネットワーク](./network-topologies.md#flannel-in-vxlan-mode)を使用することもできます。
 
 ### <a name="my-windows-pods-cannot-ping-external-resources"></a>Windows ポッドが外部リソースに ping を行うことができない ###
-Windows ポッドには、現在 ICMP プロトコル用にプログラミングされている送信規則はありません。 ただし、TCP/UDP はサポートされています。 クラスターの外部にあるリソースへの接続を示すには、`ping <IP>` を対応する `curl <IP>` コマンドに置き換えてください。
+Windows ポッドには、現在 ICMP プロトコル用にプログラミングされている送信規則はありません。 ただし、TCP/UDP はサポートされています。 クラスターの外部にあるリソースへの接続をデモンストレーションする場合は、 `ping <IP>` 対応するコマンドに置き換えてください `curl <IP>` 。
 
 まだ問題が発生している場合は、 [cni](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf)のネットワーク構成に注意が必要です。 この静的ファイルをいつでも編集できます。構成は、新しく作成された Kubernetes リソースに適用されます。
 
-なぜでしょうか。
-Kubernetes のネットワーク要件の1つ (「 [Kubernetes モデル](https://kubernetes.io/docs/concepts/cluster-administration/networking/)」を参照) は、NAT を使用せずにクラスター通信を行う場合に使用します。 この要件を遵守するために、送信 NAT[を使用し](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20)ないすべての通信のための [の追加] があります。 ただし、これは、クエリを実行しようとしている外部 IP を除外する必要があることも意味します。 その後、Windows ポッドから送信されたトラフィックは、外部からの応答を受信するために正しく正常に送信されます。 この点で、`cni.conf` の [] の [] は次のようになります。
+なぜですか?
+Kubernetes のネットワーク要件の1つ (「 [Kubernetes モデル](https://kubernetes.io/docs/concepts/cluster-administration/networking/)」を参照) は、NAT を使用せずにクラスター通信を行う場合に使用します。 この要件を遵守するために、送信 NAT[を使用し](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20)ないすべての通信のための [の追加] があります。 ただし、これは、クエリを実行しようとしている外部 IP を除外する必要があることも意味します。 その後、Windows ポッドから送信されたトラフィックは、外部からの応答を受信するために正しく正常に送信されます。 この点を考慮して、の [] には次のように表示される `cni.conf` 必要があります。
 ```conf
 "ExceptionList": [
   "10.244.0.0/16",  # Cluster subnet
@@ -118,7 +123,7 @@ Kubernetes のネットワーク要件の1つ (「 [Kubernetes モデル](https:
 デザイン上の制限により、NodePort 転送を機能させるには、Windows ノードで少なくとも1つのポッドが実行されている必要があります。
 
 ### <a name="after-some-time-vnics-and-hns-endpoints-of-containers-are-being-deleted"></a>しばらくすると、コンテナーの vNICs と HNS のエンドポイントが削除されます。 ###
-この問題は、`hostname-override` パラメーターが[kube](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)に渡されない場合に発生する可能性があります。 これを解決するには、ユーザーは次のようにホスト名を kube に渡す必要があります。
+この問題は、 `hostname-override` パラメーターが[kube](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-proxy/)に渡されない場合に発生する可能性があります。 これを解決するには、ユーザーは次のようにホスト名を kube に渡す必要があります。
 ```
 C:\k\kube-proxy.exe --hostname-override=$(hostname)
 ```
@@ -141,7 +146,7 @@ PS C:> C:\flannel\flanneld.exe --kubeconfig-file=c:\k\config --iface=<Windows_Wo
 
 
 ### <a name="my-windows-pods-cannot-launch-because-of-missing-runflannelsubnetenv"></a>/Run/flannel/subnet.env がないため、Windows ポッドを起動できません ###
-これは、Flannel が正常に起動しなかったことを示します。 Flanneld を再起動するか、Kubernetes マスターの `/run/flannel/subnet.env` から手動でファイルをコピーして Windows ワーカーノードの `C:\run\flannel\subnet.env` にコピーし、割り当てられたサブネットに `FLANNEL_SUBNET` 行を変更することができます。 たとえば、ノードサブネット 10.244.4.1/24 が割り当てられている場合は、次のようになります。
+これは、Flannel が正常に起動しなかったことを示します。 Flanneld を再起動するか、Kubernetes マスターから Windows ワーカーノードに手動でファイルをコピーして、 `/run/flannel/subnet.env` `C:\run\flannel\subnet.env` 割り当てられた `FLANNEL_SUBNET` サブネットに行を変更することができます。 たとえば、ノードサブネット 10.244.4.1/24 が割り当てられている場合は、次のようになります。
 ```
 FLANNEL_NETWORK=10.244.0.0/16
 FLANNEL_SUBNET=10.244.4.1/24
@@ -179,7 +184,7 @@ Get-HnsNetwork | ? Name -ieq "cbr0"
 Get-NetAdapter | ? Name -Like "vEthernet (Ethernet*"
 ```
 
-多くの場合、ホストのネットワークアダプターが "イーサネット" ではない場合は、[InterfaceName](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/start.ps1#L6) スクリプトのパラメーターを変更することをお勧めします。 それ以外の場合は、`start-kubelet.ps1` スクリプトの出力を参照して、仮想ネットワークの作成中にエラーが発生していないかどうかを確認します。 
+多くの場合、ホストのネットワークアダプターが "イーサネット" ではない場合は、InterfaceName スクリプトの[InterfaceName](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/start.ps1#L6)パラメーターを変更することをお勧めします。 それ以外の場合は、スクリプトの出力を参照し `start-kubelet.ps1` て、仮想ネットワークの作成中にエラーが発生していないかどうかを確認します。 
 
 ### <a name="pods-stop-resolving-dns-queries-successfully-after-some-time-alive"></a>しばらく稼働した後、ポッドが正常な DNS クエリの解決を停止する ###
 Windows Server バージョン1803以降のネットワークスタックに既知の DNS キャッシュの問題があるため、DNS 要求が失敗する場合があります。 この問題を回避するには、次のレジストリキーを使用して、TTL キャッシュの最大値を0に設定します。
@@ -191,12 +196,12 @@ New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Paramet
 New-ItemPropery -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord
 ```
 
-### <a name="i-am-still-seeing-problems-what-should-i-do"></a>まだ問題が発生しています。 どうすればよいですか? ### 
-ネットワークまたはホストに追加の制約があり、ノード間で特定の種類の通信が妨げられている場合があります。 次を確認してください。
+### <a name="i-am-still-seeing-problems-what-should-i-do"></a>まだ問題が発生しています。 どうすればよいですか。 ### 
+ネットワークまたはホストに追加の制約があり、ノード間で特定の種類の通信が妨げられている場合があります。 次のことを確認します。
   - 選択した[ネットワークトポロジ](./network-topologies.md)が正しく構成されました
   - ポッドからと思われるトラフィックが許可されていること
   - HTTP トラフィックが許可されていること (Web サービスを展開する場合)
-  - さまざまなプロトコルのパケット (ie ICMP とTCP/UDP) は削除されていません
+  - さまざまなプロトコル (ie ICMP と TCP/UDP) からのパケットが削除されない
 
 >[!TIP]
 > セルフヘルプに関するその他のリソースについては、Kubernetes のトラブルシューティングガイド[を参照してください。](https://techcommunity.microsoft.com/t5/Networking-Blog/Troubleshooting-Kubernetes-Networking-on-Windows-Part-1/ba-p/508648)
@@ -218,7 +223,7 @@ Kubernetes マスターのデバッグは、(発生しやすい順で) 次の 3 
   - `kubelet` の実行状態に問題がある。
   - システムに問題がある。
 
-Kubernetes によるポッドの作成を確認するには、`kubectl get pods -n kube-system` を実行します。これにより、いずれかがクラッシュしていたり正しく開始していないとわかることがあります。 次に `docker ps -a` を実行して、これらのポッドの背後にあるすべての未加工コンテナーを表示します。 最後に、問題の原因となっている疑いがあるコンテナーに対して `docker logs [ID]` を実行し、プロセスの未加工出力を確認します。
+Kubernetes によるポッドの作成を確認するには、`kubectl get pods -n kube-system` を実行します。これにより、いずれかがクラッシュしていたり正しく開始していないとわかることがあります。   次に `docker ps -a` を実行して、これらのポッドの背後にあるすべての未加工コンテナーを表示します。 最後に、問題の原因となっている疑いがあるコンテナーに対して `docker logs [ID]` を実行し、プロセスの未加工出力を確認します。
 
 
 ### <a name="cannot-connect-to-the-api-server-at-httpsaddressport"></a>`https://[address]:[port]` で API サーバーに接続できない ###
