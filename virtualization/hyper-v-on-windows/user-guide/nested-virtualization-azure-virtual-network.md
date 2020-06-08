@@ -8,12 +8,12 @@ ms.topic: article
 ms.prod: windows-10-hyperv
 ms.service: windows-10-hyperv
 ms.assetid: 1ecb85a6-d938-4c30-a29b-d18bd007ba08
-ms.openlocfilehash: 63007d21fcc046f384405c7d85143bfc576ecc07
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: b287ea091ad283ddf57727f315c7086865375ce7
+ms.sourcegitcommit: e9b3c9dcf7b5c9b9222edbc344764fb038529739
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "81395755"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84334102"
 ---
 # <a name="configure-nested-vms-to-communicate-with-resources-in-an-azure-virtual-network"></a>Azure 仮想ネットワーク内のリソースと通信するために入れ子になった VM を構成する
 
@@ -124,8 +124,8 @@ ms.locfileid: "81395755"
 3. ウィザードで [次へ] を選択し、[カスタム構成] を選択して、[次へ] を選択します。
 4. [NAT] と [LAN ルーティング] のチェック ボックスをオンにしてから [次へ] を選択し、[完了] を選択します。 サービスを開始するよう指示された場合は、それを実行します。
 5. 次に、[IPv4] ノードに移動し、[NAT] ノードが使用可能になるように展開します。
-6. [NAT] を右クリックし、[新しいインターフェイス...]、[イーサネット] の順に選択します。これは、IP が "10.0.0.4" である最初の NIC であるはずなので、インターネットに接続するパブリック インターフェイスを選択し、このインターフェイスで NAT を有効にします。 
-7. ここで、LAN トラフィックを 2 つ目の NIC に強制的に送信する静的ルートをいくつか作成する必要があります。 これは、[IPv4] の下にある [静的ルート] ノードに移動して実行します。
+6. [NAT] を右クリックし、[新しいインターフェイス...]、[イーサネット] の順に選択します。これは、IP が "10.0.0.4" である最初の NIC であるはずなので、インターネットに接続する [パブリック インターフェイス] を選択し、このインターフェイスで NAT を有効にします。 
+7. ここで、LAN トラフィックを 2 つ目の NIC から送信するように強制する静的ルートをいくつか作成する必要があります。 これは、[IPv4] の下にある [静的ルート] ノードに移動して実行します。
 8. そこへ移動したら、以下のルートを作成します。
     * ルート 1
         * インターフェイス:イーサネット
@@ -168,7 +168,8 @@ Azure 内でのルートの作成と管理の詳細については、[この記�
 8. [関連付け] を選択し、ここでの [Nested-Fun] という VNet を選択してから、[Azure-VMs] サブネットを選択し、[OK] を選択します。
 9. Hyper-V ホストがあるサブネットと、入れ子になった VM にアクセスする必要がある他のすべてのサブネットに対しても、これと同じ手順を実行します。 接続されている場合 
 
-# <a name="end-state-configuration-reference"></a>終了状態の構成に関する参照情報
+## <a name="end-state-configuration-reference"></a>終了状態の構成に関する参照情報
+
 このガイドの環境は以下の構成となっています。 このセクションは参照情報として使用するためのものです。
 
 1. Azure 仮想ネットワークの情報。

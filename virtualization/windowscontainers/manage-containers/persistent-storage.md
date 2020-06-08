@@ -3,12 +3,12 @@ title: コンテナー内の永続的な記憶域
 description: Windows コンテナーで記憶域を保持する方法
 keywords: コンテナー, ボリューム, 記憶域, マウント, bindmount
 author: cwilhit
-ms.openlocfilehash: 945a78d4ecb9c96da4de8f7246f84b6b444dd5b5
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 8bdf45a46f2e88a2206894f7d412cb93d4491cac
+ms.sourcegitcommit: 57b1c0931a464ad040a7af81b749c7d66c0bc899
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909672"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84421008"
 ---
 # <a name="persistent-storage-in-containers"></a>コンテナー内の永続的な記憶域
 
@@ -64,9 +64,9 @@ Windows Server Version 1709 以降では、"SMB グローバル マッピング"
     > [!NOTE]
     > コンテナー用に SMB グローバル マッピングを使用している場合、コンテナー ホストのユーザーはすべて、リモート共有にアクセスできます。 コンテナー ホストで実行されているすべてのアプリケーションにも、マッピングされたリモート共有へのアクセス権があります。
 
-2. グローバルにマウントされた SMB 共有んいマップされたデータ ボリュームを使用してコンテナーを作成します: docker run -it --name demo -v g:\ContainerData:G:\AppData1 microsoft/windowsservercore:1709 cmd.exe
+2. グローバルにマウントされた SMB 共有にマップされたデータ ボリュームを使用してコンテナーを作成します: docker run -it --name demo -v g:\ContainerData:c:\AppData1 mcr.microsoft.com/windows/servercore:ltsc2019 cmd.exe
 
-    コンテナー内で、G:\AppData1 はリモート共有の "ContainerData" ディレクトリにマップされます。 グローバルにマップされたリモート共有に格納されているデータは、コンテナー内のアプリケーションで使用できるようになります。 複数のコンテナーが同じコマンドを使用して、この共有データへの読み取り/書き込みアクセス権を獲得することもできます。
+    コンテナー内で、c:\AppData1 はリモート共有の "ContainerData" ディレクトリにマップされます。 グローバルにマップされたリモート共有に格納されているデータは、コンテナー内のアプリケーションで使用できるようになります。 複数のコンテナーが同じコマンドを使用して、この共有データへの読み取り/書き込みアクセス権を獲得することもできます。
 
 この SMB グローバル マッピングは、互換性のある SMB サーバー上で動作できる SMB クライアント側の機能によってサポートされます。次のようなものがあります。
 
