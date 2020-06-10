@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、コンパイル
-ms.openlocfilehash: dfb9be5bb5a5dd3507ee7266346634579df503c0
-ms.sourcegitcommit: 7f3d98da46c73e428565268683691f383c72221f
+ms.openlocfilehash: eb8162a55eb1a639cde40faed7b01a48f0c50ad3
+ms.sourcegitcommit: fed735dafbe40179b1e1c46840655248b52617b0
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84461610"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84614868"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -57,7 +57,7 @@ Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified por
 この問題を解決するには、いくつかの手順を実行します。
 1.  永続的なソリューションの場合は、kube の負荷分散を[DSR モード](https://techcommunity.microsoft.com/t5/Networking-Blog/Direct-Server-Return-DSR-in-a-nutshell/ba-p/693710)に設定する必要があります。 DSR モードは完全に実装され、新しい[Windows Server Insider build 18945](https://blogs.windows.com/windowsexperience/2019/07/30/announcing-windows-server-vnext-insider-preview-build-18945/#o1bs7T2DGPFpf7HM.97) (またはそれ以降) でのみ使用できます。
 2. 回避策として、ユーザーは、などのコマンドを使用して、使用可能な一時ポートの既定の Windows 構成を増やすこともでき `netsh int ipv4 set dynamicportrange TCP <start_port> <port_count>` ます。 *警告:* 既定の動的ポート範囲を上書きすると、非短期の範囲の使用可能な TCP ポートに依存するホスト上の他のプロセスやサービスに影響が生じる可能性があるため、この範囲は慎重に選択する必要があります。
-3. インテリジェントポートプールの共有を使用した DSR モード以外のロードバランサーには、2020年第1四半期の累積的な更新プログラムによってリリースされるようにスケジュールされているため、スケーラビリティが向上しています。
+3. 累積的な更新プログラム[KB4551853](https://support.microsoft.com/en-us/help/4551853) (およびすべての新しい累積的な更新プログラム) に含まれるインテリジェントなポートプールの共有を使用した DSR モード以外のロードバランサーには、スケーラビリティが強化されています。
 
 ### <a name="hostport-publishing-is-not-working"></a>HostPort の発行が機能していません ###
 HostPort 機能を使用するには、CNI プラグインが[0.8.6](https://github.com/containernetworking/plugins/releases/tag/v0.8.6)リリース以降であること、および CNI 構成ファイルに次の機能が設定されていることを確認してください `portMappings` 。
@@ -106,7 +106,7 @@ Windows ポッドには、現在 ICMP プロトコル用にプログラミング
 
 まだ問題が発生している場合は、 [cni](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf)のネットワーク構成に注意が必要です。 この静的ファイルをいつでも編集できます。構成は、新しく作成された Kubernetes リソースに適用されます。
 
-なぜですか?
+なぜでしょうか。
 Kubernetes のネットワーク要件の1つ (「 [Kubernetes モデル](https://kubernetes.io/docs/concepts/cluster-administration/networking/)」を参照) は、NAT を使用せずにクラスター通信を行う場合に使用します。 この要件を遵守するために、送信 NAT[を使用し](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20)ないすべての通信のための [の追加] があります。 ただし、これは、クエリを実行しようとしている外部 IP を除外する必要があることも意味します。 その後、Windows ポッドから送信されたトラフィックは、外部からの応答を受信するために正しく正常に送信されます。 この点を考慮して、の [] には次のように表示される `cni.conf` 必要があります。
 ```conf
 "ExceptionList": [
