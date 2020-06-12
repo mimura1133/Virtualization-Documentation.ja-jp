@@ -1,5 +1,5 @@
 ---
-title: Windows 仮装マシンとのデバイスの共有
+title: Windows 仮想マシンとのデバイスの共有
 description: Hyper-V 仮想マシンとの間でデバイス (USB、オーディオ、マイク、マウントされたドライブ) を共有する手順を説明します
 keywords: Windows 10, Hyper-V
 ms.author: scooley
