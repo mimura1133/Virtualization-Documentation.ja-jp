@@ -26,7 +26,7 @@
 ### [Windows コンテナーと Azure App Service を使用して ASP.NET アプリを移行する](/azure/app-service/app-service-web-tutorial-windows-containers-custom-fonts)
 ## Windows 上の Linux コンテナー
 ### [概要](deploy-containers/linux-containers.md)
-### [最初の LCOW コンテナーを実行する](quick-start/quick-start-windows-10-linux.md)
+### [最初の Linux コンテナーを実行する](quick-start/quick-start-windows-10-linux.md)
 ## Windows Insider Program でコンテナーを使用する
 ### [概要](deploy-containers/insider-overview.md)
 
