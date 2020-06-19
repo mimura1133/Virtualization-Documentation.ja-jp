@@ -1,0 +1,107 @@
+### YamlMime:Hub
+title: 仮想化のドキュメント
+summary: 仮想マシン (VM) とコンテナーの実行方法など、Windows 10 および Windows Server での仮想化に関する情報を確認します。
+brand: windows
+metadata:
+  title: 仮想化のドキュメント
+  description: 仮想マシン (VM) とコンテナーの実行方法など、Windows 10 および Windows Server での仮想化に関する情報を確認します。
+  services: virtual-machines-windows
+  ms.service: virtual-machines-windows
+  ms.topic: hub-page
+  author: scooley
+  ms.prod: virtualization
+  ms.date: 03/31/2017
+  ms.assetid: addcfda8-1522-4137-bc02-14cbb1ff838f
+  ms.openlocfilehash: aaa36adcd6be5b54143ec038ae70abeaf29b5772
+  ms.sourcegitcommit: 87962cedf7a9e3425042255718cab9277f41532f
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 06/19/2020
+  ms.locfileid: "85092356"
+highlightedContent:
+  items:
+  - title: Windows 10 の Hyper-V
+    itemType: overview
+    url: /virtualization/hyper-v-on-windows/about/
+  - title: Windows 10 上に Hyper-V をインストールする
+    itemType: how-to-guide
+    url: /virtualization/hyper-v-on-windows/quick-start/enable-hyper-v
+  - title: Windows Server 上の Hyper-V
+    itemType: overview
+    url: /windows-server/virtualization/hyper-v/hyper-v-technology-overview
+  - title: Windows とコンテナー
+    itemType: overview
+    url: /virtualization/windowscontainers/about/
+  - title: Windows でコンテナーの使用を開始する
+    itemType: how-to-guide
+    url: /virtualization/windowscontainers/quick-start/set-up-environment?tabs=Windows-10-Client
+conceptualContent:
+  items:
+  - title: Windows 10 で仮想マシンを実行する
+    links:
+    - url: /virtualization/hyper-v-on-windows/quick-start/quick-create-virtual-machine
+      itemType: quickstart
+      text: 仮想マシンを作成する
+    - url: /virtualization/hyper-v-on-windows/reference/hyper-v-requirements
+      itemType: overview
+      text: システム要件
+  - title: Windows Server で仮想マシンを実行する
+    links:
+    - url: /windows-server/virtualization/hyper-v/system-requirements-for-hyper-v-on-windows
+      itemType: overview
+      text: システム要件
+    - url: /windows-server/virtualization/hyper-v/get-started/install-the-hyper-v-role-on-windows-server
+      itemType: get-started
+      text: Hyper-V の役割をインストールする
+    - url: /windows-server/virtualization/hyper-v/get-started/create-a-virtual-switch-for-hyper-v-virtual-machines
+      itemType: how-to-guide
+      text: 仮想ネットワーク スイッチを作成する
+  - title: Windows または Azure でコンテナーを実行する
+    links:
+    - url: https://www.docker.com/docker-windows
+      itemType: overview
+      text: Docker Desktop for Windows を入手する
+    - url: https://azure.microsoft.com/services/kubernetes-service/
+      itemType: overview
+      text: Azure Kubernetes Service (AKS)
+  - title: Hyper-V 管理ツール
+    links:
+    - url: /windows-server/manage/windows-admin-center/use/manage-virtual-machines
+      itemType: how-to-guide
+      text: Windows Admin Center
+    - url: https://docs.microsoft.com/system-center/vmm/overview
+      itemType: overview
+      text: System Center Virtual Machine Manager
+    - url: https://docs.microsoft.com/powershell/module/hyper-v/index?view=win10-ps
+      itemType: reference
+      text: PowerShell
+  - title: Hyper-V の内部構造
+    links:
+    - url: /virtualization/hyper-v-on-windows/reference/hyper-v-architecture
+      itemType: reference
+      text: Hyper-V のアーキテクチャ
+    - url: /virtualization/api/index
+      itemType: reference
+      text: Windows ハイパーバイザー プラットフォーム
+    - url: /virtualization/hyper-v-on-windows/reference/tlfs
+      itemType: reference
+      text: ハイパーバイザーの仕様
+  - title: コミュニティ
+    links:
+    - url: https://insider.windows.com
+      itemType: overview
+      text: Windows Insider Program に参加する
+    - url: https://social.technet.microsoft.com/Forums/en-US/home?forum=winserverhyperv
+      itemType: reference
+      text: Hyper-V フォーラム
+  - title: Hyper-V Server とドキュメント アーカイブ
+    links:
+    - url: https://www.microsoft.com/evalcenter/evaluate-hyper-v-server-2019
+      itemType: download
+      text: Hyper-V Server 2019 のダウンロード
+    - url: https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/mt169373(v=ws.11)
+      itemType: overview
+      text: Windows Server 2012 R2 および 2012
+    - url: https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753637(v=ws.10)
+      itemType: overview
+      text: Windows Server 2008 R2
