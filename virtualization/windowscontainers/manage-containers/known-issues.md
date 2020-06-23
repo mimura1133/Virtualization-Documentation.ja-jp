@@ -6,12 +6,12 @@ author: weijuans
 ms. author: weijuans
 manager: taylob
 ms.date: 05/26/2020
-ms.openlocfilehash: e1c461a1f28954fb558f0629e0fafd4a7934ca14
-ms.sourcegitcommit: 564a9226064077998020bfae721a17a8e0d9142e
+ms.openlocfilehash: f53ff0c8c07e86b25358a3acba09622fdd3a6bbb
+ms.sourcegitcommit: 82f45088d8b39e2c1f3f2a33bf359d18a88f975a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84106892"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84978334"
 ---
 # <a name="known-issues"></a>の既知の問題
 
@@ -24,8 +24,13 @@ Windows Server バージョン 2004 リリースの一般提供の準備中に�
 
 Server Core コンテナー イメージを使用して独自のイメージを作成し、Azure Container Registry などのリモート コンテナー レジストリにアップロードした後、そのイメージをレジストリからプルして実行すると、コンテナーのパフォーマンスが低下します。 ただし、イメージをビルドしてローカルで実行した場合、パフォーマンスの違いは観測されません。
 
-次の手順:考えられるいくつかの根本原因を特定し、その修正を積極的に検討しています。  
+現在、この問題の根本原因は判明しており、修正中です。 次のリンクを使用して、問題を追跡できます。[microsoft/hcsshim# 830](https://github.com/microsoft/hcsshim/issues/830)
 
+[moby/moby#41066](https://github.com/moby/moby/issues/41066)
+
+[containerd/containerd#4301](https://github.com/containerd/containerd/issues/4301)
+
+また、パートナーである Mirantis と連携して、Docker EE での修正に取り組んでいます。
 
 ## <a name="know-issues-of-windows-server-version-1909"></a>Windows Server バージョン 1909 の既知の問題
 
