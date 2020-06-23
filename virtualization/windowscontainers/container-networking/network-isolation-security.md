@@ -4,18 +4,18 @@ description: Windows コンテナー内のネットワーク分離とセキュ�
 keywords: Docker, コンテナー
 author: jmesser81
 ms.date: 03/27/2018
-ms.topic: article
+ms.topic: conceptual
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: d5081104f1614a91d6441a5e879a439f1df1bf77
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.openlocfilehash: 78f9240ccb184b182247617aba116d6ac5533a02
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77439289"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192089"
 ---
-# <a name="network-isolation-and-security"></a>ネットワークの分離とセキュリティ
+# <a name="network-isolation-and-security"></a>ネットワーク分離とセキュリティ
 
 ## <a name="isolation-with-network-namespaces"></a>ネットワーク名前空間を使用した分離
 
@@ -27,7 +27,7 @@ ms.locfileid: "77439289"
 Get-NetCompartment
 ```
 
-## <a name="network-security"></a>ネットワーク セキュリティ
+## <a name="network-security"></a>ネットワークのセキュリティ
 
 使用されているコンテナーとネットワーク ドライバーによっては、Windows ファイアウォールと [VFP](https://www.microsoft.com/research/project/azure-virtual-filtering-platform/) の組み合わせでポート ACL が適用されます。
 
@@ -36,11 +36,11 @@ Get-NetCompartment
 これらは、Windows ホストのファイアウォール (ネットワークの名前空間に対応) と共に VFP を使用します。
 
 * 既定の発信: ALLOW ALL
-* 既定の着信: (TCP、UDP、ICMP、IGMP の) 未承諾ネットワーク トラフィックに対して ALLOW ALL
+* 既定の着信: (TCP、UDP、ICMP、IGMP の) 未承諾ネットワーク トラフィックに対して ALLOW ALL 
   * これらのプロトコル以外のネットワーク トラフィックに対して DENY ALL
 
   >[!NOTE]
-  >Windows Server より前のバージョンでは、バージョン1709と Windows 10 は、既定の受信規則はすべて拒否されていました。 これらの古いリリースを実行しているユーザーは、``docker run -p`` (ポートフォワーディング) を使用して受信許可規則を作成できます。
+  >Windows Server より前のバージョンでは、バージョン1709と Windows 10 は、既定の受信規則はすべて拒否されていました。 これらの古いリリースを実行しているユーザーは、(ポートフォワーディング) を使用して受信許可規則を作成でき ``docker run -p`` ます。
 
 ### <a name="hyper-v-isolation"></a>Hyper-V による分離
 

@@ -4,16 +4,16 @@ description: Windows コンテナー ネットワークのアーキテクチャ�
 keywords: Docker, コンテナー
 author: jmesser81
 ms.date: 03/27/2018
-ms.topic: article
+ms.topic: overview
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: e9d4a9ac88c6853ce019a2469ee80688490b8fdf
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 2235ae8b48828535facaa9b2be3dfc7fde450516
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910702"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192629"
 ---
 # <a name="windows-container-networking"></a>Windows コンテナーネットワーク
 
@@ -26,7 +26,7 @@ ms.locfileid: "74910702"
 
 ![テキスト](media/windowsnetworkstack-simple.png)
 
-初めて Docker エンジンを実行したときに、内部 vSwitch と `WinNAT` という名前の Windows コンポーネントを使用する、既定の NAT ネットワーク 'nat' が作成されます。 PowerShell または Hyper-V マネージャーで作成されたホストに既存の外部 vSwitch がある場合、*transparent* ネットワーク ドライバーを使用して Docker でも利用でき、``docker network ls`` コマンドを実行するとに表示できます。  
+初めて Docker エンジンを実行したときに、内部 vSwitch と `WinNAT` という名前の Windows コンポーネントを使用する、既定の NAT ネットワーク 'nat' が作成されます。 PowerShell または Hyper-v マネージャーを使用して作成された既存の外部 vSwitches がホスト上に存在する場合、これらの仮想スイッチは、*透過的*なネットワークドライバーを使用して Docker でも使用でき、コマンドを実行すると表示され ``docker network ls`` ます。
 
 ![テキスト](media/docker-network-ls.png)
 
@@ -35,7 +35,7 @@ ms.locfileid: "74910702"
 
 ![テキスト](media/get-vmswitch.png)
 
-'nat' ネットワークとは、Windows で実行されているコンテナーの既定のネットワークです。 特定のネットワーク構成を実装するフラグや引数を指定せずに Windows で実行されているすべてのコンテナーは、既定の 'nat' ネットワークに接続され、'nat' ネットワークの内部プレフィックス IP 範囲から自動的に IP アドレスが割り当てられます。 'nat' 用に使用される既定の内部 IP プレフィックスは、172.16.0.0/16 です。 
+'nat' ネットワークとは、Windows で実行されているコンテナーの既定のネットワークです。 特定のネットワーク構成を実装するフラグや引数を指定せずに Windows で実行されているすべてのコンテナーは、既定の 'nat' ネットワークに接続され、'nat' ネットワークの内部プレフィックス IP 範囲から自動的に IP アドレスが割り当てられます。 'nat' 用に使用される既定の内部 IP プレフィックスは、172.16.0.0/16 です。
 
 ## <a name="container-network-management-with-host-network-service"></a>ホスト ネットワーク サービスによるコンテナーのネットワークの管理
 
@@ -58,7 +58,7 @@ ms.locfileid: "74910702"
 - 既定の NAT ネットワーク: HNS は、WinNAT ポート フォワーディング規則/マッピングを、対応する Windows ファイアウォールの ALLOW 規則と共に作成します。
 - その他すべてのネットワーク: HNS は、仮想フィルタリング プラットフォーム (VFP) を利用してポリシーを作成します。
     - これには、負荷分散、ACL、カプセル化などが含まれます。
-    - [ここで](https://docs.microsoft.com/en-us/windows-server/networking/technologies/hcn/hcn-top)公開されている HNS api とスキーマについては、こちらを参照してください
+    - [ここで](https://docs.microsoft.com/windows-server/networking/technologies/hcn/hcn-top)公開されている HNS api とスキーマについては、こちらを参照してください
 
 ![テキスト](media/HNS-Management-Stack.png)
 
@@ -69,10 +69,10 @@ ms.locfileid: "74910702"
 - L2bridge、NAT、およびオーバーレイネットワークに接続されている Windows コンテナーは、IPv6 スタック経由の通信をサポートしていません。
 - IPsec 経由の暗号化されたコンテナー通信。
 - コンテナーの HTTP プロキシサポート。
-- [ホストモード](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/)ネットワーク 
+- [ホストモード](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/)ネットワーク
 - 透過的なネットワークドライバーを使用した、仮想化された Azure インフラストラクチャ上のネットワーク。
 
 | コマンド        | サポートされていないオプション   |
 |---------------|:--------------------:|
-| ``docker run``|   ``--ip6``、``--dns-option`` |
-| ``docker network create``| ``--aux-address``､``--internal``、``--ip-range``、``--ipam-driver``、``--ipam-opt``、``--ipv6``、``--opt encrypted`` |
+| ``docker run``|   ``--ip6``, ``--dns-option`` |
+| ``docker network create``| ``--aux-address``, ``--internal``, ``--ip-range``, ``--ipam-driver``, ``--ipam-opt``, ``--ipv6``, ``--opt encrypted`` |

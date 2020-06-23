@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、コンパイル
-ms.openlocfilehash: eb8162a55eb1a639cde40faed7b01a48f0c50ad3
-ms.sourcegitcommit: fed735dafbe40179b1e1c46840655248b52617b0
+ms.openlocfilehash: 2e8074fa018b85a6628280a0dfdbce7c8cd553cb
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84614868"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192699"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -28,14 +28,14 @@ ms.locfileid: "84614868"
 
 ## <a name="general-questions"></a>一般的な質問 ##
 
-### <a name="how-do-i-know-startps1-on-windows-completed-successfully"></a>Windows では、開始した操作方法が正常に完了したことを確認できます。 ###
+### <a name="how-do-i-know-startps1-on-windows-completed-successfully"></a>Windows で start.ps1 が正常に完了したことを操作方法確認してください。 ###
 Kubelet、kube、および (ネットワークソリューションとして Flannel を選択した場合) flanneld は、ノード上で実行されているログを個別の PoSh ウィンドウに表示します。 これに加えて、Windows ノードは Kubernetes クラスターに "Ready" と表示されます。
 
 ### <a name="can-i-configure-to-run-all-of-this-in-the-background-instead-of-posh-windows"></a>PoSh windows ではなくバックグラウンドでこれらすべてを実行するように構成できますか。 ###
-Kubernetes バージョン1.11 以降では、kubelet & kube をネイティブ[Windows サービス](https://kubernetes.io/docs/getting-started-guides/windows/#kubelet-and-kube-proxy-can-now-run-as-windows-services)として実行できます。 また、 [nssm.exe](https://nssm.cc/)などの他のサービスマネージャーを常に使用して、これらのプロセス (flanneld、kubelet & kube) をバックグラウンドで常に実行することもできます。 手順の例については、「 [Windows Services On Kubernetes](./kube-windows-services.md) 」を参照してください。
+Kubernetes バージョン1.11 以降では、kubelet & kube をネイティブ[Windows サービス](https://kubernetes.io/docs/getting-started-guides/windows/#kubelet-and-kube-proxy-can-now-run-as-windows-services)として実行できます。 また、常に、 [nssm.exe](https://nssm.cc/)などの代替サービスマネージャーを使用して、これらのプロセス (flanneld、kubelet & kube) をバックグラウンドで常に実行することもできます。 手順の例については、「 [Windows Services On Kubernetes](./kube-windows-services.md) 」を参照してください。
 
 ### <a name="i-have-problems-running-kubernetes-processes-as-windows-services"></a>Kubernetes プロセスを Windows サービスとして実行するときに問題が発生する ###
-最初のトラブルシューティングでは、 [nssm.exe](https://nssm.cc/)で次のフラグを使用して、stdout と stderr を出力ファイルにリダイレクトできます。
+初期のトラブルシューティングを行うには、 [nssm.exe](https://nssm.cc/)で次のフラグを使用して、出力ファイルに stdout と stderr をリダイレクトします。
 ```
 nssm set <Service Name> AppStdout C:\k\mysvc.log
 nssm set <Service Name> AppStderr C:\k\mysvc.log
@@ -50,7 +50,7 @@ Windows では、kube は、クラスター内のすべての Kubernetes サー�
 Policy creation failed: hcnCreateLoadBalancer failed in Win32: The specified port already exists.
 ```
 
-ユーザーは、 [Collectlogs. ps1](https://github.com/microsoft/SDN/blob/master/Kubernetes/windows/debug/collectlogs.ps1)スクリプトを実行してファイルを調べることで、この問題を特定できます。 `*portrange.txt`
+ユーザーは、 [CollectLogs.ps1](https://github.com/microsoft/SDN/blob/master/Kubernetes/windows/debug/collectlogs.ps1)スクリプトを実行してファイルを調べることで、この問題を特定でき `*portrange.txt` ます。
 
 また、は、 `CollectLogs.ps1` 一時的な TCP ポート範囲でポートプールの割り当ての可用性をテストし、で成功/失敗を報告するために、HNS 割り当てロジックを模倣し `reservedports.txt` ます。 このスクリプトでは、64の TCP 一時ポートの10の範囲 (HNS の動作をエミュレートするため) を予約し、予約の成功 & 失敗数をカウントしてから、割り当てられたポート範囲を解放します。 成功数が10未満の場合は、短期プールの空き領域が不足していることを示します。 では、使用可能な 64-ブロックポート予約の数に関する heuristical の概要もで生成され `reservedports.txt` ます。
 
@@ -70,7 +70,7 @@ HostPort 機能を使用するには、CNI プラグインが[0.8.6](https://git
 ### <a name="i-am-seeing-errors-such-as-hnscall-failed-in-win32-the-wrong-diskette-is-in-the-drive"></a>"HnsCall が Win32 で失敗しました。ドライブに間違ったディスケットがあります" などのエラーが表示されます。 ###
 このエラーは、古い HNS オブジェクトを破棄せずに、hns オブジェクトに対してカスタム変更を行ったり、HNS を変更する新しい Windows Update をインストールしたりするときに発生する可能性があります。 これは、更新前に以前に作成された HNS オブジェクトが、現在インストールされている HNS バージョンと互換性がないことを示します。
 
-Windows Server 2019 (およびそれ以降) では、ユーザーは、HNS ファイルを削除することで、HNS オブジェクトを削除できます。 
+Windows Server 2019 (およびそれ以降) では、ユーザーは、HNS ファイルを削除することで、HNS オブジェクトを削除できます。
 ```
 Stop-Service HNS
 rm C:\ProgramData\Microsoft\Windows\HNS\HNS.data
@@ -81,7 +81,7 @@ Start-Service HNS
 ```
 hnsdiag list endpoints
 hnsdiag delete endpoints <id>
-hnsdiag list networks 
+hnsdiag list networks
 hnsdiag delete networks <id>
 Restart-Service HNS
 ```
@@ -92,7 +92,7 @@ Windows Server バージョン1903のユーザーは、次のレジストリの�
 ```
 
 ### <a name="containers-on-my-flannel-host-gw-deployment-on-azure-cannot-reach-the-internet"></a>Azure 上の Flannel ホスト-gw デプロイのコンテナーがインターネットに接続できない ###
-Azure で Flannel をホスト gw モードでデプロイする場合、パケットは Azure 物理ホスト vSwitch を経由する必要があります。 ユーザーは、ノードに割り当てられているサブネットごとに、"仮想アプライアンス" 型の[ユーザー定義ルート](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-udr-overview#user-defined)をプログラムする必要があります。 これを行うには、Azure portal ([こちら](https://docs.microsoft.com/en-us/azure/virtual-network/tutorial-create-route-table-portal)の例を参照) または Azure CLI を使用 `az` します。 次に示すのは、IP 10.0.0.4 が指定されたノードに対して az コマンドを使用し、それぞれのポッドサブネット 10.244.0.0/24 を使用して、"MyRoute" という名前の UDR の一例です。
+Azure で Flannel をホスト gw モードでデプロイする場合、パケットは Azure 物理ホスト vSwitch を経由する必要があります。 ユーザーは、ノードに割り当てられているサブネットごとに、"仮想アプライアンス" 型の[ユーザー定義ルート](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview#user-defined)をプログラムする必要があります。 これを行うには、Azure portal ([こちら](https://docs.microsoft.com/azure/virtual-network/tutorial-create-route-table-portal)の例を参照) または Azure CLI を使用 `az` します。 次に示すのは、IP 10.0.0.4 が指定されたノードに対して az コマンドを使用し、それぞれのポッドサブネット 10.244.0.0/24 を使用して、"MyRoute" という名前の UDR の一例です。
 ```
 az network route-table create --resource-group <my_resource_group> --name BridgeRoute 
 az network route-table route create  --resource-group <my_resource_group> --address-prefix 10.244.0.0/24 --route-table-name BridgeRoute  --name MyRoute --next-hop-type VirtualAppliance --next-hop-ip-address 10.0.0.4 
@@ -135,8 +135,8 @@ Remove-Item C:\k\SourceVip.json
 Remove-Item C:\k\SourceVipRequest.json
 ```
 
-### <a name="after-launching-startps1-flanneld-is-stuck-in-waiting-for-the-network-to-be-created"></a>Flanneld を起動すると、"ネットワークが作成されるのを待機しています" という状態になります。 ###
-調査中のこの問題のレポートは多数あります。flannel ネットワークの管理 IP が設定されている場合、ほとんどの場合、この問題が発生する可能性があります。 回避策として、次のように、単に ps1 を再起動するか、手動で再起動します。
+### <a name="after-launching-startps1-flanneld-is-stuck-in-waiting-for-the-network-to-be-created"></a>start.ps1 を起動すると、"ネットワークが作成されるのを待機しています" で Flanneld が停止します。 ###
+調査中のこの問題のレポートは多数あります。flannel ネットワークの管理 IP が設定されている場合、ほとんどの場合、この問題が発生する可能性があります。 回避策としては、start.ps1 を再起動するか、次のように手動で再起動します。
 ```
 PS C:> [Environment]::SetEnvironmentVariable("NODE_NAME", "<Windows_Worker_Hostname>")
 PS C:> C:\flannel\flanneld.exe --kubeconfig-file=c:\k\config --iface=<Windows_Worker_Node_IP> --ip-masq=1 --kube-subnet-mgr=1
@@ -146,22 +146,22 @@ PS C:> C:\flannel\flanneld.exe --kubeconfig-file=c:\k\config --iface=<Windows_Wo
 
 
 ### <a name="my-windows-pods-cannot-launch-because-of-missing-runflannelsubnetenv"></a>/Run/flannel/subnet.env がないため、Windows ポッドを起動できません ###
-これは、Flannel が正常に起動しなかったことを示します。 Flanneld を再起動するか、Kubernetes マスターから Windows ワーカーノードに手動でファイルをコピーして、 `/run/flannel/subnet.env` `C:\run\flannel\subnet.env` 割り当てられた `FLANNEL_SUBNET` サブネットに行を変更することができます。 たとえば、ノードサブネット 10.244.4.1/24 が割り当てられている場合は、次のようになります。
+これは、Flannel が正常に起動しなかったことを示します。 flanneld.exe を再起動するか、Kubernetes マスターから Windows ワーカーノードに手動でファイルをコピーして、 `/run/flannel/subnet.env` `C:\run\flannel\subnet.env` 割り当てられた `FLANNEL_SUBNET` サブネットに行を変更することができます。 たとえば、ノードサブネット 10.244.4.1/24 が割り当てられている場合は、次のようになります。
 ```
 FLANNEL_NETWORK=10.244.0.0/16
 FLANNEL_SUBNET=10.244.4.1/24
 FLANNEL_MTU=1500
 FLANNEL_IPMASQ=true
 ```
-Flanneld によってこのファイルが自動的に生成されるようにする方が安全です。
+このファイルを flanneld.exe 生成する方が安全です。
 
 
-### <a name="pod-to-pod-connectivity-between-hosts-is-broken-on-my-kubernetes-cluster-running-on-vsphere"></a>VSphere で実行されている Kubernetes クラスターでは、ホスト間のポッド間の接続が切断される 
-VSphere と Flannel はどちらも、オーバーレイネットワーク用にポート 4789 (既定 VXLAN ポート) を予約しているため、パケットが傍受される可能性があります。 VSphere がオーバーレイネットワークに使用されている場合は、4789を解放するために別のポートを使用するように構成する必要があります。  
+### <a name="pod-to-pod-connectivity-between-hosts-is-broken-on-my-kubernetes-cluster-running-on-vsphere"></a>VSphere で実行されている Kubernetes クラスターでは、ホスト間のポッド間の接続が切断される
+VSphere と Flannel はどちらも、オーバーレイネットワーク用にポート 4789 (既定 VXLAN ポート) を予約しているため、パケットが傍受される可能性があります。 VSphere がオーバーレイネットワークに使用されている場合は、4789を解放するために別のポートを使用するように構成する必要があります。
 
 
 ### <a name="my-endpointsips-are-leaking"></a>エンドポイント/Ip がリークしています ###
-エンドポイントのリークを引き起こす可能性がある既知の問題が2つ存在します。 
+エンドポイントのリークを引き起こす可能性がある既知の問題が2つ存在します。
 1.  最初の[既知の問題](https://github.com/kubernetes/kubernetes/issues/68511)は、Kubernetes バージョン1.11 の問題です。 Kubernetes バージョン 1.11.0-1.11.2 を使用しないようにしてください。
 2. エンドポイントのリークを引き起こす可能性がある2番目の[既知の問題](https://github.com/docker/libnetwork/issues/1950)は、エンドポイントのストレージでの同時実行の問題です。 修正プログラムを入手するには、Docker EE 18.09 以上を使用する必要があります。
 
@@ -184,7 +184,7 @@ Get-HnsNetwork | ? Name -ieq "cbr0"
 Get-NetAdapter | ? Name -Like "vEthernet (Ethernet*"
 ```
 
-多くの場合、ホストのネットワークアダプターが "イーサネット" ではない場合は、InterfaceName スクリプトの[InterfaceName](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/start.ps1#L6)パラメーターを変更することをお勧めします。 それ以外の場合は、スクリプトの出力を参照し `start-kubelet.ps1` て、仮想ネットワークの作成中にエラーが発生していないかどうかを確認します。 
+多くの場合、ホストのネットワークアダプターが "イーサネット" ではない場合に、start.ps1 スクリプトの[InterfaceName](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/start.ps1#L6)パラメーターを変更することができます。 それ以外の場合は、スクリプトの出力を参照し `start-kubelet.ps1` て、仮想ネットワークの作成中にエラーが発生していないかどうかを確認します。
 
 ### <a name="pods-stop-resolving-dns-queries-successfully-after-some-time-alive"></a>しばらく稼働した後、ポッドが正常な DNS クエリの解決を停止する ###
 Windows Server バージョン1803以降のネットワークスタックに既知の DNS キャッシュの問題があるため、DNS 要求が失敗する場合があります。 この問題を回避するには、次のレジストリキーを使用して、TTL キャッシュの最大値を0に設定します。
@@ -192,11 +192,11 @@ Windows Server バージョン1803以降のネットワークスタックに既�
 ```Dockerfile
 FROM microsoft/windowsservercore:<your-build>
 SHELL ["powershell', "-Command", "$ErrorActionPreference = 'Stop';"]
-New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord 
+New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxCacheTtl -Value 0 -Type DWord
 New-ItemPropery -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Dnscache\Parameters' -Name MaxNegativeCacheTtl -Value 0 -Type DWord
 ```
 
-### <a name="i-am-still-seeing-problems-what-should-i-do"></a>まだ問題が発生しています。 どうすればよいですか。 ### 
+### <a name="i-am-still-seeing-problems-what-should-i-do"></a>まだ問題が発生しています。 どうすればよいですか。 ###
 ネットワークまたはホストに追加の制約があり、ノード間で特定の種類の通信が妨げられている場合があります。 次のことを確認します。
   - 選択した[ネットワークトポロジ](./network-topologies.md)が正しく構成されました
   - ポッドからと思われるトラフィックが許可されていること
@@ -229,7 +229,7 @@ Kubernetes によるポッドの作成を確認するには、`kubectl get pods 
 ### <a name="cannot-connect-to-the-api-server-at-httpsaddressport"></a>`https://[address]:[port]` で API サーバーに接続できない ###
 このエラーはほとんどの場合、証明書の問題を示しています。 構成ファイルを正しく生成していること、その中の IP アドレスがホストに対応していること、API サーバーによってマウントされたディレクトリにコピー済みであることを確認します。
 
-ここで[説明する手順](./creating-a-linux-master.md)に従うと、次のようなことがわかります。   
+ここで[説明する手順](./creating-a-linux-master.md)に従うと、次のようなことがわかります。
 * `~/kube/kubelet/`
 * `$HOME/.kube/config`
 *  `/etc/kubernetes/admin.conf`

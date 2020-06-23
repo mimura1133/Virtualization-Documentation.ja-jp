@@ -3,24 +3,24 @@ title: Kubernetes バイナリのコンパイル
 author: gkudra-msft
 ms.author: gekudray
 ms.date: 11/02/2018
-ms.topic: get-started-article
+ms.topic: how-to
 ms.prod: containers
 description: ソースからの Kubernetes バイナリのコンパイルとクロスコンパイル
 keywords: kubernetes、1.12、linux、コンパイル
-ms.openlocfilehash: 40bf7e65a8910cdab095abb269aa0a92508189cd
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: a0c9ed6ef0872e19de49fa97f4727b6e0e09ed43
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909872"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192349"
 ---
 # <a name="compiling-kubernetes-binaries"></a>Kubernetes バイナリのコンパイル #
 Kubernetes のコンパイルには、有効な Go 環境が必要です。 このページでは、Linux バイナリをコンパイルし、Windows バイナリをクロスコンパイルするための複数の方法を確認します。
-> [!NOTE] 
+> [!NOTE]
 > このページは完全に自発的であり、Kubernetes の開発者にのみ含まれており、最新の & 最大のソースコードを試してみることをお勧めします。
 
 > [!tip]
-> [@kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce)にサブスクライブできる最新の開発に関する通知を受け取ることができます。
+> サブスクライブできる最新の開発に関する通知を受け取ることができ [@kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce) ます。
 
 ## <a name="installing-go"></a>Go のインストール ##
 ここでは、わかりやすくするために、カスタムの一時的な場所に Go をインストールします。
@@ -35,7 +35,7 @@ export GOPATH="$HOME/gopath"
 export PATH="$GOROOT/bin:$PATH"
 ```
 
-> [!Note]  
+> [!Note]
 > これらは、セッション用の環境変数を設定しています。 永続的な設定を行う場合は、`~/.profile` に `export` を追加します。
 
 パスが正しく設定されていることを確認するには、`go env` を実行します。 Kubernetes バイナリを構築するには、いくつかのオプションがあります。
@@ -48,17 +48,17 @@ Windows バイナリを各ノードにコピーするには、[WinSCP](https://w
 
 
 ## <a name="building-locally"></a>ローカルでのビルド ##
-> [!Tip]  
-> "アクセス許可の拒否" エラーが発生する場合は、[`acs-engine`](https://github.com/Azure/acs-engine/blob/master/scripts/build-windows-k8s.sh#L176) の注釈に記載されているように、Linux の `kubelet` を先にビルドすることで回避できます。
->  
-> _Kubernetes Windows ビルドシステムでは、バグのように見えますが、最初に Linux バイナリをビルドして `_output/bin/deepcopy-gen`を生成する必要があります。この操作を行うと、Windows へのビルドでは空の `deepcopy-gen`が生成されます。_
+> [!Tip]
+> "アクセス許可が拒否されました" というエラーが発生した場合は、次の手順に従って、最初に Linux をビルドすることで回避できます `kubelet` [`acs-engine`](https://github.com/Azure/acs-engine/blob/master/scripts/build-windows-k8s.sh#L176) 。
+>
+> _Kubernetes Windows ビルドシステムでは、バグのように見えますが、最初に、生成する Linux バイナリをビルドする必要があり `_output/bin/deepcopy-gen` ます。これを実行して Windows をビルドすると、空のが生成され `deepcopy-gen` ます。_
 
 まず、Kubernetes リポジトリを取得します。
 
 ```bash
 KUBEREPO="k8s.io/kubernetes"
 go get -d $KUBEREPO
-# Note: the above command may spit out a message about 
+# Note: the above command may spit out a message about
 #       "no Go files in...", but it can be safely ignored!
 cd $GOPATH/src/$KUBEREPO
 ```
@@ -96,8 +96,8 @@ git clone https://github.com/kubernetes/kubernetes.git ${SRC_DIR}
 cd ${SRC_DIR}
 git checkout tags/v1.12.2
 KUBE_BUILD_PLATFORMS=linux/amd64   build/run.sh make WHAT=cmd/kubelet
-KUBE_BUILD_PLATFORMS=windows/amd64 build/run.sh make WHAT=cmd/kubelet 
-KUBE_BUILD_PLATFORMS=windows/amd64 build/run.sh make WHAT=cmd/kube-proxy 
+KUBE_BUILD_PLATFORMS=windows/amd64 build/run.sh make WHAT=cmd/kubelet
+KUBE_BUILD_PLATFORMS=windows/amd64 build/run.sh make WHAT=cmd/kube-proxy
 cp _output/dockerized/bin/windows/amd64/kube*.exe ${DIST_DIR}
 
 ls ${DIST_DIR}

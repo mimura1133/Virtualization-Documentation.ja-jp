@@ -3,17 +3,17 @@ title: ネットワーク トポロジ
 author: daschott
 ms.author: daschott
 ms.date: 02/09/2018
-ms.topic: get-started-article
+ms.topic: how-to
 ms.prod: containers
 description: Windows および Linux でサポートされているネットワークトポロジ。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 6b0e13258b749ad3dfd5c8349200ca8a54908952
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: c322edb6a5ead34d7988f83d8cb8fba7c99cec0d
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910312"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192539"
 ---
 # <a name="network-solutions"></a>Network Solutions #
 
@@ -23,7 +23,7 @@ ms.locfileid: "74910312"
 2. [Flannel](#flannel-in-host-gateway-mode)などの CNI プラグインを使用してルートをプログラムします (l2bridge ネットワークモードを使用します)。
 3. サブネットをルーティングするスマート[トップラック (ToR) スイッチ](#configuring-a-tor-switch)を構成します。
 
-> [!tip]  
+> [!tip]
 > Windows には4つ目のネットワークソリューションがあります。このソリューションでは、Open vSwitch (OvS) と Open Virtual Network ([]) が利用されています。 このドキュメントの内容は記載されていませんが、[これらの手順](https://kubernetes.io/docs/getting-started-guides/windows/#for-3-open-vswitch-ovs-open-virtual-network-ovn-with-overlay)を読んで設定することができます。
 
 ## <a name="flannel-in-vxlan-mode"></a>Vxlan モードの Flannel
@@ -46,13 +46,13 @@ wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-
 
 Vxlan ネットワークバックエンドを有効にするには、次の2つのセクションを変更する必要があります。
 
-1. `kube-flannel.yml`の [`net-conf.json`] セクションで、次のようにダブルチェックします。
+1. `net-conf.json`のセクションで `kube-flannel.yml` 、次のようにダブルチェックします。
  * クラスターサブネット (例: "10.244.0.0/16") は、必要に応じて設定されます。
  * VNI 4096 はバックエンドで設定されています
  * ポート4789はバックエンドで設定されています
-2. `kube-flannel.yml`の [`cni-conf.json`] セクションで、[ネットワーク名] を `"vxlan0"`に変更します。
+2. `cni-conf.json`のセクションで `kube-flannel.yml` 、ネットワーク名をに変更 `"vxlan0"` します。
 
-上記の手順を適用すると、`net-conf.json` は次のようになります。
+上記の手順を適用すると、は次のようになり `net-conf.json` ます。
 ```json
   net-conf.json: |
     {
@@ -65,10 +65,10 @@ Vxlan ネットワークバックエンドを有効にするには、次の2つ�
     }
 ```
 
-> [!NOTE]  
+> [!NOTE]
 > Linux で Flannel を Flannel と相互運用するには、VNI を4096に設定し、ポート4789を使用する必要があります。 他の VNIs のサポートは近日対応予定です。 これらのフィールドの詳細については、「 [VXLAN](https://github.com/coreos/flannel/blob/master/Documentation/backends.md#vxlan) 」を参照してください。
 
-`cni-conf.json` は次のようになります。
+は次のようになり `cni-conf.json` ます。
 ```json
 cni-conf.json: |
     {
@@ -90,7 +90,7 @@ cni-conf.json: |
       ]
     }
 ```
-> [!tip]  
+> [!tip]
 > 上記のオプションの詳細については、Linux 用の公式の CNI [flannel](https://github.com/containernetworking/plugins/tree/master/plugins/meta/flannel#network-configuration-reference)、[ポートマップ](https://github.com/containernetworking/plugins/tree/master/plugins/meta/portmap#port-mapping-plugin)、[ブリッジ](https://github.com/containernetworking/plugins/tree/master/plugins/main/bridge#network-configuration-reference)プラグインに関するドキュメントを参照してください。
 
 ### <a name="launch-flannel--validate"></a>Flannel の起動 & 検証 ###
@@ -100,13 +100,13 @@ cni-conf.json: |
 kubectl apply -f kube-flannel.yml
 ```
 
-次に、Flannel ポッドが Linux ベースであるため、linux [Nodeselector](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml) `kube-flannel-ds` パッチを DaemonSet に適用して、linux のみを対象とするようにします (これは、後で参加するときに、Windows で Flannel "flanneld" ホストエージェントプロセスを起動します)。
+次に、Flannel ポッドが Linux ベースであるため、linux の[Nodeselector](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml)パッチを DaemonSet に適用して、linux `kube-flannel-ds` のみを対象にします (後で Windows で Flannel "flanneld" を起動します)。
 
 ```
 kubectl patch ds/kube-flannel-ds-amd64 --patch "$(cat node-selector-patch.yml)" -n=kube-system
 ```
-> [!tip]  
-> いずれかのノードが x86-64 ベースでない場合は、上記の `-amd64` をプロセッサアーキテクチャに置き換えます。
+> [!tip]
+> いずれかのノードが x86-64 ベースでない場合は、 `-amd64` 上のプロセッサアーキテクチャに置き換えます。
 
 数分後に、Flannel ポッドネットワークがデプロイされている場合は、すべてのポッドが実行中であることがわかります。
 
@@ -116,7 +116,7 @@ kubectl get pods --all-namespaces
 
 ![テキスト](media/kube-master.png)
 
-Flannel DaemonSet には、NodeSelector `beta.kubernetes.io/os=linux` 適用されている必要もあります。
+Flannel DaemonSet にも NodeSelector が適用されている必要があり `beta.kubernetes.io/os=linux` ます。
 
 ```bash
 kubectl get ds -n kube-system
@@ -124,11 +124,11 @@ kubectl get ds -n kube-system
 
 ![テキスト](media/kube-daemonset.png)
 
-> [!tip]  
+> [!tip]
 > 残りの flannel-* デーモンセットでは、そのプロセッサアーキテクチャに一致するノードがない場合にはスケジュールされないため、これらは無視または削除できます。
 
-> [!tip]  
-> 複雑に思えるかもしれませんが、 次に示すのは、Flannel v 0.11.0 の完全な[サンプル kube-flannel](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/overlay/manifests/kube-flannel-example.yml)です。これらの手順は、既定のクラスターサブネット `10.244.0.0/16`に事前に適用されています。
+> [!tip]
+> 間違え? Flannel v 0.11.0 の完全な例を次に示します。これらの手順は、既定のクラスターサブネットに事前に適用されています[。 .yml kube-flannel](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/overlay/manifests/kube-flannel-example.yml) . `10.244.0.0/16`
 
 正常に完了したら、[次の手順](#next-steps)に進みます。
 
@@ -154,11 +154,11 @@ wget https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-
 
 Windows/Linux の両方でホスト gw ネットワークを有効にするために、変更する必要があるファイルが1つあります。
 
-Kube-flannel の [`net-conf.json`] セクションで、次のことをダブルチェックします。
-1. 使用されているネットワークバックエンドの種類は、`vxlan`ではなく `host-gw` に設定されます。
+`net-conf.json`Kube-flannel の .yml のセクションで、次のことを確認します。
+1. 使用されているネットワークバックエンドの種類は、ではなくに設定され `host-gw` `vxlan` ます。
 2. クラスターサブネット (例: "10.244.0.0/16") は、必要に応じて設定されます。
 
-2つの手順を適用すると、`net-conf.json` は次のようになります。
+2つの手順を適用すると、は次のようになり `net-conf.json` ます。
 ```json
 net-conf.json: |
     {
@@ -176,13 +176,13 @@ net-conf.json: |
 kubectl apply -f kube-flannel.yml
 ```
 
-次に、Flannel ポッドが Linux ベースであるため、linux [Nodeselector](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml) `kube-flannel-ds` パッチを DaemonSet に適用して、linux のみを対象にします (これは、後で参加するときに、Windows で Flannel "flanneld" ホストエージェントプロセスを起動します)。
+次に、Flannel ポッドが Linux ベースであるため、linux [Nodeselector](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/l2bridge/manifests/node-selector-patch.yml)パッチを DaemonSet に適用して `kube-flannel-ds` linux のみを対象にします (参加時に Windows で Flannel "flanneld" ホストエージェントプロセスを起動します)。
 
 ```
 kubectl patch ds/kube-flannel-ds-amd64 --patch "$(cat node-selector-patch.yml)" -n=kube-system
 ```
-> [!tip]  
-> いずれかのノードが x86-64 ベースでない場合は、上記の `-amd64` を目的のプロセッサアーキテクチャに置き換えます。
+> [!tip]
+> いずれかのノードが x86-64 ベースでない場合は、 `-amd64` 上の手順を目的のプロセッサアーキテクチャに置き換えます。
 
 数分後に、Flannel ポッドネットワークがデプロイされている場合は、すべてのポッドが実行中であることがわかります。
 
@@ -200,11 +200,11 @@ kubectl get ds -n kube-system
 
 ![テキスト](media/kube-daemonset.png)
 
-> [!tip]  
+> [!tip]
 > 残りの flannel-* デーモンセットでは、そのプロセッサアーキテクチャに一致するノードがない場合にはスケジュールされないため、これらは無視または削除できます。
 
-> [!tip]  
-> 複雑に思えるかもしれませんが、 次に示すのは、Flannel v 0.11.0 の kube-flannel の完全な[例](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/manifests/kube-flannel-example.yml)です。この2つの手順は、既定のクラスターサブネット `10.244.0.0/16`に事前に適用されています。
+> [!tip]
+> 間違え? Flannel v 0.11.0 の完全な例を次に示します。この2つの手順は、既定のクラスターサブネットに事前に適用されています。 [.yml kube-flannel](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/manifests/kube-flannel-example.yml) . `10.244.0.0/16`
 
 正常に完了したら、[次の手順](#next-steps)に進みます。
 
@@ -214,7 +214,7 @@ kubectl get ds -n kube-system
 ToR スイッチの構成は、実際のノードの外部で行われます。 詳細については、公式の[Kubernetes ドキュメント](https://kubernetes.io/docs/getting-started-guides/windows/#upstream-l3-routing-topology)を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ ## 
+## <a name="next-steps"></a>次の手順 ##
 このセクションでは、ネットワークソリューションを選択して構成する方法について説明します。 これで、手順4の準備ができました。
 
 > [!div class="nextstepaction"]
