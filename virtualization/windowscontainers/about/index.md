@@ -4,16 +4,16 @@ description: コンテナーは、オンプレミスおよびクラウドの多�
 keywords: Docker, コンテナー
 author: taylorb-microsoft
 ms.date: 10/22/2019
-ms.topic: article
+ms.topic: overview
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8e273856-3620-4e58-9d1a-d1e06550448
-ms.openlocfilehash: 67ac6e39ca4b3c485d1bb376be1893e871317fac
-ms.sourcegitcommit: 85e257cfd543bf5a37680cde07e184cbdd573bd7
+ms.openlocfilehash: 918cce0dde7d88ff9327a5bcd77c67bade30ce52
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/13/2020
-ms.locfileid: "83368013"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192210"
 ---
 # <a name="windows-and-containers"></a>Windows とコンテナー
 
