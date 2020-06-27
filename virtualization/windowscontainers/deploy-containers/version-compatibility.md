@@ -3,12 +3,13 @@ title: Windows コンテナーのバージョンの互換性
 description: Windows の複数のバージョン間で、ビルドとコンテナーを実行する方法について説明します。
 keywords: メタデータ, コンテナー, バージョン
 author: taylorb-microsoft
-ms.openlocfilehash: 4a219fe614500e06dbeeb82f20e0b3f32eda0ccf
-ms.sourcegitcommit: dd80813679df2de89fe523a26600cfe58a2d39a2
+ms.topic: conceptual
+ms.openlocfilehash: 23319cba426dccba555956f0a8f1204d3669d6bf
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023157"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192149"
 ---
 # <a name="windows-container-version-compatibility"></a>Windows コンテナーのバージョンの互換性
 
@@ -127,7 +128,7 @@ Windows Server コンテナーとその基になっているホストは単一�
 
 #### <a name="build-number-new-release-of-windows"></a>ビルド番号 (Windows の新しいリリース)
 
-Windows Server コンテナーは、コンテナー ホストとコンテナー イメージの間でビルド番号が異なると起動がブロックされます。 たとえば、コンテナー ホストのバージョンが 10.0.14393.* (Windows Server 2016) でコンテナー イメージのバージョンが 10.0.16299.* (Windows Server バージョン 1709) の場合、コンテナーは起動しません。  
+Windows Server コンテナーは、コンテナー ホストとコンテナー イメージの間でビルド番号が異なると起動がブロックされます。 たとえば、コンテナー ホストのバージョンが 10.0.14393.* (Windows Server 2016) でコンテナー イメージのバージョンが 10.0.16299.* (Windows Server バージョン 1709) の場合、コンテナーは起動しません。
 
 #### <a name="revision-number-patching"></a>リビジョン番号 (修正プログラムの適用)
 
@@ -138,7 +139,7 @@ Windows Server コンテナーは、コンテナー ホストとコンテナー 
 システム (ホストおよびコンテナー) に最新の修正プログラムや更新プログラムを適用して最新の状態に保ち、セキュリティを維持することをお勧めします。
 
 >[!NOTE]
->Windows Server コンテナーを、2020 年 2 月 11 日にリリースされたセキュリティ更新プログラム ("2B" とも呼ばれる) か、それ以降の月次セキュリティ更新プログラム リリースとともに使用する場合、問題が発生する可能性があります。 詳細については、[この記事](https://support.microsoft.com/help/4542617/you-might-encounter-issues-when-using-windows-server-containers-with-t)をご覧ください。  
+>Windows Server コンテナーを、2020 年 2 月 11 日にリリースされたセキュリティ更新プログラム ("2B" とも呼ばれる) か、それ以降の月次セキュリティ更新プログラム リリースとともに使用する場合、問題が発生する可能性があります。 詳細については、[この記事](https://support.microsoft.com/help/4542617/you-might-encounter-issues-when-using-windows-server-containers-with-t)をご覧ください。
 >
 >ホストとコンテナーの両方を、最新の修正プログラムと更新プログラムで更新して、セキュリティと互換性を維持することを強くお勧めします。 Windows コンテナーの更新方法についての重要なガイダンスは、「[Windows Server のコンテナーの更新](update-containers.md)」を参照してください。
 
@@ -181,7 +182,7 @@ PS C:\Users\Administrator> (Get-ItemProperty 'HKLM:\SOFTWARE\Microsoft\Windows N
 
 ### <a name="hyper-v-isolation-for-containers"></a>Hyper-V によるコンテナーの分離
 
-Windows コンテナーは、Hyper-V の分離を使用して、または使用せずに実行できます。 Hyper-V による分離を使用すると、最適化された VM によって、コンテナーの周囲にセキュリティ保護された境界が形成されます。 標準の Windows コンテナーではコンテナーとホストの間でカーネルが共有されるのに対し、Hyper-V によって分離されたコンテナーでは専用の Windows カーネル インスタンスを利用します。 つまり、コンテナー ホストとコンテナー イメージで異なるバージョンの OS を使用できます (詳細については、下の互換性マトリクスを参照)。  
+Windows コンテナーは、Hyper-V の分離を使用して、または使用せずに実行できます。 Hyper-V による分離を使用すると、最適化された VM によって、コンテナーの周囲にセキュリティ保護された境界が形成されます。 標準の Windows コンテナーではコンテナーとホストの間でカーネルが共有されるのに対し、Hyper-V によって分離されたコンテナーでは専用の Windows カーネル インスタンスを利用します。 つまり、コンテナー ホストとコンテナー イメージで異なるバージョンの OS を使用できます (詳細については、下の互換性マトリクスを参照)。
 
 Hyper-V による分離を使ってコンテナーを実行するには、docker run コマンドに `--isolation=hyperv` というタグを追加します。
 
@@ -267,7 +268,7 @@ xeqkxbsao57w         \_ angry_liskov.1   microsoft/iis:windowsservercore-10.0.14
 ```dockerfile
 C:\Program Files\Docker>docker service ps --no-trunc angry_liskov
 ID                          NAME                 IMAGE                                                                                                                     NODE                DESIRED STATE       CURRENT STATE                     ERROR                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          PORTS
-dwsd6sjlwsgic5vrglhtxu178   angry_liskov.1       microsoft/iis:windowsservercore-10.0.14393.1715@sha256:868bca7e89e1743792e15f78edb5a73070ef44eae6807dc3f05f9b94c23943d5   WIN-BSTMQDRQC2E     Running             Starting less than a second ago                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+dwsd6sjlwsgic5vrglhtxu178   angry_liskov.1       microsoft/iis:windowsservercore-10.0.14393.1715@sha256:868bca7e89e1743792e15f78edb5a73070ef44eae6807dc3f05f9b94c23943d5   WIN-BSTMQDRQC2E     Running             Starting less than a second ago
 y5blbdum70zoh1f6uhx5nxsfv    \_ angry_liskov.1   microsoft/iis:windowsservercore-10.0.14393.1715@sha256:868bca7e89e1743792e15f78edb5a73070ef44eae6807dc3f05f9b94c23943d5   WIN-BSTMQDRQC2E     Shutdown            Failed 39 seconds ago             "starting container failed: container e7b5d3adba7e510569c18d8e55f7c689d7cb92be40a516c91b363e27f84604d0 encountered an error during CreateContainer: failure in a Windows system call: The operating system of the container does not match the operating system of the host. (0xc0370101) extra info: {"SystemType":"Container","Name":"e7b5d3adba7e510569c18d8e55f7c689d7cb92be40a516c91b363e27f84604d0","Owner":"docker","VolumePath":"\\\\?\\Volume{2443d38a-1379-4bcf-a4b7-fc6ad4cd7b65}","IgnoreFlushesDuringBoot":true,"LayerFolderPath":"C:\\ProgramData\\docker\\windowsfilter\\e7b5d3adba7e510569c18d8e55f7c689d7cb92be40a516c91b363e27f84604d0","Layers":[{"ID":"bcf2630f-ea95-529b-b33c-e5cdab0afdb4","Path":"C:\\ProgramData\\docker\\windowsfilter\\200235127f92416724ae1d53ed3fdc86d78767132d019bdda1e1192ee4cf3ae4"},{"ID":"e3ea10a8-4c2f-5b93-b2aa-720982f116f6","Path":"C:\\ProgramData\\docker\\windowsfilter\\0ccc9fa71a9f4c5f6f3bc8134fe3533e454e09f453de662cf99ab5d2106abbdc"},{"ID":"cff5391f-e481-593c-aff7-12e080c653ab","Path":"C:\\ProgramData\\docker\\windowsfilter\\a49576b24cd6ec4a26202871c36c0a2083d507394a3072186133131a72601a31"},{"ID":"499cb51e-b891-549a-b1f4-8a25a4665fbd","Path":"C:\\ProgramData\\docker\\windowsfilter\\fdf2f52c4323c62f7ff9b031c0bc3af42cf5fba91098d51089d039fb3e834c08"},{"ID":"1532b584-8431-5b5a-8735-5e1b4fe9c2a9","Path":"C:\\ProgramData\\docker\\windowsfilter\\b2b88bc2a47abcc682e422507abbba9c9b6d826d34e67b9e4e3144cc125a1f80"},{"ID":"a64b8da5-cd6e-5540-bc73-d81acae6da54","Path":"C:\\ProgramData\\docker\\windowsfilter\\5caaedbced1f546bccd01c9d31ea6eea4d30701ebba7b95ee8faa8c098a6845a"}],"HostName":"e7b5d3adba7e","HvPartition":false,"EndpointList":["298bb656-8800-4948-a41c-1b0500f3d94c"],"AllowUnqualifiedDNSQuery":true}"
 ```
 
@@ -478,7 +479,7 @@ Taints:                 <none>
 CreationTimestamp:      Fri, 06 Oct 2017 01:41:02 +0000
 
 ...
-  
+
 System Info:
  Machine ID:                    38519acs9010
  System UUID:
@@ -488,7 +489,7 @@ System Info:
  Operating System:              windows
  Architecture:                  amd64
  ...
- 
+
 $ kubectl describe node 38519acs9011
 Name:                   38519acs9011
 Role:

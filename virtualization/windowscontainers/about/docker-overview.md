@@ -5,15 +5,15 @@ keywords: Docker, コンテナー
 author: Heidilohr
 ms.author: helohr
 ms.date: 05/22/2019
-ms.topic: article
+ms.topic: overview
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: cdb7771a1293e7c3fd505103f0010bdfba47cc31
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: a2a1f89d7a62479dfae073c7f28fa4a86c693597
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "74910792"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192879"
 ---
 # <a name="about-docker"></a>Docker について
 

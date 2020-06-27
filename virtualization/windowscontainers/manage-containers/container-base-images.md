@@ -4,16 +4,16 @@ description: Windows コンテナーの基本イメージの概要と、その�
 keywords: docker, コンテナー, ハッシュ
 author: patricklang
 ms.date: 09/25/2019
-ms.topic: article
+ms.topic: conceptual
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: 9884cc0ae2d2f398d2dc2fb1997a70493a6de6c0
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.openlocfilehash: 6fc7f2b01af84004fb87e708b0f792c06cb3a569
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76764180"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192309"
 ---
 # <a name="container-base-images"></a>コンテナーの基本イメージ
 
@@ -104,7 +104,7 @@ Windows には、ユーザーが作成できるコンテナーの基本イメー
 
 ## <a name="image-discovery"></a>イメージの検出
 
-すべての Windows コンテナーの基本イメージは、[Docker Hub](https://hub.docker.com/_/microsoft-windows-base-os-images) を介して検出できます。 Windows コンテナーの基本イメージ自体は、Microsoft Container Registry (MCR) である [mcr.microsoft.com](https://azure.microsoft.com/en-us/services/container-registry/) から提供されます。 このため、Windows コンテナーの基本イメージのプルコマンドは次のようになります。
+すべての Windows コンテナーの基本イメージは、[Docker Hub](https://hub.docker.com/_/microsoft-windows-base-os-images) を介して検出できます。 Windows コンテナーの基本イメージ自体は、Microsoft Container Registry (MCR) である [mcr.microsoft.com](https://azure.microsoft.com/services/container-registry/) から提供されます。 このため、Windows コンテナーの基本イメージのプルコマンドは次のようになります。
 
 ```code
 docker pull mcr.microsoft.com/windows/servercore:ltsc2019

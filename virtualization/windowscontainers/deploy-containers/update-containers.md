@@ -5,13 +5,14 @@ keywords: メタデータ, コンテナー, バージョン
 author: heidilohr
 ms. author: helohr
 manager: lizross
+ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 84413f27bfce66e7d259c05795a280ed34b582ab
-ms.sourcegitcommit: 6f216408434a437da87a72d582500a4ca6c2679c
+ms.openlocfilehash: 829705e338667910e50578591ad2c065daecfa5f
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/21/2020
-ms.locfileid: "80112695"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192839"
 ---
 # <a name="update-windows-server-containers"></a>Windows Server コンテナーの更新
 
@@ -30,14 +31,14 @@ Windows Server ベース OS コンテナー イメージは、Windows のサー�
 - ltsc2019 [(LTSC)](/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc): docker pull mcr.microsoft.com/windows/servercore:ltsc2019
 - 1909 [(SAC)](/windows-server/get-started-19/servicing-channels-19#semi-annual-channel): docker pull mcr.microsoft.com/windows/servercore:1909
 
-MCR より Docker Hub に慣れている場合は、[こちらのブログ記事](https://azure.microsoft.com/blog/microsoft-syndicates-container-catalog/)でさらに詳しい説明をご覧いただけます。  
+MCR より Docker Hub に慣れている場合は、[こちらのブログ記事](https://azure.microsoft.com/blog/microsoft-syndicates-container-catalog/)でさらに詳しい説明をご覧いただけます。
 
 各リリースでは、それぞれのコンテナー イメージは、特定のコンテナー イメージのリビジョンをターゲットとするリビジョン番号とサポート技術情報の記事番号を表す 2 つの追加タグも付けて公開されます。 たとえば、次のように入力します。
 
 - docker pull mcr.microsoft.com/windows/servercore:10.0.17763.1040
 - docker pull mcr.microsoft.com/windows/servercore:1809-KB4546852
 
-どちらの例も、2 月 18 日のセキュリティ リリース更新プログラムを含む Windows Server 2019 の Server Core コンテナー イメージをプルします。  
+どちらの例も、2 月 18 日のセキュリティ リリース更新プログラムを含む Windows Server 2019 の Server Core コンテナー イメージをプルします。
 
 Windows Server ベース OS コンテナー イメージ、バージョン、およびそれぞれのタグの完全な一覧については、Docker Hub の [Windows ベース OS コンテナー イメージ](https://hub.docker.com/_/microsoft-windows-base-os-images)に関するこちらのページを参照してください。
 
@@ -96,7 +97,7 @@ Windows コンテナーには 2 種類の分離モードがあります。プロ
 Microsoft Windows [Version 10.0.17763.1039]
 (c) 2018 Microsoft Corporation. All rights reserved.
 
-C:\>ver 
+C:\>ver
 
 Microsoft Windows [Version 10.0.17763.1039]
 ```

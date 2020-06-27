@@ -4,16 +4,16 @@ description: Hyper-V を使用することにより、Linux コンテナーを W
 keywords: Linux コンテナー, Docker, コンテナー, Windows 10
 author: scooley
 ms.date: 09/17/2019
-ms.topic: article
+ms.topic: overview
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: edfd11c8-ee99-42d8-9878-efc126fe1826
-ms.openlocfilehash: 6b737129692ec8e56bebf290ad8064f010f78ea3
-ms.sourcegitcommit: 6a5c237bff2c953fec2ce1e09424375a7c615010
+ms.openlocfilehash: 1f828562d81292cb1a3c30e456b69e0a61ecc63a
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84632972"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192199"
 ---
 # <a name="linux-containers-on-windows-10"></a>Windows 10 上の Linux コンテナー
 

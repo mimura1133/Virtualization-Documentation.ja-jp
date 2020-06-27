@@ -4,16 +4,16 @@ description: グループ管理サービス アカウント (gMSA) を使用し�
 keywords: docker, コンテナー, active directory, gmsa, グループ管理サービス アカウント, グループ管理サービス アカウント
 author: rpsqrd
 ms.date: 09/10/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: b997cf79cdf7f1782b6299198859714563c45f8c
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.openlocfilehash: 0cfa8d0f414e1566eb425598bffd29edd8b05b87
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78853936"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192849"
 ---
 # <a name="run-a-container-with-a-gmsa"></a>gMSA を使用してコンテナーを実行する
 

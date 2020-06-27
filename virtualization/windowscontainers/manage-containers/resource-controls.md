@@ -4,21 +4,21 @@ description: Windows コンテナーのリソース コントロールに関す�
 keywords: docker, コンテナー, cpu, メモリ, ディスク, リソース
 author: taylorb-microsoft
 ms.date: 11/21/2017
-ms.topic: article
+ms.topic: conceptual
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 8ccd4192-4a58-42a5-8f74-2574d10de98e
-ms.openlocfilehash: 3e9f7e3208222cd6c0f512c5f892453ac6e6980c
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: c435f793371bc71c720784416a367e2c7483e9ff
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910172"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192579"
 ---
 # <a name="implementing-resource-controls-for-windows-containers"></a>Windows コンテナーのリソース コントロールの実装
 リソース コントロールには、コンテナー単位およびリソース単位で実装できるものがいくつかあります。  既定では、一般的な Windows リソース管理 (通常はフェアシェア ベース) によって、実行されるコンテナーが決まりますが、リソース コントロールを構成することで、開発者や管理者はリソース使用の制限または調整を行うことができます。  制御できるリソースには次のようなものがあります。CPU とプロセッサ、メモリと RAM、ディスクとストレージ、ネットワークとスループット。
 
-Windows コンテナーでは、各コンテナーに関連付するプロセスのグループ化と追跡に、[ジョブ オブジェクト](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)が使用されます。  リソース コントロールは、コンテナーに関連付けられた親ジョブ オブジェクトに実装されます。 
+Windows コンテナーでは、各コンテナーに関連付するプロセスのグループ化と追跡に、[ジョブ オブジェクト](https://docs.microsoft.com/windows/desktop/ProcThread/job-objects)が使用されます。  リソース コントロールは、コンテナーに関連付けられた親ジョブ オブジェクトに実装されます。
 
 [Hyper-V による分離](./hyperv-container.md)の場合、リソース コントロールは仮想マシンにも、仮想マシン内で実行されているコンテナーのジョブ オブジェクトにも自動的に適用されます。これにより、コンテナー内で実行されているプロセスがジョブ オブジェクトのコントロールをバイパスまたはエスケープした場合も、定義されているリソース コントロールを超過しないよう仮想マシンによって制御されます。
 

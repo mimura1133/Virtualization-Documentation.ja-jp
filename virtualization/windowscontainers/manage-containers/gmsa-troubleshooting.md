@@ -4,16 +4,16 @@ description: Windows コンテナーのグループ管理サービス アカウ�
 keywords: docker, コンテナー, active directory, gmsa, グループ管理サービス アカウント, グループ管理サービス アカウント, トラブルシューティング, 解決
 author: rpsqrd
 ms.date: 10/03/2019
-ms.topic: article
+ms.topic: troubleshooting
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 89f255e307c2a48fd743d5abd1a49bba7703aaf3
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: e7cf5685620d3cb50c93f48e5aa6917d9044b860
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910242"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192829"
 ---
 # <a name="troubleshoot-gmsas-for-windows-containers"></a>Windows コンテナーの gMSA のトラブルシューティング
 
@@ -170,7 +170,7 @@ Active Directory で使用されるポートの完全な一覧については、
     Get-ADObject -Filter 'sAMAccountName -like "GMSANAMEHERE*"'
     ```
 
-4. gMSA アカウントで制約のない委任を有効にしている場合は、[UserAccountControl 属性](https://support.microsoft.com/en-us/help/305144/how-to-use-useraccountcontrol-to-manipulate-user-account-properties)の `WORKSTATION_TRUST_ACCOUNT` フラグが有効であることを確認します。 アプリで名前を SID に、またはその逆に解決する必要がある場合と同様に、このフラグは、コンテナー内の NETLOGON がドメイン コントローラーと通信するために必要です。 次のコマンドを使用して、フラグが正しく構成されているかどうかを確認できます。
+4. gMSA アカウントで制約のない委任を有効にしている場合は、[UserAccountControl 属性](https://support.microsoft.com/help/305144/how-to-use-useraccountcontrol-to-manipulate-user-account-properties)の `WORKSTATION_TRUST_ACCOUNT` フラグが有効であることを確認します。 アプリで名前を SID に、またはその逆に解決する必要がある場合と同様に、このフラグは、コンテナー内の NETLOGON がドメイン コントローラーと通信するために必要です。 次のコマンドを使用して、フラグが正しく構成されているかどうかを確認できます。
 
     ```powershell
     $gMSA = Get-ADServiceAccount -Identity 'yourGmsaName' -Properties UserAccountControl

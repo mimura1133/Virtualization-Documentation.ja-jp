@@ -4,16 +4,16 @@ description: Hyper-V による分離とプロセスによる分離コンテナ�
 keywords: Docker, コンテナー
 author: crwilhit
 ms.date: 09/26/2019
-ms.topic: article
+ms.topic: conceptual
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: 362805fa230f461414ccc53643644f6c1b3474a8
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.openlocfilehash: 3102def94d6565f162210ac53e3a80666ed5d485
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78853956"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192799"
 ---
 # <a name="isolation-modes"></a>分離モード
 
@@ -50,7 +50,7 @@ Windows Server 上で実行される Windows コンテナーは、既定でプ�
 
 > [!WARNING]
 > Windows 10 Pro および Enterprise 上でのプロセスによる分離を使用した実行は、開発およびテストを目的としています。 ホストでは Windows 10 ビルド 17763 以降を実行している必要があり、Docker バージョンは Engine 18.09 以降である必要があります。
-> 
+>
 > 運用環境のデプロイでは、引き続き Windows Server をホストとして使用する必要があります。 Windows 10 Pro および Enterprise 上でこの機能を使用することにより、ホストとコンテナーのバージョン タグが一致するようにする必要があります。そうしないと、コンテナーの起動に失敗したり、未定義の動作が発生したりする可能性があります。
 
 ### <a name="isolation-explanation"></a>分離の説明

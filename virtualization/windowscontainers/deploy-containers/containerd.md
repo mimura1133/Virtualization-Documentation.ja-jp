@@ -4,16 +4,16 @@ description: Windows で使用できるようになった新しいコンテナ�
 keywords: LCOW, Linux コンテナー, Docker, コンテナー, containerd, cri, runhcs, runc
 author: scooley
 ms.date: 11/19/2018
-ms.topic: article
+ms.topic: conceptual
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: a0e62b32-0c4c-4dd4-9956-8056e9abd9e5
-ms.openlocfilehash: 3107eb48dc9c75224b0c9dd9b436af6f0f451871
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.openlocfilehash: dd7ddbc3784eee67fd67bba20533d520e172ebd3
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77439279"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192260"
 ---
 # <a name="container-platform-tools-on-windows"></a>Windows 上のコンテナー プラットフォーム ツール
 
@@ -63,7 +63,7 @@ runhcs run [ -b bundle ] <container-id>
 
 `<container-id>` は、開始するコンテナー インスタンスの名前です。 この名前は、コンテナー ホスト上で一意である必要があります。
 
-バンドル ディレクトリ (`-b bundle` を使用) は省略可能です。  
+バンドル ディレクトリ (`-b bundle` を使用) は省略可能です。
 runc と同様に、コンテナーはバンドルを使用して構成されます。 コンテナーのバンドルは、コンテナーの OCI 仕様ファイル "config.json" のあるディレクトリです。  "バンドル" の既定値は現在のディレクトリです。
 
 正常に実行するには、OCI 仕様ファイル "config.json" に 2 つのフィールドが必要です。
@@ -93,7 +93,7 @@ runhcs で使用できるコンテナー コマンドは次のとおりです。
 
 ### <a name="hcs"></a>HCS
 
-GitHub には、HCS とのインターフェイスとして使用できる 2 つのラッパーがあります。 HCS は C API であるため、ラッパーを使用すると、高水準言語から HCS を簡単に呼び出すことができます。  
+GitHub には、HCS とのインターフェイスとして使用できる 2 つのラッパーがあります。 HCS は C API であるため、ラッパーを使用すると、高水準言語から HCS を簡単に呼び出すことができます。
 
 * [hcsshim](https://github.com/microsoft/hcsshim) - HCSShim は Go で記述されており、runhcs のベースです。
 AppVeyor から最新のものを入手するか、自分で構築してください。

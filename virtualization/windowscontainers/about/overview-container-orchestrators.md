@@ -5,15 +5,15 @@ keywords: Docker, コンテナー
 author: Heidilohr
 ms.author: helohr
 ms.date: 05/22/2019
-ms.topic: article
+ms.topic: overview
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 23dd1e56ba68a679945779f5e7dbc15225412934
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: ff9b782814d3efe9c5fc6b537cf79280e784be11
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "78853908"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192568"
 ---
 # <a name="windows-container-orchestration-overview"></a>Windows コンテナーのオーケストレーションの概要
 

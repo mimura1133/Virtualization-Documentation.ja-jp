@@ -4,16 +4,16 @@ description: Windows コンテナー用に Dockerfile を最適化します。
 keywords: Docker, コンテナー
 author: cwilhit
 ms.date: 05/03/2019
-ms.topic: article
+ms.topic: tutorial
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: ae633c7ba5d9672335addcc582988fc47c13ed79
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: 25297432a3e515a130c9710431fd550f2efd8226
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "74910152"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192359"
 ---
 # <a name="optimize-windows-dockerfiles"></a>Windows Dockerfile を最適化する
 
@@ -136,19 +136,19 @@ FROM mcr.microsoft.com/windows/servercore:ltsc2019
 RUN powershell -Command \
 
   # Download software ; \
-    
+
   wget https://www.apachelounge.com/download/VC11/binaries/httpd-2.4.18-win32-VC11.zip -OutFile c:\apache.zip ; \
   wget "https://download.microsoft.com/download/1/6/B/16B06F60-3B20-4FF2-B699-5E9B7962F9AE/VSU_4/vcredist_x86.exe" -OutFile c:\vcredist.exe ; \
   wget -Uri http://windows.php.net/downloads/releases/php-5.5.33-Win32-VC11-x86.zip -OutFile c:\php.zip ; \
 
   # Install Software ; \
-    
+
   Expand-Archive -Path c:\php.zip -DestinationPath c:\php ; \
   Expand-Archive -Path c:\apache.zip -DestinationPath c:\ ; \
   start-Process c:\vcredist.exe -ArgumentList '/quiet' -Wait ; \
-    
+
   # Remove unneeded files ; \
-     
+
   Remove-Item c:\apache.zip -Force; \
   Remove-Item c:\vcredist.exe -Force; \
   Remove-Item c:\php.zip
@@ -206,7 +206,7 @@ d43abb81204a        7 days ago          cmd /S /C powershell -Command  Sleep 2 ;
 
 Dockerfile は上から下に処理され、各命令はキャッシュされているレイヤーと比較されます。 キャッシュされたレイヤーがない命令が見つかると、その命令およびそれ以降のすべての命令が新しいコンテナー イメージ レイヤーで処理されます。 このため、命令の配置の順序が重要になります。 変化しない命令は、Dockerfile の前の方に配置します。 変化する可能性のある命令は、Dockerfile の後の方に配置します。 そうすることで、既存のキャッシュが役に立たなくなる可能性が減ります。
 
-この例は、Dockerfile の命令の順序指定がキャッシュの有効性にどのような影響を与えるかを示しています。 この簡単な例の Dockerfile には、番号が付いたフォルダーが 4 つあります。  
+この例は、Dockerfile の命令の順序指定がキャッシュの有効性にどのような影響を与えるかを示しています。 この簡単な例の Dockerfile には、番号が付いたフォルダーが 4 つあります。
 
 ```dockerfile
 FROM mcr.microsoft.com/windows/servercore:ltsc2019

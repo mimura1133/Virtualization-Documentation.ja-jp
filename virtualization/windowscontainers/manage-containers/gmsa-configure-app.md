@@ -4,16 +4,16 @@ description: Windows コンテナーでグループ管理サービス アカウ�
 keywords: docker、コンテナー、active directory、gmsa、アプリ、アプリケーション、グループ管理サービス アカウント、グループ管理サービス アカウント、構成
 author: rpsqrd
 ms.date: 09/10/2019
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 6635381d5f7ddbebf7bdea4624af241b9f6a6864
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 0c082e4b25bf6de53b5e2c31696bc74fe794fa92
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909792"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192889"
 ---
 # <a name="configure-your-app-to-use-a-gmsa"></a>gMSA を使用するようにアプリを構成する
 

@@ -4,16 +4,16 @@ description: Windows コンテナー用に Dockerfile を作成します。
 keywords: Docker, コンテナー
 author: PatrickLang
 ms.date: 05/03/2019
-ms.topic: article
+ms.topic: tutorial
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 75fed138-9239-4da9-bce4-4f2e2ad469a1
-ms.openlocfilehash: 9fef74c029dc3efc220b1f9924d2695cdbaa61be
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: cda05088f632cee1f5e902bf958fd85f4eddaeec
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "74909662"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192559"
 ---
 # <a name="dockerfile-on-windows"></a>Windows 上の Dockerfile
 

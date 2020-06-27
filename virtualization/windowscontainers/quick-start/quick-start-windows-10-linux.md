@@ -4,16 +4,16 @@ description: コンテナー展開のクイック スタート
 keywords: Docker、コンテナー、LCOW
 author: taylorb-microsoft
 ms.date: 08/16/2019
-ms.topic: article
+ms.topic: tutorial
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 17186d868c0934c4af670e522b26f9205dd16f76
-ms.sourcegitcommit: 6a5c237bff2c953fec2ce1e09424375a7c615010
+ms.openlocfilehash: df02dada3e5cf759f003999b38270dd1bf3131fe
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84632988"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192189"
 ---
 # <a name="linux-containers-on-windows-10"></a>Windows 10 上の Linux コンテナー
 
@@ -30,7 +30,7 @@ ms.locfileid: "84632988"
 
 次の要件を満たしていることを確認してください。
 - Windows 10 Professional、Windows 10 Enterprise、または Windows Server 2019 バージョン1809 以降を実行している 1 台の物理コンピューターシステム
-- [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) は有効にされていることを確認します。 
+- [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) は有効にされていることを確認します。
 
 ## <a name="install-docker-desktop"></a>Docker Desktop のインストール
 
@@ -48,7 +48,7 @@ Linux コンテナーを実行するには、Docker が適切なデーモンを�
 docker run --rm busybox echo hello_world
 ```
 
-コンテナーが実行され、"hello_world" と出力されて、終了します。 
+コンテナーが実行され、"hello_world" と出力されて、終了します。
 
 `docker images` に対してクエリを実行すると、プルして実行した Linux コンテナー イメージが表示されます。
 

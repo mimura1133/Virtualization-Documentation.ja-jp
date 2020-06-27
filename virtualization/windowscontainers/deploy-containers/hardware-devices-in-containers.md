@@ -3,12 +3,13 @@ title: Windows のコンテナー内のデバイス
 description: Windows 上のコンテナーで存在しているデバイス サポート
 keywords: Docker, コンテナー, デバイス, ハードウェア
 author: cwilhit
-ms.openlocfilehash: 1ad63c158a42f116882c949b242274dde8d893fc
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.topic: how-to
+ms.openlocfilehash: bef8e3236294588e38d7bff235ed1d3a98278375
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910602"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192178"
 ---
 # <a name="devices-in-containers-on-windows"></a>Windows のコンテナー内のデバイス
 
@@ -45,7 +46,7 @@ Windows では、すべてのデバイスで、デバイスが実装するイン
 ## <a name="what-devices-are-supported"></a>サポートされるデバイス
 
 現在、次のデバイス (およびそのデバイス インターフェイス クラス GUID) がサポートされています。
-  
+
 <table border="1" style="background-color:FFFFCC;border-collapse:collapse;border:1px solid FFCC00;color:000000;width:75%" cellpadding="5" cellspacing="5">
 <thead>
 <tr valign="top">

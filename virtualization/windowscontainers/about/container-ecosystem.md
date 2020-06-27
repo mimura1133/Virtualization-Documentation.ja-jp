@@ -4,16 +4,16 @@ description: コンテナーエコシステムの構築に関する手短な概�
 keywords: メタデータ、コンテナー
 author: PatrickLang
 ms.date: 05/22/2019
-ms.topic: about-article
+ms.topic: overview
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: 67fdbd813fbd2fa2911d8f5aff6637a85b9855ec
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: 4b1a13bf470694825280a26df2524a428a24a6e5
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "77439319"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192909"
 ---
 # <a name="about-building-container-ecosystems"></a>コンテナー エコシステムの構築について
 

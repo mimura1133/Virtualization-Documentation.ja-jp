@@ -5,15 +5,15 @@ keywords: Docker, コンテナー
 author: cwilhit
 ms.author: crwilhit
 ms.date: 11/12/2019
-ms.topic: article
+ms.topic: quickstart
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: c9e175a7ced0f328e342f3cdd4f99adc717d5700
-ms.sourcegitcommit: 62f4bcca4e07f2a34a927e5c4d786e505821d559
+ms.openlocfilehash: 79de3f520e6d22c338fc95473200286b77cb4467
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82784401"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192519"
 ---
 # <a name="containerize-a-net-core-app"></a>.NET Core アプリをコンテナー化する
 
@@ -21,12 +21,12 @@ ms.locfileid: "82784401"
 
 また、コンピューターに Git ソース管理システムがインストールされている必要があります。 これをインストールするには、[Git](https://git-scm.com/download) にアクセスしてください。
 
-## <a name="clone-the-sample-code-from-github"></a>GitHub からサンプル コードをクローンする
+## <a name="clone-the-sample-code-from-github"></a>GitHub からサンプル コードを複製する
 
 すべてのコンテナー サンプル ソース コードは、`windows-container-samples` という名前のフォルダー内の [Virtualization-Documentation](https://github.com/MicrosoftDocs/Virtualization-Documentation) Git リポジトリ (略式で "リポ" とも呼ばれます) に保管されています。
 
 1. PowerShell セッションを開き、このリポジトリを格納しようとしているフォルダーにディレクトリを移動します。 (他の種類のコマンド プロンプト ウィンドウも同様に機能しますが、このコマンド例では PowerShell を使用しています。)
-2. 現在の作業ディレクトリにリポジトリをクローンします。
+2. 現在の作業ディレクトリにリポジトリを複製します。
 
    ```PowerShell
    git clone https://github.com/MicrosoftDocs/Virtualization-Documentation.git
@@ -87,7 +87,7 @@ RUN dotnet publish -c Release -o out
 
 すべての依存関係が .NET によって `build-env` コンテナーにプルされると、次の手順で、すべてのプロジェクト ソース ファイルがコンテナーにコピーされます。 次に、アプリケーションをリリース構成と共に公開するよう.NET に指定し、出力パスを指定します。
 
-コンパイルが成功するはずです。 ここで、最終イメージをビルドする必要があります。 
+コンパイルが成功するはずです。 ここで、最終イメージをビルドする必要があります。
 
 > [!TIP]
 > このクイックスタートでは、ソースから .NET Core プロジェクトをビルドします。 コンテナー イメージのビルド時には、運用環境のペイロードとその依存関係_のみ_をコンテナー イメージに含めることが推奨されます。 .Net Core ランタイムのみが必要なため、.NET Core SDK を最終イメージに含めたくありません。そのため、Dockerfile は、アプリをビルドするために SDK と共にパッケージ化された、`build-env` という名前の一時コンテナーを使用するように記述されます。
@@ -121,7 +121,7 @@ Dockerfile が記述されたので、Docker に Dockerfile を指し示して�
 
    このコマンドの詳細を確認しておきましょう。
 
-   * `-d` により、Docker は 'デタッチ' されたコンテナーを実行します。これは、コンテナー内のコンソールにフックされるコンソールがないということです。 コンテナーはバックグラウンドで実行されます。 
+   * `-d` により、Docker は 'デタッチ' されたコンテナーを実行します。これは、コンテナー内のコンソールにフックされるコンソールがないということです。 コンテナーはバックグラウンドで実行されます。
    * `-p 5000:80` により、ホスト上のポート 5000 をコンテナーのポート 80 にマップするよう Docker に指示します。 各コンテナーは、独自の IP アドレスを取得します。 ASP .NET は既定で、ポート 80 でリッスンします。 ポート マッピングを使用すると、マップされたポートでホストの IP アドレスに移動することができ、Docker はすべてのトラフィックをコンテナー内の宛先ポートに転送するようになります。
    * `--name myapp` では、Docker によって実行時に割り当てられるコンテナー ID を検索する代わりに、クエリで使用するのに便利な名前をこのコンテナーに割り当てるよう Docker に指示します。
    * `my-asp-app` は、Docker の実行対象となるイメージです。 これは、`docker build` プロセスの結果として生成されるコンテナー イメージです。

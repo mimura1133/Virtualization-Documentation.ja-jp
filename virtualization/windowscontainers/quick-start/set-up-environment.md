@@ -5,16 +5,16 @@ keywords: docker, コンテナー, LCOW
 author: cwilhit
 ms.author: crwilhit
 ms.date: 11/12/2019
-ms.topic: article
+ms.topic: quickstart
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 13d8f1ead90b2c2c86afe9f596717c1c09905895
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: 52cc32171ffdaf3e27476923ebdda3bc226ce4c9
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "80929979"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192609"
 ---
 # <a name="get-started-prep-windows-for-containers"></a>作業の開始:コンテナー用の Windows を準備する
 
@@ -41,8 +41,8 @@ Windows 10 でコンテナーを実行するには、以下のものが必要で
 - [Hyper-V](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/hyper-v-requirements) を有効にする必要があります。
 
 > [!NOTE]
->  Windows 10 October Update 2018 以降、開発またはテスト用として、Windows 10 Enterprise または Professional のプロセス分離モードで Windows コンテナーを実行することをユーザーに許可するようになりました。 詳細については、[FAQ](../about/faq.md) に関するページを参照してください。 
-> 
+>  Windows 10 October Update 2018 以降、開発またはテスト用として、Windows 10 Enterprise または Professional のプロセス分離モードで Windows コンテナーを実行することをユーザーに許可するようになりました。 詳細については、[FAQ](../about/faq.md) に関するページを参照してください。
+>
 > Windows Server コンテナーでは、開発者に運用環境で使用されるのと同じカーネル バージョンと構成を提供するため、既定では Windows 10 上の Hyper-V を使用します。 Hyper-v の分離の詳細については、Microsoft ドキュメントの、[概念](../manage-containers/hyperv-container.md)に関するページを参照してください。
 
 ---
@@ -88,7 +88,7 @@ Windows Server に Docker をインストールするには、Microsoft によ�
 
 # <a name="windows-10"></a>[Windows 10](#tab/Windows-10-Client)
 
-以下の手順を使用して、Windows 10 Professional エディションおよび Enterprise エディションに Docker をインストールできます。 
+以下の手順を使用して、Windows 10 Professional エディションおよび Enterprise エディションに Docker をインストールできます。
 
 1. [Docker Desktop](https://store.docker.com/editions/community/docker-ce-desktop-windows) をダウンロードしてインストールします。まだ持っていない場合は無料の Docker アカウントを作成します。 詳細については、[Docker のマニュアル](https://docs.docker.com/docker-for-windows/install)を参照してください。
 

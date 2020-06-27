@@ -5,15 +5,15 @@ keywords: Docker、コンテナー、VM、仮想マシン
 author: jasongerend
 ms.author: jgerend
 ms.date: 10/21/2019
-ms.topic: article
+ms.topic: overview
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: 63150dfde007ec942446387064ad59f05b0aaa43
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: 0262fc1c2fe3e050455cad9420cc4f70d0530fa2
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "74910822"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192729"
 ---
 # <a name="containers-vs-virtual-machines"></a>コンテナーと仮想マシン
 
@@ -42,7 +42,7 @@ ms.locfileid: "74910822"
 | 分離       | ホスト オペレーティング システムおよびその他の VM から完全に分離します。 これは、同じサーバーまたはクラスター上の競合企業からのアプリのホスティングなど、強力なセキュリティ境界が重要な場合に便利です。 | 通常、ホストとその他のコンテナーから簡易な分離を行いますが、VM と同じくらい強力なセキュリティ境界としては分離しません。 (簡易 VM 内の各コンテナーを分離するために [Hyper-V 分離モード](../manage-containers/hyperv-container.md) を使用すると、セキュリティを向上させることができます)。 |
 | オペレーティング システム | カーネルを含む完全なオペレーティング システムを実行します。そのため、より多くのシステムリソース (CPU、メモリ、およびストレージ) を必要とします。 | オペレーティング システムのユーザーモードの部分を実行し、アプリに必要なサービスだけを含めるように調整できます。これにより、使用するシステム リソースを少なくできます。 |
 | ゲストの互換性 | 仮想マシン内で実行可能な、任意のオペレーティング システムを実行できます。 | [ホストと同じオペレーティング システムのバージョン](../deploy-containers/version-compatibility.md)を実行できます。 (Hyper-V 分離を使用すると、軽量 VM 環境で同じ OS の以前のバージョンを実行できます。)
-| 展開     | Windows Admin Center または Hyper-V マネージャーを使用して、個々の VM を展開します。PowerShell または System Center Virtual Machine Manager を使用して複数の VM をデプロイします。 | コマンド ラインから Docker を使用して個々のコンテナーをデプロイします。Azure Kubernetes Service などのオーケストレーターを使用して複数のコンテナーをデプロイします。 |
+| 展開     | Windows 管理センターまたは Hyper-V マネージャーを使用して、個々の VM を展開します。PowerShell または System Center Virtual Machine Manager を使用して複数の VM をデプロイします。 | コマンド ラインから Docker を使用して個々のコンテナーをデプロイします。Azure Kubernetes Service などのオーケストレーターを使用して複数のコンテナーをデプロイします。 |
 | オペレーティング システムの更新プログラムとアップグレード | 各 VM にオペレーティング システムの更新プログラムをダウンロードしてインストールします。 新しいオペレーティング システムのバージョンをインストールするには、アップグレードを行うか、まったく新しい VM を作成するだけで済みます。 これには、特に VM が多数ある場合に、時間がかかることがあります。 | コンテナー内のオペレーティング システム ファイルの更新またはアップグレードは同じことです。 <br><ol><li>コンテナー イメージのビルド ファイル (Dockerfile と呼ばれます) を編集して、最新バージョンの Windows ベース イメージを参照します。 </li><li>この新しいベース イメージを使用して、コンテナー イメージを再ビルドします。</li><li>コンテナー レジストリにお使いの コンテナー レジストリをプッシュします。</li> <li>オーケストレーターを使用して再デプロイします。<br>このオーケストレーターは、大規模にこの作業を行うための強力な自動化機能を提供します。 詳しくは、[ チュートリアル:Azure Kubernetes Service でのアプリケーションの更新](https://docs.microsoft.com/azure/aks/tutorial-kubernetes-app-update)を参照してください。</li></ol> |
 | 永続的ストレージ | 単一の VM に対してローカルストレージ用の仮想ハードディスク (VHD) を使用するか、複数のサーバーによって共有される記憶域の SMB ファイル共有を使用する | 単一のノードのローカルストレージには Azure ディスクを使用し、複数のノードまたはサーバーで共有するストレージには Azure Files (SMB 共有) を使用します。 |
 | 負荷分散 | 仮想マシンの負荷分散は、実行中の VM をフェールオーバー クラスター内の他のサーバーに移動します。 | コンテナー自体は移動しません。代わりに、オーケストレーターはクラスターノード上のコンテナーを自動的に開始または停止して、負荷と可用性の変更を管理できます。 |

@@ -5,20 +5,20 @@ keywords: windows コンテナー, コンテナー, ライフサイクル, リ�
 author: Heidilohr
 ms.author: helohr
 ms.date: 05/12/2020
-ms.topic: article
+ms.topic: reference
 ms.prod: windows-containers
 ms.service: windows-containers
-ms.openlocfilehash: c6276db89f093b62a01cadc095f5357d2e5a8eba
-ms.sourcegitcommit: dd80813679df2de89fe523a26600cfe58a2d39a2
+ms.openlocfilehash: b3c519ef3ed93a0c8e20f5b927c34f70cd1677f8
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84023147"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192079"
 ---
 # <a name="base-image-servicing-lifecycles"></a>基本イメージのサービス ライフサイクル
 
-> [!Note]  
-> 個人や組織のお客様がビジネス継続性の維持に集中できるように、Microsoft は、多くの製品で予定されていたサポートおよびサービスの終了日を延期しました。 詳細については、2020 年 4 月 14 日の「[サポート終了日とサービスの終了日にライフサイクルを変更](https://support.microsoft.com/en-us/help/4557164/lifecycle-changes-to-end-of-support-and-servicing-dates)」エントリを参照してください。
+> [!Note]
+> 個人や組織のお客様がビジネス継続性の維持に集中できるように、Microsoft は、多くの製品で予定されていたサポートおよびサービスの終了日を延期しました。 詳細については、2020 年 4 月 14 日の「[サポート終了日とサービスの終了日にライフサイクルを変更](https://support.microsoft.com/help/4557164/lifecycle-changes-to-end-of-support-and-servicing-dates)」エントリを参照してください。
 
 Windows コンテナーの基本イメージは、Windows Server の半期チャネル リリースまたは長期サービス チャネル リリースに基づいています。 この記事では、両方のチャネルの基本イメージのさまざまなバージョンについてサポート予定期間を説明します。
 
