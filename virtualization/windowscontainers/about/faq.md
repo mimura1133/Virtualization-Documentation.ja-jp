@@ -4,22 +4,22 @@ description: Windows Server コンテナー FAQ
 keywords: Docker, コンテナー
 author: PatrickLang
 ms.date: 10/25/2019
-ms.topic: article
+ms.topic: overview
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: 405b2abc43a4ae2c546de351679deb755e4a9317
-ms.sourcegitcommit: 16ebc4f00773d809fae84845208bd1dcf08a889c
+ms.openlocfilehash: cd0b4e24cddb434d0a4051888afa3ae3a4a8e096
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "74910802"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85192869"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>コンテナーについてよく寄せられる質問
 
 ## <a name="whats-the-difference-between-linux-and-windows-server-containers"></a>Linux コンテナーと Windows Server コンテナーの違いは何ですか。
 
-Linux コンテナーと Windows Server コンテナーはどちらも同様のテクノロジをカーネルとコア オペレーティング システム内に実装します。 違いは、プラットフォームと、コンテナー内で実行されるワークロードに由来します。  
+Linux コンテナーと Windows Server コンテナーはどちらも同様のテクノロジをカーネルとコア オペレーティング システム内に実装します。 違いは、プラットフォームと、コンテナー内で実行されるワークロードに由来します。
 
 Windows Server コンテナーを使用しているお客様は、.NET、ASP.NET、PowerShell などの既存の Windows テクノロジと統合できます。
 
@@ -37,7 +37,7 @@ Windows コンテナー イメージ [EULA](../images-eula.md) では、有効�
 
 |ホスト OS                                                         |プロセス分離コンテナーの制限                   |Hyper-v 分離コンテナーの制限                   |
 |----------------------------------------------------------------|---------------------------------------------------|---------------------------------------------------|
-|Windows Server Standard                                         |無制限                                          |2                                                  |
+|Windows Server Standard                                         |無制限                                          |2 で保護されたプロセスとして起動されました                                                  |
 |Windows Server Datacenter                                       |無制限                                          |無制限                                          |
 |Windows 10 Pro および Enterprise                                   |無制限 *(テストまたは開発目的のみ)*|無制限 *(テストまたは開発目的のみ)*|
 |Windows 10 IoT Core および Enterprise                             |無制限*                                         |無制限*                                          |
