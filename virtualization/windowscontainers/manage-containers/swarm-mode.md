@@ -4,27 +4,27 @@ description: swarm クラスターの開始、オーバーレイ ネットワー
 keywords: docker,コンテナー, swarm, オーケストレーション
 author: kallie-b
 ms.date: 02/9/2017
-ms.topic: article
+ms.topic: how-to
 ms.prod: windows-containers
 ms.service: windows-containers
 ms.assetid: 5ceb9626-7c48-4d42-81f8-9c936595ad85
-ms.openlocfilehash: 560e9ffc92728628268d7d557b8fa8428316c8ec
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 1576b7c102c0320fafbbe129d9937f2593432e3e
+ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909682"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85191999"
 ---
-# <a name="getting-started-with-swarm-mode"></a>swarm モードの概要 
+# <a name="getting-started-with-swarm-mode"></a>swarm モードの概要
 
 ## <a name="what-is-swarm-mode"></a>"swarm モード" とは
 swarm モードは、Docker ホストのネイティブなクラスタリングやコンテナー ワークロードのスケジューリングなどのオーケストレーション機能を提供する Docker 機能です。 複数の Docker ホストの Docker エンジンを “swarm モード” で連携して実行すると、それらの Docker ホストで “swarm” クラスターが形成されます。 swarm モードについて詳しくは、[Docker のメイン ドキュメント サイト](https://docs.docker.com/engine/swarm/)を参照してください。
 
 ## <a name="manager-nodes-and-worker-nodes"></a>マネージャー ノードとワーカー ノード
-1 つの swarm は、*マネージャー ノード*と*ワーカー ノード*の 2 種類のコンテナー ホストで構成されます。 すべての swarm はマネージャー ノードを介して初期化され、swarm を制御および監視するためのすべての Docker CLI コマンドは、いずれかのマネージャー ノードから実行する必要があります。 マネージャー ノードは、swarm の状態の ”管理ノード” と考えることができます。マネージャー ノードは連携してコンセンサス・グループを形成し、その swarm で実行されているサービスの状態を常に監視します。マネージャー ノードの役目は、swarm の実際の状態が、開発者や管理者によって定義される意図した状態に常に一致するように維持することがです。 
+1 つの swarm は、*マネージャー ノード*と*ワーカー ノード*の 2 種類のコンテナー ホストで構成されます。 すべての swarm はマネージャー ノードを介して初期化され、swarm を制御および監視するためのすべての Docker CLI コマンドは、いずれかのマネージャー ノードから実行する必要があります。 マネージャー ノードは、swarm の状態の ”管理ノード” と考えることができます。マネージャー ノードは連携してコンセンサス・グループを形成し、その swarm で実行されているサービスの状態を常に監視します。マネージャー ノードの役目は、swarm の実際の状態が、開発者や管理者によって定義される意図した状態に常に一致するように維持することがです。
 
 >[!NOTE]
->swarm は複数のマネージャー ノードを持つことができますが、*1 つ以上*のマネージャー ノードが必要です。 
+>swarm は複数のマネージャー ノードを持つことができますが、*1 つ以上*のマネージャー ノードが必要です。
 
 ワーカー ノードは、マネージャー ノードを介して Docker swarm によってオーケストレーションされます。 ワーカー ノードを swarm に参加させるには、swarm の初期化時にマネージャー ノードで生成された "join トークン" を使う必要があります。 ワーカー ノードは、マネージャー ノードから単純にタスクを単に受信して実行するノードであるため、swarm の状態を認識 (および保持) する必要はありません。
 
@@ -46,7 +46,7 @@ swarm モードは、Docker ホストのネイティブなクラスタリング�
 swarm を初期化するには、コンテナー ホストのいずれかから次のコマンドを実行するだけです (\<HOSTIPADDRESS\> は、ホスト マシンのローカル IPv4 アドレスと置き換えます)。
 
 ```
-# Initialize a swarm 
+# Initialize a swarm
 C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADDRESS>:2377
 ```
 特定のコンテナーのホストからこのコマンドを実行すると、そのホスト上の Docker エンジンがマネージャー ノードとして swarm モードで実行を開始します。
@@ -63,7 +63,7 @@ swarm モードやオーバーレイ ネットワーク機能の使用には、�
 C:\> docker swarm join --token <WORKERJOINTOKEN> <MANAGERIPADDRESS>
 ```
 
-ここで、\<MANAGERIPADDRESS\>は swarm マネージャー ノードのローカル IP アドレスです。\<WORKERJOINTOKEN\> はマネージャー ノードから `docker swarm init` コマンドを実行した結果、出力として提供されたワーカー join トークンです。 join トークンは、swarm を初期化した後、マネージャー ノードから次のコマンドのいずれかを実行しても入手できます。
+ここで、\<MANAGERIPADDRESS\> は swarm マネージャー ノードのローカル IP アドレスです。\<WORKERJOINTOKEN\> はマネージャー ノードから `docker swarm init` コマンドを実行した結果、出力として提供されたワーカー join トークンです。 join トークンは、swarm を初期化した後、マネージャー ノードから次のコマンドのいずれかを実行しても入手できます。
 
 ```
 # Get the full command required to join a worker node to the swarm
@@ -80,7 +80,7 @@ swarm クラスターには、次のコマンドを使って別のマネージ�
 C:\> docker swarm join --token <MANAGERJOINTOKEN> <MANAGERIPADDRESS>
 ```
 
-ここでも、\<MANAGERIPADDRESS\>は swarm マネージャー ノードのローカル IP アドレスです。 join トークン \<MANAGERJOINTOKEN\> は、swarm *マネージャー*の join トークンです。これは既存のマネージャー ノードから次のコマンドのいずれかを実行して取得できます。
+ここでも、\<MANAGERIPADDRESS\> は swarm マネージャー ノードのローカル IP アドレスです。 join トークン \<MANAGERJOINTOKEN\> は、swarm *マネージャー*の join トークンです。これは既存のマネージャー ノードから次のコマンドのいずれかを実行して取得できます。
 
 ```
 # Get the full command required to join a **manager** node to the swarm
@@ -95,11 +95,11 @@ C:\> docker swarm join-token manager -q
 swarm クラスターを構成したら、swarm 上にオーバーレイ ネットワークを作成できます。 オーバーレイ ネットワークは、swarm マネージャー ノードから、次のコマンドを実行して作成できます。
 
 ```
-# Create an overlay network 
+# Create an overlay network
 C:\> docker network create --driver=overlay <NETWORKNAME>
 ```
 
-ここで、\<NETWORKNAME\>は指定するネットワーク名です。
+ここで、\<NETWORKNAME\> は指定するネットワーク名です。
 
 ## <a name="deploying-services-to-a-swarm"></a>swarm へのサービスの展開
 オーバーレイ ネットワークを作成したら、サービスを作成してネットワークに接続できます。 サービスは、次の構文で作成されます。
@@ -123,7 +123,7 @@ swarm クラスターにサービスが展開されると、そのサービス�
 C:\> docker service scale <SERVICENAME>=<REPLICAS>
 ```
 
-ここで、\<SERVICENAME\> は拡大縮小するサービスの名前であり、\<REPLICAS\> は拡大縮小後のタスク (つまりコンテナー インスタンス) の数です。
+ここで、\<SERVICENAME\> はスケーリングするサービスの名前であり、\<REPLICAS\> はサービスがスケーリングされるタスク (コンテナー インスタンス) の数です。
 
 
 ## <a name="viewing-the-swarm-state"></a>swarm の状態の表示
@@ -154,7 +154,7 @@ C:\> docker service ls
 ```
 
 ### <a name="list-the-container-instances-that-define-a-service"></a>サービスを定義するコンテナー インスタンスの一覧表示
-特定のサービスに対して実行されているコンテナー インスタンスの詳細を表示するには、次のコマンドを使います。 このコマンドの出力では、各コンテナーが実行されている ID とノードに加え、それぞれのコンテナーの状態に関する情報が表示されます。  
+特定のサービスに対して実行されているコンテナー インスタンスの詳細を表示するには、次のコマンドを使います。 このコマンドの出力では、各コンテナーが実行されている ID とノードに加え、それぞれのコンテナーの状態に関する情報が表示されます。
 
 ```
 C:\> docker service ps <SERVICENAME>
@@ -173,12 +173,12 @@ C:\> docker swarm join --token <JOINTOKEN> <MANAGERIPADDRESS>
 ```
 Windows ホストから swarm を初期化する場合に実行するのと同じコマンドを使って、Linux ホストから swarm を初期化することもできます。
 ```
-# Initialize a swarm 
+# Initialize a swarm
 C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADDRESS>:2377
 ```
 
 ### <a name="adding-labels-to-swarm-nodes"></a>swarm ノードへのラベルの追加
-混在 OS swarm クラスターに対して Docker サービスを起動するには、そのサービスの対象となる OS を実行している swarm ノードと、それ以外のノードを判別する方法が必要です。 [Docker オブジェクト ラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)は、ノードにラベル付けするのに便利な方法であり、OS に一致するノードでのみ実行されるように、サービスを作成および構成できます。 
+混在 OS swarm クラスターに対して Docker サービスを起動するには、そのサービスの対象となる OS を実行している swarm ノードと、それ以外のノードを判別する方法が必要です。 [Docker オブジェクト ラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)は、ノードにラベル付けするのに便利な方法であり、OS に一致するノードでのみ実行されるように、サービスを作成および構成できます。
 
 >[!NOTE]
 >[Docker オブジェクト ラベル](https://docs.docker.com/engine/userguide/labels-custom-metadata/)は、さまざまな Docker オブジェクト (コンテナー イメージ、コンテナー、ボリューム、ネットワークなど) にメタデータを適用するために使用できるほか、さまざまな目的に使用できます。たとえば、ラベルを使用してアプリケーションの "フロントエンド" と "バックエンド" のコンポーネントを区別することで、フロントエンドのマイクロサービスを "front-end" のラベルが付けられたノードでのみスケジュールし、バックエンドのマイクロサービスを "back-end" のラベルが付けられたノードでのみスケジュールすることができます。 ここでは、ノードのラベルを使用して、Windows OS ノードと Linux OS ノードを区別します。
@@ -189,7 +189,7 @@ C:\> docker swarm init --advertise-addr=<HOSTIPADDRESS> --listen-addr <HOSTIPADD
 C:\> docker node update --label-add <LABELNAME>=<LABELVALUE> <NODENAME>
 ```
 
-ここで、`<LABELNAME>` は作成するラベルの名前です。この例では、OS によってノードを区別するため、ラベルの論理名を "os" とすることができます。 `<LABELVALUE>` は、ラベルの値です。この例では、"windows" や "linux" などの値を使用できます (もちろん、一貫性がある限り、ラベルとラベルの値には任意の名前付けを選択できます)。 `<NODENAME>` は、ラベルを付けるノードの名前です。`docker node ls` を実行することによって、ノードの名前を確認できます。 
+ここで、`<LABELNAME>` は作成するラベルの名前です。この例では、OS によってノードを区別するため、ラベルの論理名を "os" とすることができます。 `<LABELVALUE>` は、ラベルの値です。この例では、"windows" や "linux" などの値を使用できます (もちろん、一貫性がある限り、ラベルとラベルの値には任意の名前付けを選択できます)。 `<NODENAME>` は、ラベルを付けるノードの名前です。`docker node ls` を実行することによって、ノードの名前を確認できます。
 
 **たとえば**、クラスター内に 4 つの swarm ノードがあり、2 つが Windows ノードで、2 つが Linux ノードである場合、ラベルの更新コマンドは次のようになります。
 
@@ -227,10 +227,10 @@ C:\> docker service create --name=linux_s1 --endpoint-mode dnsrr --network testo
 - Windows Docker ホストの[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)は、Windows Server 2016 ではサポートされていませんが、Windows Server 2019 以降ではサポートされています。 他の負荷分散方法を使用する場合は、外部のロード バランサー (NGINXなど) を設定したうえで、swarm の[公開ポート モード](https://docs.docker.com/engine/reference/commandline/service_create/#/publish-service-ports-externally-to-the-swarm--p---publish)を使って、負荷分散の際に経由するコンテナー ホスト ポートを公開します。 以下で詳しく説明します。
 
  >[!NOTE]
->Docker Swarm のルーティング メッシュの設定方法の詳細については、この[ブログの投稿](https://docs.microsoft.com/en-us/virtualization/community/team-blog/2017/20170926-docker-s-routing-mesh-available-with-windows-server-version-1709)を参照してください。
+>Docker Swarm のルーティング メッシュの設定方法の詳細については、この[ブログの投稿](https://docs.microsoft.com/virtualization/community/team-blog/2017/20170926-docker-s-routing-mesh-available-with-windows-server-version-1709)を参照してください。
 
 ## <a name="publish-ports-for-service-endpoints"></a>サービス エンドポイントのポートの公開
- サービス エンドポイントのポートを公開する場合、publish-port モードまたは Docker Swarm の[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)機能を使用して実現できるようになりました。 
+ サービス エンドポイントのポートを公開する場合、publish-port モードまたは Docker Swarm の[ルーティング メッシュ](https://docs.docker.com/engine/swarm/ingress/)機能を使用して実現できるようになりました。
 
 サービスを定義するタスク/コンテナー エンドポイントのそれぞれについて、ホスト ポートを公開するには、`docker service create` コマンドで `--publish mode=host,target=<CONTAINERPORT>` 引数を使用します。
 
@@ -253,10 +253,10 @@ C:\ > docker service ps <SERVICENAME>
 上記のコマンドは、(すべての swarm ホストにわたって) サービス用に実行されているすべてのコンテナー インスタンスに関する詳細を返します。 出力の列の 1 つである "ports" 列には、\<HOSTPORT\>->\<CONTAINERPORT\>/tcp の形式で各ホストのポート情報が含まれます。 各コンテナーはそれぞれのホスト ポートで公開されるため、\<HOSTPORT\> の値は各コンテナー インスタンスによって異なります。
 
 
-## <a name="tips--insights"></a>ヒントとインサイト 
+## <a name="tips--insights"></a>ヒントとインサイト
 
-#### <a name="existing-transparent-network-can-block-swarm-initializationoverlay-network-creation"></a>*既存の透過ネットワークによって swarm の初期化/オーバーレイ ネットワークの作成がブロックされる場合がある* 
-Windows では、オーバーレイ ネットワーク ドライバーと透過ネットワーク ドライバーはいずれも、外部 vSwitch が (仮想) ホスト ネットワーク アダプターにバインドされている必要があります。 オーバーレイ ネットワークが作成されると、新しいスイッチが作成され、オープンなネットワーク アダプターに接続されます。 透過ネットワーク モードでも、ホスト ネットワーク アダプターが使用されます。 さらに、特定のネットワーク アダプターは一度に 1 つのスイッチのみバインドできます。ホストのネットワーク アダプターが 1 つだけである場合、ネットワーク アダプターは、vSwitch がオーバーレイ ネットワーク用であるか、透過ネットワーク用であるかに関係なく、一度に 1 つの外部 vSwitch にのみ接続できます。 
+#### <a name="existing-transparent-network-can-block-swarm-initializationoverlay-network-creation"></a>*既存の透過ネットワークによって swarm の初期化/オーバーレイ ネットワークの作成がブロックされる場合がある*
+Windows では、オーバーレイ ネットワーク ドライバーと透過ネットワーク ドライバーはいずれも、外部 vSwitch が (仮想) ホスト ネットワーク アダプターにバインドされている必要があります。 オーバーレイ ネットワークが作成されると、新しいスイッチが作成され、オープンなネットワーク アダプターに接続されます。 透過ネットワーク モードでも、ホスト ネットワーク アダプターが使用されます。 さらに、特定のネットワーク アダプターは一度に 1 つのスイッチのみバインドできます。ホストのネットワーク アダプターが 1 つだけである場合、ネットワーク アダプターは、vSwitch がオーバーレイ ネットワーク用であるか、透過ネットワーク用であるかに関係なく、一度に 1 つの外部 vSwitch にのみ接続できます。
 
 したがって、コンテナー ホストのネットワーク アダプターが 1 つだけである場合、透過ネットワークによってオーバーレイ ネットワークの作成がブロックされる (またはその逆の) 問題が発生する可能性があります。これは、透過ネットワークが、現在、ホストの唯一の仮想ネットワーク インターフェイスを占有しているためです。
 
