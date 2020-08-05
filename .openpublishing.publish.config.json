@@ -108,7 +108,7 @@
     },
     {
       "path_to_root": "_repo.en-us",
-      "url": "https://github.com/MicrosoftDocs/partner-rest-pr",
+      "url": "https://github.com/MicrosoftDocs/Virtualization-Documentation-Private",
       "branch": "live",
       "branch_mapping": {
         "live": "live",
