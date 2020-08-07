@@ -5,21 +5,19 @@ keywords: docker, コンテナー, windows, サンプル
 author: cwilhit
 ms.date: 12/19/2016
 ms.topic: article
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 5c6f6350-f8d6-4426-b53d-9fb09c2bf267
-ms.openlocfilehash: e68f99c095d3cc1e7bb3a08d48bef7e1f877b837
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: fd96865f903542418016b4f75216fd901b47fb57
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74909552"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985416"
 ---
 # <a name="windows-container-samples"></a>Windows コンテナーのサンプル
 
 これは、Windows チームおよびコミュニティのメンバーによって送信されたサンプルと例のコレクションです。  これらのサンプルは、"現状のまま"、保証なしで提供されています。  他のサンプルのご提供や、現在のセットの改善については、ご自由にお寄せください。
 
-# <a name="categories"></a>カテゴリ
+# <a name="categories"></a>［カテゴリ］
 
 ## <a name="application-frameworks"></a>アプリケーション フレームワーク
 
@@ -65,7 +63,7 @@ ms.locfileid: "74909552"
 
 [mysql](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/mysql)
 
-[cache](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/redis)
+[redis](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/redis)
 
 [sqlite](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/sqlite)
 
@@ -77,7 +75,7 @@ sqlserver-express - [Docker Hub イメージ](https://hub.docker.com/r/microsoft
 
 ## <a name="just-for-fun"></a>遊び
 
-[MineCraft](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/MineCraft) 
+[MineCraft](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/MineCraft)
 
 ## <a name="other"></a>その他
 

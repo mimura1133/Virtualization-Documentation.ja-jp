@@ -5,15 +5,13 @@ keywords: Docker, コンテナー
 author: jmesser81
 ms.date: 03/27/2018
 ms.topic: conceptual
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 78f9240ccb184b182247617aba116d6ac5533a02
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 5c60406c0cc839a84e25ff12abf53439c6a208cb
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192089"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985386"
 ---
 # <a name="network-isolation-and-security"></a>ネットワーク分離とセキュリティ
 
@@ -21,7 +19,7 @@ ms.locfileid: "85192089"
 
 各コンテナーのエンドポイントは、自身の__ネットワーク名前空間__内に置かれます。 管理ホストの vNIC とホスト ネットワーク スタックは、既定のネットワーク名前空間に置かれます。 同じホスト上のコンテナー間でネットワークの分離を強制するために、Windows Server のコンテナーごとにネットワーク名前空間が作成され、コンテナーのネットワークアダプターがインストールされている Hyper-v 分離の下で実行されます。 Windows Server コンテナーでは、仮想スイッチへの接続に Host vNIC を使用します。 Hyper-v の分離では、仮想スイッチにアタッチするために、統合 VM NIC (ユーティリティ VM には公開されません) を使用します。
 
-![テキスト](media/network-compartment-visual.png)
+![text](media/network-compartment-visual.png)
 
 ```powershell
 Get-NetCompartment
@@ -48,13 +46,13 @@ Hyper-v の分離で実行されるコンテナーには、独自の分離され
 
 * Windows ファイアウォール (ユーティリティ VM 内で実行) と VFP の両方で既定 ALLOW ALL
 
-![テキスト](media/windows-firewall-containers.png)
+![text](media/windows-firewall-containers.png)
 
-### <a name="kubernetes-pods"></a>Kubernetes ポッド
+### <a name="kubernetes-pods"></a>Kubernetes のポッド
 
 [Kubernetes ポッド](https://kubernetes.io/docs/concepts/workloads/pods/pod/)では、エンドポイントがアタッチされるインフラストラクチャコンテナーが最初に作成されます。 インフラストラクチャやワーカーコンテナーなど、同じポッドに属するコンテナーは、共通のネットワーク名前空間 (同じ IP およびポート空間) を共有します。
 
-![テキスト](media/pod-network-compartment.png)
+![text](media/pod-network-compartment.png)
 
 ### <a name="customizing-default-port-acls"></a>既定のポート ACL のカスタマイズ
 
@@ -65,8 +63,8 @@ Hyper-v の分離で実行されるコンテナーには、独自の分離され
 
 | ネットワークドライバー | Windows Server コンテナー | Hyper-V による分離  |
 | -------------- |-------------------------- | ------------------- |
-| 透明 | Windows ファイアウォール | X |
-| NAT | Windows ファイアウォール | X |
+| 透明 | Windows ファイアウォール | x |
+| NAT | Windows ファイアウォール | x |
 | L2Bridge | 両方 | VFP |
 | L2Tunnel | 両方 | VFP |
 | オーバーレイ  | 両方 | VFP |

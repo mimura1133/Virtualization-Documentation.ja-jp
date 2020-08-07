@@ -4,15 +4,14 @@ author: gkudra-msft
 ms.author: gekudray
 ms.date: 11/02/2018
 ms.topic: troubleshooting
-ms.prod: containers
 description: Kubernetes の展開と Windows ノードの参加で発生する一般的な問題の解決方法。
 keywords: kubernetes、1.14、linux、コンパイル
-ms.openlocfilehash: 2e8074fa018b85a6628280a0dfdbce7c8cd553cb
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 0b87db08f027e91a2d5047ce4d6bbf41abd1916d
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192699"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985056"
 ---
 # <a name="troubleshooting-kubernetes"></a>Kubernetes のトラブルシューティング #
 このページでは、Kubernetes のセットアップ、ネットワーク、および展開に関する一般的な問題について説明します。
@@ -106,7 +105,7 @@ Windows ポッドには、現在 ICMP プロトコル用にプログラミング
 
 まだ問題が発生している場合は、 [cni](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf)のネットワーク構成に注意が必要です。 この静的ファイルをいつでも編集できます。構成は、新しく作成された Kubernetes リソースに適用されます。
 
-なぜでしょうか。
+なぜですか?
 Kubernetes のネットワーク要件の1つ (「 [Kubernetes モデル](https://kubernetes.io/docs/concepts/cluster-administration/networking/)」を参照) は、NAT を使用せずにクラスター通信を行う場合に使用します。 この要件を遵守するために、送信 NAT[を使用し](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/l2bridge/cni/config/cni.conf#L20)ないすべての通信のための [の追加] があります。 ただし、これは、クエリを実行しようとしている外部 IP を除外する必要があることも意味します。 その後、Windows ポッドから送信されたトラフィックは、外部からの応答を受信するために正しく正常に送信されます。 この点を考慮して、の [] には次のように表示される `cni.conf` 必要があります。
 ```conf
 "ExceptionList": [

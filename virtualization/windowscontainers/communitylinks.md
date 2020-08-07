@@ -5,21 +5,19 @@ keywords: docker, コンテナー, windows, サンプル
 author: taylorb-microsoft
 ms.date: 12/19/2016
 ms.topic: article
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: cfbb2542-fead-48e7-8318-4da92a7b5b6f
-ms.openlocfilehash: 338dd0570f1a2e73295b2bacf2c4282b3fdd7956
-ms.sourcegitcommit: 16744984ede5ec94cd265b6bff20aee2f782ca88
+ms.openlocfilehash: a06168922306d2cc8f2f6ad4f314e7ddf8e7bf09
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/18/2020
-ms.locfileid: "77439299"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984616"
 ---
 # <a name="community-videos-and-blogs"></a>コミュニティのビデオとブログ
 
 このページには、メンバーまたはコンテナーのコミュニティが作成したビデオとブログへのリンクが記載されています。  すばらしいリソースをご存じの場合や、ご自分でリソースを作成した場合は、このリストに追加するための PR を送信してください。
 
-## <a name="getting-started"></a>作業の開始
+## <a name="getting-started"></a>はじめに
 
 [Windows 10 での Linux コンテナーと windows コンテナーの実行](https://stefanscherer.github.io/run-linux-and-windows-containers-on-windows-10/)-Stefan/er
 
@@ -45,7 +43,7 @@ ms.locfileid: "77439299"
 
 [Image2Docker を使用して Windows ワークロードをコンテナー化する](https://blog.docker.com/2016/10/containerize-windows-workloads-image2docker/) - Mano Marks
 
-[Use Docker Compose and Service Discovery on Windows to scale-out your multi-service container application](https://techcommunity.microsoft.com/t5/Containers/Use-Docker-Compose-and-Service-Discovery-on-Windows-to-scale-out/ba-p/382312) (Windows で Docker Compose とサービス検索を使用してマルチサービス コンテナー アプリケーションをスケールアウトする) - Kallie Bracken および Jason Messer
+[Windows で Docker Compose とサービス検索を使用してマルチサービス コンテナー アプリケーションをスケールアウトする](https://techcommunity.microsoft.com/t5/Containers/Use-Docker-Compose-and-Service-Discovery-on-Windows-to-scale-out/ba-p/382312) - Kallie Bracken および Jason Messer
 
 [Docker を使用した Windows コンテナーでの PowerShell Desired State Configuration](https://dille.name/blog/2016/06/17/powershell-desired-state-configuration-psdsc-in-windows-containers-using-docker/) -Nicholas Dille
 
@@ -53,8 +51,8 @@ ms.locfileid: "77439299"
 
 ## <a name="configuration-and-managment"></a>構成と管理
 
-[How to protect a Windows 2016 Docker engine with TLS](https://stefanscherer.github.io/protecting-a-windows-2016-docker-engine-with-tls/) (TLS を使用して Windows 2016 Docker エンジンを保護する方法) - Stefan Scherer
+[TLS を使用して Windows 2016 Docker エンジンを保護する方法](https://stefanscherer.github.io/protecting-a-windows-2016-docker-engine-with-tls/) - Stefan Scherer
 
-[Using a Microsoft CA to secure Docker](https://dille.name/blog/2016/11/08/using-a-microsoft-ca-to-secure-docker/) (Microsoft CA を使用して Docker をセキュリティで保護する) - Nicholas Dille 
+[Using a Microsoft CA to secure Docker](https://dille.name/blog/2016/11/08/using-a-microsoft-ca-to-secure-docker/) (Microsoft CA を使用して Docker をセキュリティで保護する) - Nicholas Dille
 
 [Windows #Container Performance of Layers](https://dille.name/blog/2017/01/13/windows-container-performance-of-layers/)(階層化と Windows #コンテナーのパフォーマンス) - Nicholas Dille

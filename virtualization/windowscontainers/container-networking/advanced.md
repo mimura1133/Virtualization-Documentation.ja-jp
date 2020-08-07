@@ -5,15 +5,13 @@ keywords: Docker, コンテナー
 author: jmesser81
 ms.date: 03/27/2018
 ms.topic: how-to
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 5278d1d0aefadf81905c843609e1c922f5ca446a
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: aed798cf7444cc8ec67aeb663693911ce20247c6
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192689"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985376"
 ---
 # <a name="advanced-network-options-in-windows"></a>Windows での高度なネットワーク オプション
 

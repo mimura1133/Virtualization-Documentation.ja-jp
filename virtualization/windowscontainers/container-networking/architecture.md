@@ -5,15 +5,13 @@ keywords: Docker, コンテナー
 author: jmesser81
 ms.date: 03/27/2018
 ms.topic: overview
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 2235ae8b48828535facaa9b2be3dfc7fde450516
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 5f9d554a4fcedd9bd233a849c6480589be61abbd
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192629"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984749"
 ---
 # <a name="windows-container-networking"></a>Windows コンテナーネットワーク
 
@@ -24,16 +22,16 @@ ms.locfileid: "85192629"
 
 このトピックでは、Docker で Windows 上にホスト ネットワークを作成して管理する方法の概要を示します。 ネットワークに関して言えば、Windows コンテナーの機能は仮想マシンと似ています。 各コンテナーには、Hyper-V 仮想スイッチ (vSwitch) に接続されている仮想ネットワーク アダプター (vNIC) があります。 Windows では、Docker 経由で作成できる、*nat*、*overlay*、*transparent*、*l2bridge*、*l2tunnel* の 5 種類の[ネットワーク ドライバーまたはモード](./network-drivers-topologies.md)をサポートしています。 物理ネットワークのインフラストラクチャと単一または複数のホストのネットワーク要件に応じて、ニーズに最適なネットワーク ドライバーを選択する必要があります。
 
-![テキスト](media/windowsnetworkstack-simple.png)
+![text](media/windowsnetworkstack-simple.png)
 
 初めて Docker エンジンを実行したときに、内部 vSwitch と `WinNAT` という名前の Windows コンポーネントを使用する、既定の NAT ネットワーク 'nat' が作成されます。 PowerShell または Hyper-v マネージャーを使用して作成された既存の外部 vSwitches がホスト上に存在する場合、これらの仮想スイッチは、*透過的*なネットワークドライバーを使用して Docker でも使用でき、コマンドを実行すると表示され ``docker network ls`` ます。
 
-![テキスト](media/docker-network-ls.png)
+![text](media/docker-network-ls.png)
 
 - **内部**vSwitch は、コンテナーホスト上のネットワークアダプターに直接接続されていないものです。
 - **外部**vSwitch は、コンテナーホスト上のネットワークアダプターに直接接続されている vSwitch です。
 
-![テキスト](media/get-vmswitch.png)
+![text](media/get-vmswitch.png)
 
 'nat' ネットワークとは、Windows で実行されているコンテナーの既定のネットワークです。 特定のネットワーク構成を実装するフラグや引数を指定せずに Windows で実行されているすべてのコンテナーは、既定の 'nat' ネットワークに接続され、'nat' ネットワークの内部プレフィックス IP 範囲から自動的に IP アドレスが割り当てられます。 'nat' 用に使用される既定の内部 IP プレフィックスは、172.16.0.0/16 です。
 
@@ -60,7 +58,7 @@ ms.locfileid: "85192629"
     - これには、負荷分散、ACL、カプセル化などが含まれます。
     - [ここで](https://docs.microsoft.com/windows-server/networking/technologies/hcn/hcn-top)公開されている HNS api とスキーマについては、こちらを参照してください
 
-![テキスト](media/HNS-Management-Stack.png)
+![text](media/HNS-Management-Stack.png)
 
 ## <a name="unsupported-features-and-network-options"></a>サポートされていない機能とネットワーク オプション
 
@@ -72,7 +70,7 @@ ms.locfileid: "85192629"
 - [ホストモード](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/)ネットワーク
 - 透過的なネットワークドライバーを使用した、仮想化された Azure インフラストラクチャ上のネットワーク。
 
-| コマンド        | サポートされていないオプション   |
+| command        | サポートされていないオプション   |
 |---------------|:--------------------:|
 | ``docker run``|   ``--ip6``, ``--dns-option`` |
 | ``docker network create``| ``--aux-address``, ``--internal``, ``--ip-range``, ``--ipam-driver``, ``--ipam-opt``, ``--ipv6``, ``--opt encrypted`` |

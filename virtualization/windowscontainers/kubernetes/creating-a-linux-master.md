@@ -4,15 +4,14 @@ author: daschott
 ms.author: daschott
 ms.date: 02/09/2018
 ms.topic: how-to
-ms.prod: containers
 description: Kubernetes クラスターマスターを作成しています。
 keywords: kubernetes、1.14、master、linux
-ms.openlocfilehash: a46c8e996162891cc596946d8601bcb590b2b8eb
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 383163f29ab439ddd817640fca7203269810dd51
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192389"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985086"
 ---
 # <a name="creating-a-kubernetes-master"></a>Kubernetes マスターの作成 #
 > [!NOTE]
@@ -78,7 +77,7 @@ kubeadm init --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12
 
 これには数分かかることがあります。 完了すると、マスターが初期化されたことを確認する次のような画面が表示されます。
 
-![テキスト](media/kubeadm-init.png)
+![text](media/kubeadm-init.png)
 
 > [!tip]
 > この kubeadm join コマンドを書き留めておきます。 長さ kubeadm トークンの有効期限が切れると、を使用して `kubeadm token create --print-join-command` 新しいトークンを作成できます。
@@ -124,7 +123,7 @@ kubectl patch ds/kube-proxy --patch "$(cat node-selector-patch.yml)" -n=kube-sys
 kubectl get ds -n kube-system
 ```
 
-![テキスト](media/kube-proxy-ds.png)
+![text](media/kube-proxy-ds.png)
 
 ### <a name="collect-cluster-information"></a>クラスター情報の収集 ###
 将来のノードをマスターに正常に参加させるには、次の情報を記録しておく必要があります。
@@ -151,7 +150,7 @@ kubectl get ds -n kube-system
 > [!tip]
 > Kubeadm ではネットワークがセットアップされないため、DNS ポッドがまたは状態のままになる場合があり `ContainerCreating` `Pending` ます。 `Running`[ネットワークソリューションを選択](./network-topologies.md)した後で、状態に切り替わります。
 
-## <a name="next-steps"></a>次の手順 ##
+## <a name="next-steps"></a>次のステップ ##
 このセクションでは、kubeadm を使用して Kubernetes マスターを設定する方法について説明しました。 これで、手順3の準備ができました。
 
 > [!div class="nextstepaction"]

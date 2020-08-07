@@ -4,16 +4,15 @@ author: daschott
 ms.author: daschott
 ms.date: 02/12/2019
 ms.topic: how-to
-ms.prod: containers
 description: Kubernetes コンポーネントを Windows サービスとして実行する方法について説明します。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5c18
-ms.openlocfilehash: 470538ad796773252c08c7295c5086d0002a55ce
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: a4f29626ce51714e9313d56cc6558677506e75e5
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192489"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985276"
 ---
 # <a name="kubernetes-components-as-windows-services"></a>Windows サービスとしての Kubernetes コンポーネント
 
@@ -37,7 +36,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-ManagementIP`        |
-|既定値    | n.A.        |
+|Default value    | n.A.        |
 
 
 # <a name="networkmode"></a>[NetworkMode](#tab/NetworkMode)
@@ -49,7 +48,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-NetworkMode`        |
-|既定値    | `l2bridge`        |
+|Default value    | `l2bridge`        |
 
 
 # <a name="clustercidr"></a>[ClusterCIDR](#tab/ClusterCIDR)
@@ -58,7 +57,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-ClusterCIDR`        |
-|既定値    | `10.244.0.0/16`        |
+|Default value    | `10.244.0.0/16`        |
 
 
 # <a name="kubednsserviceip"></a>[KubeDnsServiceIP](#tab/KubeDnsServiceIP)
@@ -67,7 +66,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-KubeDnsServiceIP`        |
-|既定値    | `10.96.0.10`        |
+|Default value    | `10.96.0.10`        |
 
 
 # <a name="logdir"></a>[LogDir](#tab/LogDir)
@@ -76,7 +75,7 @@ Kubelet および kube ログがそれぞれの出力ファイルにリダイレ
 |  |  |
 |---------|---------|
 |パラメーター     | `-LogDir`        |
-|既定値    | `C:\k`        |
+|Default value    | `C:\k`        |
 
 ---
 

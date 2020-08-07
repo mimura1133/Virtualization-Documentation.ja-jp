@@ -4,16 +4,15 @@ author: daschott
 ms.author: daschott
 ms.date: 11/02/2018
 ms.topic: how-to
-ms.prod: containers
 description: Windows ノードを Kubernetes クラスターに追加する (v 1.14)。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: f808428547a0134e6fea2d9165a4b5cee35b6cfb
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 3f37a3e19800d7121ac65b12efeb0f14a287140b
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192649"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985306"
 ---
 # <a name="joining-windows-server-nodes-to-a-cluster"></a>クラスターへの Windows Server ノードの参加 #
 [Kubernetes マスターノードを設定](./creating-a-linux-master.md)し、目的の[ネットワークソリューションを選択](./network-topologies.md)したら、Windows Server ノードに参加してクラスターを形成することができます。 これを行うには、参加する前に[Windows ノードの準備を](#preparing-a-windows-node)行う必要があります。
@@ -39,7 +38,7 @@ Restart-Computer -Force
 
 再起動後に、次のエラーが表示されます。
 
-![テキスト](media/docker-svc-error.png)
+![text](media/docker-svc-error.png)
 
 次に、docker サービスを手動で開始します。
 
@@ -80,7 +79,7 @@ docker run microsoft/nanoserver:latest
 
 次のような結果が表示されます。
 
-![テキスト](./media/docker-run-sample.png)
+![text](./media/docker-run-sample.png)
 
 > [!tip]
 > コンテナーを実行できない場合は、「コンテナー[ホストのバージョンとコンテナーイメージの一致」を](https://docs.microsoft.com/virtualization/windowscontainers/deploy-containers/version-compatibility#matching-container-host-version-with-container-image-versions)参照してください。
@@ -162,7 +161,7 @@ wget https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/flannel/s
 
 [Windows ノードを準備](#preparing-a-windows-node)し、ディレクトリが次のようになっていると仮定すると、 `c:\k` ノードに参加することができます。
 
-![テキスト](./media/flannel-directory.png)
+![text](./media/flannel-directory.png)
 
 #### <a name="join-node"></a>ノードの結合 ####
 Windows ノードに参加するプロセスを簡略化するには、1つの windows スクリプトを実行して、、、を起動し、ノードに参加させる必要があり `kubelet` `kube-proxy` `flanneld` ます。
@@ -180,7 +179,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-ManagementIP`        |
-|既定値    | n.A. **必須**        |
+|Default value    | n.A. **必須**        |
 
 # <a name="networkmode"></a>[NetworkMode](#tab/NetworkMode)
 ネットワーク `l2bridge` ソリューションとして選択されたネットワークモード (flannel ホスト gw) または `overlay` (flannel vxlan)。 [network solution](./network-topologies.md)
@@ -191,7 +190,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-NetworkMode`        |
-|既定値    | `l2bridge`        |
+|Default value    | `l2bridge`        |
 
 
 # <a name="clustercidr"></a>[ClusterCIDR](#tab/ClusterCIDR)
@@ -200,7 +199,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-ClusterCIDR`        |
-|既定値    | `10.244.0.0/16`        |
+|Default value    | `10.244.0.0/16`        |
 
 
 # <a name="servicecidr"></a>[Servicが Dr](#tab/ServiceCIDR)
@@ -209,7 +208,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-ServiceCIDR`        |
-|既定値    | `10.96.0.0/12`        |
+|Default value    | `10.96.0.0/12`        |
 
 
 # <a name="kubednsserviceip"></a>[KubeDnsServiceIP](#tab/KubeDnsServiceIP)
@@ -218,7 +217,7 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 |  |  |
 |---------|---------|
 |パラメーター     | `-KubeDnsServiceIP`        |
-|既定値    | `10.96.0.10`        |
+|Default value    | `10.96.0.10`        |
 
 
 # <a name="interfacename"></a>[InterfaceName](#tab/InterfaceName)
@@ -227,7 +226,7 @@ Windows ホストのネットワークインターフェイスの名前。 こ�
 |  |  |
 |---------|---------|
 |パラメーター     | `-InterfaceName`        |
-|既定値    | `Ethernet`        |
+|Default value    | `Ethernet`        |
 
 
 # <a name="logdir"></a>[LogDir](#tab/LogDir)
@@ -236,7 +235,7 @@ Kubelet および kube ログがそれぞれの出力ファイルにリダイレ
 |  |  |
 |---------|---------|
 |パラメーター     | `-LogDir`        |
-|既定値    | `C:\k`        |
+|Default value    | `C:\k`        |
 
 
 ---
@@ -259,7 +258,7 @@ Kubelet および kube ログがそれぞれの出力ファイルにリダイレ
 
 新しいノードがによって "Ready" と表示されて `kubectl get nodes` おり、kubelet + kube が実行されていて、アップストリーム ToR ルーターが構成されている場合は、次の手順に進むことができます。
 
-## <a name="next-steps"></a>次の手順 ##
+## <a name="next-steps"></a>次のステップ ##
 このセクションでは、Windows ワーカーを Kubernetes クラスターに参加させる方法について説明します。 これで、手順5の準備ができました。
 
 > [!div class="nextstepaction"]

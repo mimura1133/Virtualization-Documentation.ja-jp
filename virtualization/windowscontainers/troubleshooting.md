@@ -5,15 +5,13 @@ keywords: docker, コンテナー, トラブルシューティング, ログ
 author: PatrickLang
 ms.date: 12/19/2016
 ms.topic: article
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: ebd79cd3-5fdd-458d-8dc8-fc96408958b5
-ms.openlocfilehash: 752df5de208887b149460a204bbb6ff74393e809
-ms.sourcegitcommit: b140ac14124e4bee3c7f31a7f8274d4a0ccb2dda
+ms.openlocfilehash: b408582df4aad340a575029d6f7bb8a997ffadbf
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80929977"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984706"
 ---
 # <a name="troubleshooting"></a>トラブルシューティング
 
@@ -30,14 +28,14 @@ Invoke-WebRequest https://aka.ms/Debug-ContainerHost.ps1 -UseBasicParsing | Invo
 ### <a name="finding-logs"></a>ログを見つける
 Windows コンテナーの管理には、複数のサービスが使用されています。 次の各セクションで、ログの場所をサービス別に示します。
 
-## <a name="docker-container-logs"></a>Docker コンテナーログ 
-`docker logs` コマンドは、Linux アプリケーションの標準のアプリケーションログの保存場所である STDOUT/STDERR からコンテナーのログをフェッチします。 Windows アプリケーションは通常、STDOUT/STDERR には記録されません。代わりに、ETW、イベントログ、またはログファイルに記録されます。 
+## <a name="docker-container-logs"></a>Docker コンテナーログ
+コマンドは、 `docker logs` Linux アプリケーションの標準のアプリケーションログの保存場所である STDOUT/STDERR からコンテナーのログをフェッチします。 Windows アプリケーションは通常、STDOUT/STDERR には記録されません。代わりに、ETW、イベントログ、またはログファイルに記録されます。
 
-Microsoft がサポートしているオープンソースツールである[Log Monitor](https://github.com/microsoft/windows-container-tools/tree/master/LogMonitor)は、github で入手できるようになりました。 ログモニターは、Windows アプリケーションログを STDOUT/STDERR にブリッジします。 ログモニターは、構成ファイルを使用して構成されます。 
+Microsoft がサポートしているオープンソースツールである[Log Monitor](https://github.com/microsoft/windows-container-tools/tree/master/LogMonitor)は、github で入手できるようになりました。 ログモニターは、Windows アプリケーションログを STDOUT/STDERR にブリッジします。 ログモニターは、構成ファイルを使用して構成されます。
 
 ### <a name="log-monitor-usage"></a>ログモニターの使用状況
 
-LogMonitor .exe と LogMonitorConfig. json は、両方とも同じ LogMonitor ディレクトリに含める必要があります。 
+LogMonitor.exe と LogMonitorConfig.jsを同じ LogMonitor ディレクトリに含める必要があります。
 
 ログモニターは、シェルの使用パターンで使用できます。
 
@@ -52,13 +50,13 @@ CMD c:\windows\system32\ping.exe -n 20 localhost
 ENTRYPOINT C:\LogMonitor\LogMonitor.exe c:\windows\system32\ping.exe -n 20 localhost
 ```
 
-どちらの使用例も、ping.exe アプリケーションをラップします。 その他のアプリケーション ( [IIS など)。ServiceMonitor]( https://github.com/microsoft/IIS.ServiceMonitor)) は、同様の方法で Log Monitor と入れ子にすることができます。
+どちらの例でも、ping.exe アプリケーションをラップします。 その他のアプリケーション ( [IIS など)。ServiceMonitor]( https://github.com/microsoft/IIS.ServiceMonitor)) は、同様の方法で Log Monitor と入れ子にすることができます。
 
 ```
 COPY LogMonitor.exe LogMonitorConfig.json C:\LogMonitor\
 WORKDIR /LogMonitor
 SHELL ["C:\\LogMonitor\\LogMonitor.exe", "powershell.exe"]
- 
+
 # Start IIS Remote Management and monitor IIS
 ENTRYPOINT      Start-Service WMSVC; `
                     C:\ServiceMonitor.exe w3svc;
@@ -77,7 +75,7 @@ Docker エンジンは、ファイルではなく Windows 'アプリケーショ
 たとえば、過去 5 分間の Docker エンジン ログを古い順に表示できます。
 
 ```
-Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5) | Sort-Object Time 
+Get-EventLog -LogName Application -Source Docker -After (Get-Date).AddMinutes(-5) | Sort-Object Time
 ```
 
 また、別のツールで読み取り可能な CSV ファイル、またはスプレッドシートに簡単にパイプすることができます。
@@ -112,7 +110,7 @@ SERVICE_NAME: docker
 - " をそれぞれ \ でエスケープする
 - コマンド全体を " で囲む
 
-変更したら、`sc.exe config docker binpath=` の後に変更後の文字列を付けて実行します。 例 : 
+変更したら、`sc.exe config docker binpath=` の後に変更後の文字列を付けて実行します。 例:
 ```
 sc.exe config docker binpath= "\"C:\Program Files\Docker\dockerd.exe\" --run-service -D"
 ```
@@ -134,33 +132,33 @@ sc.exe stop docker
 
 ### <a name="obtaining-stack-dump"></a>スタックダンプの取得
 
-一般に、これは、Microsoft サポートまたは docker 開発者によって明示的に要求された場合にのみ有効です。 Docker がハングしているように見える状況を診断するために使用できます。 
+一般に、これは、Microsoft サポートまたは docker 開発者によって明示的に要求された場合にのみ有効です。 Docker がハングしているように見える状況を診断するために使用できます。
 
 [docker signal.exe](https://github.com/moby/docker-signal) をダウンロードします。
 
-使用法:
+用途:
 ```PowerShell
 docker-signal --pid=$((Get-Process dockerd).Id)
 ```
 
 出力ファイルは、docker が実行されているデータルートディレクトリにあります。 既定のディレクトリは `C:\ProgramData\Docker` です。 実際のディレクトリは、`docker info -f "{{.DockerRootDir}}"` を実行することによって確認できます。
 
-ファイルが `goroutine-stacks-<timestamp>.log`されます。
+ファイルはになり `goroutine-stacks-<timestamp>.log` ます。
 
-`goroutine-stacks*.log` には個人情報が含まれていないことに注意してください。
+に `goroutine-stacks*.log` は個人情報が含まれていないことに注意してください。
 
 
 ## <a name="host-compute-service"></a>ホスト コンピューティング サービス
-Docker エンジンは、Windows 固有のホスト コンピューティング サービスに依存します。 このサービスには、次のような独立したログがあります。 
+Docker エンジンは、Windows 固有のホスト コンピューティング サービスに依存します。 このサービスには、次のような独立したログがあります。
 - Microsoft-Windows-Hyper-V-Compute-Admin
 - Microsoft-Windows-Hyper-V-Compute-Operational
 
 これらはイベントビューアーに表示され、PowerShell を使用してクエリを行うこともできます。
 
-例 :
+例:
 ```PowerShell
 Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Admin
-Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Operational 
+Get-WinEvent -LogName Microsoft-Windows-Hyper-V-Compute-Operational
 ```
 
 ### <a name="capturing-hcs-analyticdebug-logs"></a>HCS 分析/デバッグ ログをキャプチャする
@@ -182,7 +180,7 @@ wevtutil.exe sl Microsoft-Windows-Hyper-V-Compute-Analytic /e:false /q:true
 
 ### <a name="capturing-hcs-verbose-tracing"></a>HCS 詳細トレースをキャプチャする
 
-一般的に、これらが使用されるのは、Microsoft サポートによって要求された場合のみです。 
+一般的に、これらが使用されるのは、Microsoft サポートによって要求された場合のみです。
 
 [HcsTraceProfile.wprp](https://github.com/MicrosoftDocs/Virtualization-Documentation/blob/master/windows-server-container-tools/wpr-profiles/HcsTraceProfile.wprp) をダウンロードします。
 

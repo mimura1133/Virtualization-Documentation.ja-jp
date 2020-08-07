@@ -4,16 +4,15 @@ author: daschott
 ms.author: daschott
 ms.date: 02/09/2018
 ms.topic: how-to
-ms.prod: containers
 description: Windows および Linux でサポートされているネットワークトポロジ。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: c322edb6a5ead34d7988f83d8cb8fba7c99cec0d
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 5eeee17dc6dfc87357d80c8b8fd7a29f05fc4c35
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192539"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985296"
 ---
 # <a name="network-solutions"></a>Network Solutions #
 
@@ -114,7 +113,7 @@ kubectl patch ds/kube-flannel-ds-amd64 --patch "$(cat node-selector-patch.yml)" 
 kubectl get pods --all-namespaces
 ```
 
-![テキスト](media/kube-master.png)
+![text](media/kube-master.png)
 
 Flannel DaemonSet にも NodeSelector が適用されている必要があり `beta.kubernetes.io/os=linux` ます。
 
@@ -122,7 +121,7 @@ Flannel DaemonSet にも NodeSelector が適用されている必要があり `b
 kubectl get ds -n kube-system
 ```
 
-![テキスト](media/kube-daemonset.png)
+![text](media/kube-daemonset.png)
 
 > [!tip]
 > 残りの flannel-* デーモンセットでは、そのプロセッサアーキテクチャに一致するノードがない場合にはスケジュールされないため、これらは無視または削除できます。
@@ -190,7 +189,7 @@ kubectl patch ds/kube-flannel-ds-amd64 --patch "$(cat node-selector-patch.yml)" 
 kubectl get pods --all-namespaces
 ```
 
-![テキスト](media/kube-master.png)
+![text](media/kube-master.png)
 
 Flannel DaemonSet にも NodeSelector が適用されている必要があります。
 
@@ -198,7 +197,7 @@ Flannel DaemonSet にも NodeSelector が適用されている必要がありま
 kubectl get ds -n kube-system
 ```
 
-![テキスト](media/kube-daemonset.png)
+![text](media/kube-daemonset.png)
 
 > [!tip]
 > 残りの flannel-* デーモンセットでは、そのプロセッサアーキテクチャに一致するノードがない場合にはスケジュールされないため、これらは無視または削除できます。
@@ -214,7 +213,7 @@ kubectl get ds -n kube-system
 ToR スイッチの構成は、実際のノードの外部で行われます。 詳細については、公式の[Kubernetes ドキュメント](https://kubernetes.io/docs/getting-started-guides/windows/#upstream-l3-routing-topology)を参照してください。
 
 
-## <a name="next-steps"></a>次の手順 ##
+## <a name="next-steps"></a>次のステップ ##
 このセクションでは、ネットワークソリューションを選択して構成する方法について説明します。 これで、手順4の準備ができました。
 
 > [!div class="nextstepaction"]

@@ -3,17 +3,16 @@ title: Windows で使用する Kubernetes
 author: gkudra-msft
 ms.author: gekudray
 ms.date: 02/09/2018
-ms.prod: containers
 ms.topic: overview
 description: Windows ノードを Kubernetes クラスターに追加する (v 1.14)。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 43525b86e00ad3d855f98394aa96ffe987fb51d6
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 56ab8f662df9a9d01a67022cadcf5b37c45ce2f8
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192329"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985326"
 ---
 # <a name="kubernetes-on-windows"></a>Windows で使用する Kubernetes
 
@@ -58,7 +57,7 @@ ms.locfileid: "85192329"
 > * [サンプル Kubernetes リソース](./deploying-resources.md)をデプロイしました。
 > * [一般的な問題とよくある誤り](./common-problems.md)を理解する。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このセクションでは、現在、Windows で Kubernetes を正常に展開するために必要な前提条件 & 重要な前提条件について説明しました。 Kubernetes マスターのセットアップ方法については、「」を参照してください。
 

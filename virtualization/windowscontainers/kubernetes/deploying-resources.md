@@ -4,16 +4,15 @@ author: daschott
 ms.author: daschott
 ms.date: 11/02/2018
 ms.topic: how-to
-ms.prod: containers
 description: 混合 OS Kubernetes クラスターに Kubernetes resoureces をデプロイします。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 13f2168bc2e731b65768a73bbb04ffe9363ded59
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: a342a03153564b2f76af45a9b792b58ae8afc18c
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192339"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985336"
 ---
 # <a name="deploying-kubernetes-resources"></a>Kubernetes リソースのデプロイ #
 Kubernetes クラスターが少なくとも1つのマスターと1ワーカーで構成されている場合は、Kubernetes リソースをデプロイすることができます。
@@ -55,7 +54,7 @@ watch kubectl get pods -o wide
 > [!Note]
 > Windows*コンテナーホスト*は、スケジュールされているサービスからサービス IP にアクセスすることはでき**ません**。 これは、今後のバージョンの Windows Server で改善されることがわかっている[プラットフォームの制限](./common-problems.md#my-windows-node-cannot-access-my-services-using-the-service-ip)です。 ただし、Windows*ポッド***は**サービス IP にアクセスできます。
 
-## <a name="next-steps"></a>次の手順 ##
+## <a name="next-steps"></a>次のステップ ##
 このセクションでは、Windows ノードで Kubernetes リソースをスケジュールする方法について説明します。 これでガイドは終わりです。 問題が発生した場合は、「トラブルシューティング」セクションを参照してください。
 
 > [!div class="nextstepaction"]

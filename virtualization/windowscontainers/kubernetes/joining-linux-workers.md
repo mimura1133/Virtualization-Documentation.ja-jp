@@ -4,16 +4,15 @@ author: daschott
 ms.author: daschott
 ms.date: 02/09/2018
 ms.topic: how-to
-ms.prod: containers
 description: Linux ノードを Kubernetes クラスターに追加する (v 1.14)。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 88ad448796702b3cebe71bb9d0189ea86f72635e
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: aee0b6e2ad218ca7c64bbbd1ca87b00a5af6c436
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192779"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985316"
 ---
 # <a name="joining-linux-nodes-to-a-cluster"></a>クラスターへの Linux ノードの参加
 
@@ -109,9 +108,9 @@ kubeadm join <Master_IP>:6443 --token <some_token> --discovery-token-ca-cert-has
 
 成功した場合は、次のような出力が表示されます。
 
-![テキスト](./media/node-join.png)
+![text](./media/node-join.png)
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
 このセクションでは、Linux ワーカーを Kubernetes クラスターに参加させる方法について説明します。 これで、手順6の準備ができました。
 > [!div class="nextstepaction"]
