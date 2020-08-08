@@ -5,15 +5,14 @@ metadata:
   title: Windows のコンテナーに関するドキュメント
   description: Windows で実行されているコンテナーに関するドキュメントです。
   ms.topic: landing-page
-  ms.prod: windows-containers
   author: cwilhit
   ms.date: 07/06/2020
-  ms.openlocfilehash: a1d573e1647f6a924d0933b172217d78d373d47c
-  ms.sourcegitcommit: ff0e60f4b34f6cc88f81ef2331e4b0575deb0171
+  ms.openlocfilehash: 89aaf7c237b3e860cd099027779f185e931d1671
+  ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 08/05/2020
-  ms.locfileid: "87812432"
+  ms.lasthandoff: 08/07/2020
+  ms.locfileid: "87985066"
 landingContent:
 - title: おすすめコンテンツ
   linkLists:
