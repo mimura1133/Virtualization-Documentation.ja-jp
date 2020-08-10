@@ -6,14 +6,12 @@ author: Heidilohr
 ms.author: helohr
 ms.date: 05/22/2019
 ms.topic: overview
-ms.prod: windows-containers
-ms.service: windows-containers
-ms.openlocfilehash: a2a1f89d7a62479dfae073c7f28fa4a86c693597
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 85f533d065e647083c916bf26fa4ba601579c02b
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192879"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984846"
 ---
 # <a name="about-docker"></a>Docker について
 

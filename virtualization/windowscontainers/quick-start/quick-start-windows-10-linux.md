@@ -5,15 +5,13 @@ keywords: Docker、コンテナー、LCOW
 author: taylorb-microsoft
 ms.date: 08/16/2019
 ms.topic: tutorial
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: df02dada3e5cf759f003999b38270dd1bf3131fe
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: b94f71949ad2e6c7d0164e3afdfc479fde4262b8
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192189"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984736"
 ---
 # <a name="linux-containers-on-windows-10"></a>Windows 10 上の Linux コンテナー
 

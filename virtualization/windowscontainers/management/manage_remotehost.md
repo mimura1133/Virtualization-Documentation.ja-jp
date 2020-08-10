@@ -5,15 +5,13 @@ keywords: Docker, コンテナー
 author: taylorb-microsoft
 ms.date: 02/14/2017
 ms.topic: how-to
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 0cc1b621-1a92-4512-8716-956d7a8fe495
-ms.openlocfilehash: 8739b257dbd5f0681d990e5dc47235325740f849
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: b5e045d4d925bd154b0d82cc711a29866e66121e
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192379"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984646"
 ---
 # <a name="remote-management-of-a-windows-docker-host"></a>Windows Docker ホストのリモート管理
 

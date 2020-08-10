@@ -6,14 +6,13 @@ author: taylorb-microsoft
 ms.author: taylorb
 ms.date: 10/22/2019
 ms.topic: deployment-article
-ms.prod: windows-containers
 ms.assetid: 3c3d4c69-503d-40e8-973b-ecc4e1f523ed
-ms.openlocfilehash: 74f501e5efab3a93e60c9d4797464cea283cdc0b
-ms.sourcegitcommit: 1ca9d7562a877c47f227f1a8e6583cb024909749
+ms.openlocfilehash: 14147ac71b5c10b3d633b2ccf205fe66489e417d
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74910502"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985076"
 ---
 # <a name="windows-container-requirements"></a>Windows コンテナーの要件
 

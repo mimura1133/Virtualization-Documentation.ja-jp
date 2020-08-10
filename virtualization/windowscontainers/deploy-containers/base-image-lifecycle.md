@@ -6,14 +6,12 @@ author: Heidilohr
 ms.author: helohr
 ms.date: 05/12/2020
 ms.topic: reference
-ms.prod: windows-containers
-ms.service: windows-containers
-ms.openlocfilehash: b3c519ef3ed93a0c8e20f5b927c34f70cd1677f8
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 931810ce871dbcbe0c2cd956f4f6325584693af2
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192079"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985116"
 ---
 # <a name="base-image-servicing-lifecycles"></a>基本イメージのサービス ライフサイクル
 

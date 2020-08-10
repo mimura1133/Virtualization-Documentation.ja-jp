@@ -5,15 +5,13 @@ keywords: Docker, コンテナー
 author: cwilhit
 ms.date: 05/03/2019
 ms.topic: tutorial
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: bb2848ca-683e-4361-a750-0d1d14ec8031
-ms.openlocfilehash: 25297432a3e515a130c9710431fd550f2efd8226
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 1d6858a4aee8c968ad6b1f27ffad97a7b454bcc3
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192359"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984916"
 ---
 # <a name="optimize-windows-dockerfiles"></a>Windows Dockerfile を最適化する
 

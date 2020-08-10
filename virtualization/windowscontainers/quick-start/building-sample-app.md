@@ -6,14 +6,12 @@ author: cwilhit
 ms.author: crwilhit
 ms.date: 11/12/2019
 ms.topic: quickstart
-ms.prod: windows-containers
-ms.service: windows-containers
-ms.openlocfilehash: 79de3f520e6d22c338fc95473200286b77cb4467
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 956c90b5975f7b290395953fed04a3ed99bf6960
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192519"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984906"
 ---
 # <a name="containerize-a-net-core-app"></a>.NET Core アプリをコンテナー化する
 

@@ -5,15 +5,13 @@ keywords: docker、コンテナー、active directory、gmsa、アプリ、ア�
 author: rpsqrd
 ms.date: 09/10/2019
 ms.topic: how-to
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 0c082e4b25bf6de53b5e2c31696bc74fe794fa92
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: fa14f2fa953373f8dfea74f822b025be0910fd54
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192889"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985266"
 ---
 # <a name="configure-your-app-to-use-a-gmsa"></a>gMSA を使用するようにアプリを構成する
 

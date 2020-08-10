@@ -6,14 +6,12 @@ author: Heidilohr
 ms.author: helohr
 ms.date: 05/22/2019
 ms.topic: overview
-ms.prod: windows-containers
-ms.service: windows-containers
-ms.openlocfilehash: ff9b782814d3efe9c5fc6b537cf79280e784be11
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 1b021c76e1c6c046336940abedf9f3496a5e5bc6
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192568"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985396"
 ---
 # <a name="windows-container-orchestration-overview"></a>Windows コンテナーのオーケストレーションの概要
 

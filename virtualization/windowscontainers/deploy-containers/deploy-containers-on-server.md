@@ -5,15 +5,13 @@ keywords: Docker, コンテナー
 author: taylorb-microsoft
 ms.date: 09/09/2019
 ms.topic: article
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: ba4eb594-0cdb-4148-81ac-a83b4bc337bc
-ms.openlocfilehash: 9899a2d76bfa1fe312e3bd983f60d09d77c272e9
-ms.sourcegitcommit: ac923217ee2f74f08df2b71c2a4c57b694f0d7c3
+ms.openlocfilehash: 9bc8071ed5a6a5c8aff385f66299d903ee821070
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78853913"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985096"
 ---
 # <a name="container-host-deployment-windows-server"></a>コンテナー ホストの展開:Windows Server
 

@@ -5,15 +5,13 @@ keywords: Docker, コンテナー
 author: PatrickLang
 ms.date: 05/03/2019
 ms.topic: overview
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 6885400c-5623-4cde-8012-f6a00019fafa
-ms.openlocfilehash: db794a0151b6554bd4f8a4a4e494bfab034d2da0
-ms.sourcegitcommit: c585bd8b70d0681d8deaf5fefd3f5f93c1ec4316
+ms.openlocfilehash: efec116189d34399567f7520fc67a838e8756116
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/01/2020
-ms.locfileid: "85613434"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984925"
 ---
 # <a name="docker-engine-on-windows"></a>Windows 上の Docker エンジン
 

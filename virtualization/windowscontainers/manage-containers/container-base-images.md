@@ -5,15 +5,13 @@ keywords: docker, コンテナー, ハッシュ
 author: patricklang
 ms.date: 09/25/2019
 ms.topic: conceptual
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: 6fc7f2b01af84004fb87e708b0f792c06cb3a569
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 1a2b364ca61f9a53b0c26f7a39f3a10d6084997c
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192309"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985286"
 ---
 # <a name="container-base-images"></a>コンテナーの基本イメージ
 

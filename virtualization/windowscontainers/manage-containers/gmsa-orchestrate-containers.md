@@ -5,15 +5,13 @@ keywords: Docker, コンテナー, Active Directory, gMSA, オーケストレー
 author: rpsqrd
 ms.date: 09/10/2019
 ms.topic: how-to
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 9e06ad3a-0783-476b-b85c-faff7234809c
-ms.openlocfilehash: 6c659a124a95393c173b15d9423491349ebe1462
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 00bc05d3d96407d19b96620b3b26059f4ac9e313
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192859"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87985256"
 ---
 # <a name="orchestrate-containers-with-a-gmsa"></a>gMSA を使用してコンテナーを調整する
 

@@ -5,15 +5,13 @@ keywords: Docker, コンテナー
 author: PatrickLang
 ms.date: 10/25/2019
 ms.topic: overview
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 25de368c-5a10-40a4-b4aa-ac8c9a9ca022
-ms.openlocfilehash: cd0b4e24cddb434d0a4051888afa3ae3a4a8e096
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: a1762a747a1a1f59681ebcbf5fb3376e869b0b9f
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192869"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984626"
 ---
 # <a name="frequently-asked-questions-about-containers"></a>コンテナーについてよく寄せられる質問
 
@@ -37,7 +35,7 @@ Windows コンテナー イメージ [EULA](../images-eula.md) では、有効�
 
 |ホスト OS                                                         |プロセス分離コンテナーの制限                   |Hyper-v 分離コンテナーの制限                   |
 |----------------------------------------------------------------|---------------------------------------------------|---------------------------------------------------|
-|Windows Server Standard                                         |無制限                                          |2 で保護されたプロセスとして起動されました                                                  |
+|Windows Server Standard                                         |無制限                                          |2                                                  |
 |Windows Server Datacenter                                       |無制限                                          |無制限                                          |
 |Windows 10 Pro および Enterprise                                   |無制限 *(テストまたは開発目的のみ)*|無制限 *(テストまたは開発目的のみ)*|
 |Windows 10 IoT Core および Enterprise                             |無制限*                                         |無制限*                                          |

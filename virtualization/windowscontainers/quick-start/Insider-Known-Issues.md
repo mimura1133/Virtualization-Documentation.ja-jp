@@ -3,14 +3,12 @@ title: Insider ビルドに関する既知の問題
 description: Insider ビルドに関する既知の問題。
 keywords: Docker, コンテナー
 ms.topic: quickstart
-ms.prod: windows-containers
-ms.service: windows-containers
-ms.openlocfilehash: 0a7b5a2c7f430babbc7a94f63b150f74b58c6843
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 13272f38af686533725693869553684abd135112
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192759"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984696"
 ---
 # <a name="known-issues-for-insider-builds"></a>Insider ビルドに関する既知の問題
 

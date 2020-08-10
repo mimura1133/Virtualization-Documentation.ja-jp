@@ -5,15 +5,13 @@ keywords: メタデータ、コンテナー
 author: PatrickLang
 ms.date: 05/22/2019
 ms.topic: overview
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: 4b1a13bf470694825280a26df2524a428a24a6e5
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 383d3a15f7849e8b8122919bd27e697425107d1a
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192909"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984876"
 ---
 # <a name="about-building-container-ecosystems"></a>コンテナー エコシステムの構築について
 

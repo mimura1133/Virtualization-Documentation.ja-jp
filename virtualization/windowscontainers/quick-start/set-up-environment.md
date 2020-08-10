@@ -6,15 +6,13 @@ author: cwilhit
 ms.author: crwilhit
 ms.date: 11/12/2019
 ms.topic: quickstart
-ms.prod: windows-containers
-ms.service: windows-containers
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 52cc32171ffdaf3e27476923ebdda3bc226ce4c9
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: 1f65b74f423802c5bbcb818cd6f226df9342b787
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192609"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984726"
 ---
 # <a name="get-started-prep-windows-for-containers"></a>作業の開始:コンテナー用の Windows を準備する
 

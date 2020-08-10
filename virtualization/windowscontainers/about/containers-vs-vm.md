@@ -6,14 +6,12 @@ author: jasongerend
 ms.author: jgerend
 ms.date: 10/21/2019
 ms.topic: overview
-ms.prod: windows-containers
-ms.service: windows-containers
-ms.openlocfilehash: 0262fc1c2fe3e050455cad9420cc4f70d0530fa2
-ms.sourcegitcommit: 1bafb5de322763e7f8b0e840b96774e813c39749
+ms.openlocfilehash: d8f3efe28ec0303fed1cfaa8da116c14141fb21d
+ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 06/22/2020
-ms.locfileid: "85192729"
+ms.lasthandoff: 08/07/2020
+ms.locfileid: "87984866"
 ---
 # <a name="containers-vs-virtual-machines"></a>コンテナーと仮想マシン
 
