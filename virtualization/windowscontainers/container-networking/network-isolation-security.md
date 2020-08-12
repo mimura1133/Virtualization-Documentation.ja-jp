@@ -1,17 +1,17 @@
 ---
-title: Windows コンテナー ネットワーク
+title: ネットワーク分離とセキュリティ
 description: Windows コンテナー内のネットワーク分離とセキュリティ。
 keywords: Docker, コンテナー
 author: jmesser81
 ms.date: 03/27/2018
 ms.topic: conceptual
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 5c60406c0cc839a84e25ff12abf53439c6a208cb
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: e629666a36c3e742a970a60adcf13c526c710eec
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985386"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161771"
 ---
 # <a name="network-isolation-and-security"></a>ネットワーク分離とセキュリティ
 
@@ -25,7 +25,7 @@ ms.locfileid: "87985386"
 Get-NetCompartment
 ```
 
-## <a name="network-security"></a>ネットワークのセキュリティ
+## <a name="network-security"></a>ネットワーク セキュリティ
 
 使用されているコンテナーとネットワーク ドライバーによっては、Windows ファイアウォールと [VFP](https://www.microsoft.com/research/project/azure-virtual-filtering-platform/) の組み合わせでポート ACL が適用されます。
 
@@ -63,8 +63,8 @@ Hyper-v の分離で実行されるコンテナーには、独自の分離され
 
 | ネットワークドライバー | Windows Server コンテナー | Hyper-V による分離  |
 | -------------- |-------------------------- | ------------------- |
-| 透明 | Windows ファイアウォール | x |
-| NAT | Windows ファイアウォール | x |
+| 透明 | Windows ファイアウォール | X |
+| NAT | Windows ファイアウォール | X |
 | L2Bridge | 両方 | VFP |
 | L2Tunnel | 両方 | VFP |
 | オーバーレイ  | 両方 | VFP |

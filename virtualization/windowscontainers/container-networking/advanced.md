@@ -1,17 +1,17 @@
 ---
-title: Windows コンテナー ネットワーク
+title: Windows の詳細ネットワークオプション
 description: Windows コンテナー用の高度なネットワーク。
 keywords: Docker, コンテナー
 author: jmesser81
 ms.date: 03/27/2018
 ms.topic: how-to
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: aed798cf7444cc8ec67aeb663693911ce20247c6
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 7b533a90587c0853be1fe93090d23b3c34fa2386
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985376"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161731"
 ---
 # <a name="advanced-network-options-in-windows"></a>Windows での高度なネットワーク オプション
 
@@ -97,9 +97,11 @@ C:\> docker network create -d transparent -o com.docker.network.windowsshim.dnss
 詳細については、[この記事](https://www.microsoft.com/research/project/azure-virtual-filtering-platform/)を参照してください。
 
 ## <a name="tips--insights"></a>ヒントとインサイト
+
 ここでは、Windows コンテナーのネットワークに関してコミュニティに寄せられたよくある質問をまとめた、便利なヒントと情報の一覧を示します。
 
 #### <a name="hns-requires-that-ipv6-is-enabled-on-container-host-machines"></a>HNS では、コンテナーのホスト コンピューターで IPv6 が有効になっている必要がある
+
 [KB4015217](https://support.microsoft.com/help/4015217/windows-10-update-kb4015217) でも説明されているように、HNSでは、Windows コンテナー ホストで IPv6 が有効になっている必要があります。 次のようなエラーが発生した場合は、ホスト コンピューターで IPv6 が無効になっている可能性があります。
 ```
 docker: Error response from daemon: container e15d99c06e312302f4d23747f2dfda4b11b92d488e8c5b53ab5e4331fd80636d encountered an error during CreateContainer: failure in a Windows system call: Element not found.

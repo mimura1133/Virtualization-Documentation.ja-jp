@@ -7,12 +7,12 @@ ms.topic: how-to
 description: Kubernetes コンポーネントを Windows サービスとして実行する方法について説明します。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5c18
-ms.openlocfilehash: a4f29626ce51714e9313d56cc6558677506e75e5
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: caf364045064744a6c3175047ab5bb77b34b742a
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985276"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161782"
 ---
 # <a name="kubernetes-components-as-windows-services"></a>Windows サービスとしての Kubernetes コンポーネント
 
@@ -21,7 +21,7 @@ flanneld.exe、kubelet.exe、kube-proxy.exe などのプロセスを Windows サ
 
 ## <a name="prerequisites"></a>前提条件
 1. [nssm.exe](https://nssm.cc/download)をディレクトリにダウンロードしました `c:\k`
-2. ノードをクラスターに参加させ、前のノードで[install.ps1](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/install.ps1)または[start.ps1](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/start.ps1)スクリプトを実行します。
+2. ノードをクラスターに参加させ、前のノードで [install.ps1](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/install.ps1) または [start.ps1](https://github.com/Microsoft/SDN/blob/master/Kubernetes/flannel/start.ps1) スクリプトを実行します。
 
 ## <a name="registering-windows-services"></a>Windows サービスの登録
 、、を[a sample script](https://github.com/Microsoft/SDN/tree/master/Kubernetes/flannel/register-svc.ps1)登録し `kubelet` `kube-proxy` `flanneld.exe` てバックグラウンドで Windows サービスとして実行する nssm.exe を使用するサンプルスクリプトを実行できます。
@@ -33,49 +33,41 @@ C:\k\register-svc.ps1 -NetworkMode <Network mode> -ManagementIP <Windows Node IP
 # <a name="managementip"></a>[ManagementIP](#tab/ManagementIP)
 Windows ノードに割り当てられた IP アドレス。 これは、を使用して見つけることができ `ipconfig` ます。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-ManagementIP`        |
-|Default value    | n.A.        |
+| パラメーター | 既定値 |
+|---|---|
+| `-ManagementIP` | n.A. |
 
 
 # <a name="networkmode"></a>[NetworkMode](#tab/NetworkMode)
 ネットワーク `l2bridge` ソリューションとして選択されたネットワークモード (flannel ホスト gw) または `overlay` (flannel vxlan)。 [network solution](./network-topologies.md)
 
 > [!Important]
-> `overlay`ネットワークモード (flannel vxlan) には、Kubernetes v 1.14 バイナリ以上が必要です。
+> `overlay` ネットワークモード (flannel vxlan) には、Kubernetes v 1.14 バイナリ以上が必要です。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-NetworkMode`        |
-|Default value    | `l2bridge`        |
-
+| パラメーター | 既定値 |
+|---|---|
+| `-NetworkMode` | `12bridge` |
 
 # <a name="clustercidr"></a>[ClusterCIDR](#tab/ClusterCIDR)
 [クラスターサブネットの範囲](./getting-started-kubernetes-windows.md#cluster-subnet-def)。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-ClusterCIDR`        |
-|Default value    | `10.244.0.0/16`        |
-
+| パラメーター | 既定値 |
+|---|---|
+| `-ClusterCIDR` | `10.244.0.0/16` |
 
 # <a name="kubednsserviceip"></a>[KubeDnsServiceIP](#tab/KubeDnsServiceIP)
-[KUBERNETES DNS サービス IP](./getting-started-kubernetes-windows.md#kube-dns-def)。
+[KUBERNETES DNS サービス IP](./getting-started-kubernetes-windows.md#plan-ip-addressing-for-your-cluster)。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-KubeDnsServiceIP`        |
-|Default value    | `10.96.0.10`        |
-
+| パラメーター | 既定値 |
+|---|---|
+| `-KubeDnsServiceIP` | `10.96.0.10` |
 
 # <a name="logdir"></a>[LogDir](#tab/LogDir)
 Kubelet および kube ログがそれぞれの出力ファイルにリダイレクトされるディレクトリ。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-LogDir`        |
-|Default value    | `C:\k`        |
+| パラメーター | 既定値 |
+|---|---|
+| `-LogDir` | `C:\k` |
 
 ---
 
@@ -84,7 +76,7 @@ Kubelet および kube ログがそれぞれの出力ファイルにリダイレ
 > 何か問題が発生した場合は、 [「トラブルシューティング」セクション](./common-problems.md#i-have-problems-running-kubernetes-processes-as-windows-services)を参照してください。
 
 ## <a name="manual-approach"></a>手動によるアプローチ
-上記の[参照スクリプト](#registering-windows-services)が機能しないようにするために、このセクションでは、これらのサービスを手動で登録するために使用できる*サンプルコマンド*をいくつか紹介します。
+上記の [参照スクリプト](#registering-windows-services) が機能しないようにするために、このセクションでは、これらのサービスを手動で登録するために使用できる *サンプルコマンド* をいくつか紹介します。
 
 > [!TIP]
 > を[Kubelet and kube-proxy can now run as Windows services](https://kubernetes.io/docs/getting-started-guides/windows/#kubelet-and-kube-proxy-can-now-run-as-windows-services) `kubelet` 介して `kube-proxy` ネイティブ Windows サービスとしてを構成および実行する方法の詳細については、「Kubelet and kube」を参照してください `sc` 。

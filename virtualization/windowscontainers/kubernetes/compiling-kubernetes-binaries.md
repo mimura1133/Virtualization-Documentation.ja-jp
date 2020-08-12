@@ -6,14 +6,15 @@ ms.date: 11/02/2018
 ms.topic: how-to
 description: ソースからの Kubernetes バイナリのコンパイルとクロスコンパイル
 keywords: kubernetes、1.12、linux、コンパイル
-ms.openlocfilehash: 3e8a5b593cbf02eb5a90a444b117c55b30562e7b
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 4b999613223c4d952c8d7186822d1a5cf95ae3dd
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985346"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161971"
 ---
-# <a name="compiling-kubernetes-binaries"></a>Kubernetes バイナリのコンパイル #
+# <a name="compiling-kubernetes-binaries"></a>Kubernetes バイナリのコンパイル
+
 Kubernetes のコンパイルには、有効な Go 環境が必要です。 このページでは、Linux バイナリをコンパイルし、Windows バイナリをクロスコンパイルするための複数の方法を確認します。
 > [!NOTE]
 > このページは完全に自発的であり、Kubernetes の開発者にのみ含まれており、最新の & 最大のソースコードを試してみることをお勧めします。
@@ -21,7 +22,8 @@ Kubernetes のコンパイルには、有効な Go 環境が必要です。 こ�
 > [!tip]
 > サブスクライブできる最新の開発に関する通知を受け取ることができ [@kubernetes-announce](https://groups.google.com/forum/#!forum/kubernetes-announce) ます。
 
-## <a name="installing-go"></a>Go のインストール ##
+## <a name="installing-go"></a>Go のインストール
+
 ここでは、わかりやすくするために、カスタムの一時的な場所に Go をインストールします。
 
 ```bash
@@ -34,20 +36,20 @@ export GOPATH="$HOME/gopath"
 export PATH="$GOROOT/bin:$PATH"
 ```
 
-> [!Note]
+> [!NOTE]
 > これらは、セッション用の環境変数を設定しています。 永続的な設定を行う場合は、`~/.profile` に `export` を追加します。
 
 パスが正しく設定されていることを確認するには、`go env` を実行します。 Kubernetes バイナリを構築するには、いくつかのオプションがあります。
 
-  - [ローカル](#build-locally)でビルドする。
+  - [ローカル](#building-locally)でビルドする。
   - [Vagrant](#build-with-vagrant) を使用してバイナリを生成する。
-  - Kubernetes プロジェクトの[コンテナー化された標準ビルド スクリプト](https://github.com/kubernetes/kubernetes/tree/master/build#key-scripts)を活用する。 これには、「[ローカルでビルドする](#build-locally)」の `make` までの手順に従い、リンクされた手順を使用します。
+  - Kubernetes プロジェクトの[コンテナー化された標準ビルド スクリプト](https://github.com/kubernetes/kubernetes/tree/master/build#key-scripts)を活用する。 これには、「[ローカルでビルドする](#building-locally)」の `make` までの手順に従い、リンクされた手順を使用します。
 
 Windows バイナリを各ノードにコピーするには、[WinSCP](https://winscp.net/eng/download.php) などのビジュアル ツールや、[pscp](https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html) などのコマンドライン ツールを使用して、`C:\k` ディレクトリに転送します。
 
+## <a name="building-locally"></a>ローカルでのビルド
 
-## <a name="building-locally"></a>ローカルでのビルド ##
-> [!Tip]
+> [!TIP]
 > "アクセス許可が拒否されました" というエラーが発生した場合は、次の手順に従って、最初に Linux をビルドすることで回避できます `kubelet` [`acs-engine`](https://github.com/Azure/acs-engine/blob/master/scripts/build-windows-k8s.sh#L176) 。
 >
 > _Kubernetes Windows ビルドシステムでは、バグのように見えますが、最初に、生成する Linux バイナリをビルドする必要があり `_output/bin/deepcopy-gen` ます。これを実行して Windows をビルドすると、空のが生成され `deepcopy-gen` ます。_
@@ -80,8 +82,8 @@ cp _output/local/bin/windows/amd64/kube*.exe ~/kube-win/
 
 Linux バイナリをビルドする手順は同じです。コマンドの `KUBE_BUILD_PLATFORMS=windows/amd64` プレフィックスを省略するだけです。 出力ディレクトリは `_output/.../linux/amd64` になります。
 
+## <a name="build-with-vagrant"></a>Vagrant によるビルド
 
-## <a name="build-with-vagrant"></a>Vagrant によるビルド ##
 Vagrant セットアップは[こちら](https://github.com/Microsoft/SDN/tree/master/Kubernetes/linux/vagrant)にあります。 これを使用して Vagrant VM を準備し、その中でこれらのコマンドを実行します。
 
 ```bash

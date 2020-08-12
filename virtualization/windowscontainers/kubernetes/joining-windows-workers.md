@@ -1,5 +1,5 @@
 ---
-title: Windows ノードの結合
+title: Windows ノードクラスターに参加しています
 author: daschott
 ms.author: daschott
 ms.date: 11/02/2018
@@ -7,21 +7,24 @@ ms.topic: how-to
 description: Windows ノードを Kubernetes クラスターに追加する (v 1.14)。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: 3f37a3e19800d7121ac65b12efeb0f14a287140b
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 8954e98eeadca648b3d48599a5174c28101a7ccc
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985306"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161901"
 ---
-# <a name="joining-windows-server-nodes-to-a-cluster"></a>クラスターへの Windows Server ノードの参加 #
+# <a name="joining-windows-server-nodes-to-a-cluster"></a>クラスターへの Windows Server ノードの参加
+
 [Kubernetes マスターノードを設定](./creating-a-linux-master.md)し、目的の[ネットワークソリューションを選択](./network-topologies.md)したら、Windows Server ノードに参加してクラスターを形成することができます。 これを行うには、参加する前に[Windows ノードの準備を](#preparing-a-windows-node)行う必要があります。
 
-## <a name="preparing-a-windows-node"></a>Windows のノードの準備 ##
+## <a name="preparing-a-windows-node"></a>Windows のノードの準備
+
 > [!NOTE]
 > Windows セクションでのすべてのコード スニペットは、_管理者特権の_ PowerShell で実行します。
 
-### <a name="install-docker-requires-reboot"></a>Docker のインストール (再起動が必要) ###
+### <a name="install-docker-requires-reboot"></a>Docker のインストール (再起動が必要)
+
 Kubernetes は[Docker](https://www.docker.com/)をコンテナーエンジンとして使用するため、Docker をインストールする必要があります。 [Docs の公式手順](../manage-docker/configure-docker-daemon.md#install-docker)または [Docker の手順](https://store.docker.com/editions/enterprise/docker-ee-server-windows)に従うことも、以下の手順を試すこともできます。
 
 ```powershell
@@ -38,7 +41,7 @@ Restart-Computer -Force
 
 再起動後に、次のエラーが表示されます。
 
-![text](media/docker-svc-error.png)
+!["接続中にエラーが発生しています" という svc エラーのスクリーンショット。](media/docker-svc-error.png)
 
 次に、docker サービスを手動で開始します。
 
@@ -46,8 +49,9 @@ Restart-Computer -Force
 Start-Service docker
 ```
 
-### <a name="create-the-pause-infrastructure-image"></a>"一時停止" (インフラストラクチャ) イメージを作成する ###
-> [!Important]
+### <a name="create-the-pause-infrastructure-image"></a>"一時停止" (インフラストラクチャ) イメージを作成する
+
+> [!IMPORTANT]
 > コンテナーイメージの競合に注意することが重要です。期待されるタグを持っていないと、 `docker pull` 互換性のないコンテナーイメージのが発生し、永続的な状態などの[デプロイの問題](./common-problems.md#when-deploying-docker-containers-keep-restarting)が発生する可能性があり `ContainerCreating` ます。
 
 `docker` のインストールが完了したため、Kubernetes インフラストラクチャ ポッドを準備するために Kubernetes で使用される "pause" イメージを準備する必要があります。 これには、次の3つの手順があります。
@@ -55,15 +59,16 @@ Start-Service docker
   2. microsoft/nanoserver: latest として[タグ付け](#tag-the-image)する
   3. [実行中](#run-the-container)
 
+#### <a name="pull-the-image"></a>イメージをプルする
 
-#### <a name="pull-the-image"></a>イメージをプルする ####
- 特定の Windows リリースのイメージを取得します。 たとえば、Windows Server 2019 を実行している場合は、次のようになります。
+特定の Windows リリースのイメージを取得します。 たとえば、Windows Server 2019 を実行している場合は、次のようになります。
 
- ```powershell
+```powershell
 docker pull mcr.microsoft.com/windows/nanoserver:1809
- ```
+```
 
-#### <a name="tag-the-image"></a>画像にタグを付ける ####
+#### <a name="tag-the-image"></a>画像にタグを付ける
+
 このガイドの後半で使用する Dockerfiles は、イメージタグを検索し `:latest` ます。 次のように、プルした nanoserver イメージにタグを付けます。
 
 ```powershell
@@ -176,10 +181,9 @@ cd c:\k
 # <a name="managementip"></a>[ManagementIP](#tab/ManagementIP)
 Windows ノードに割り当てられた IP アドレス。 これは、を使用して見つけることができ `ipconfig` ます。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-ManagementIP`        |
-|Default value    | n.A. **必須**        |
+| パラメーター | 既定値|
+|---|---|
+| `-ManagementIP` | n.A. **必須** |
 
 # <a name="networkmode"></a>[NetworkMode](#tab/NetworkMode)
 ネットワーク `l2bridge` ソリューションとして選択されたネットワークモード (flannel ホスト gw) または `overlay` (flannel vxlan)。 [network solution](./network-topologies.md)
@@ -187,56 +191,45 @@ Windows ノードに割り当てられた IP アドレス。 これは、を使�
 > [!Important]
 > `overlay`ネットワークモード (flannel vxlan) には、Kubernetes v 1.14 のバイナリ (またはそれ以上) と[KB4489899](https://support.microsoft.com/help/4489899)が必要です。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-NetworkMode`        |
-|Default value    | `l2bridge`        |
+| パラメーター | 既定値 |
+|---|---|
+| `-NetworkMode` | `12bridge` |
 
 
 # <a name="clustercidr"></a>[ClusterCIDR](#tab/ClusterCIDR)
 [クラスターサブネットの範囲](./getting-started-kubernetes-windows.md#cluster-subnet-def)。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-ClusterCIDR`        |
-|Default value    | `10.244.0.0/16`        |
-
+| パラメーター | 既定値 |
+|---|---|
+| `-ClusterCIDR` | `10.244.0.0/16` |
 
 # <a name="servicecidr"></a>[Servicが Dr](#tab/ServiceCIDR)
 [サービスサブネットの範囲](./getting-started-kubernetes-windows.md#service-subnet-def)。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-ServiceCIDR`        |
-|Default value    | `10.96.0.0/12`        |
-
+| パラメーター | 既定値 |
+|---|---|
+| `-ServiceCIDR` | `10.96.0.0/12` |
 
 # <a name="kubednsserviceip"></a>[KubeDnsServiceIP](#tab/KubeDnsServiceIP)
 [KUBERNETES DNS サービス IP](./getting-started-kubernetes-windows.md#plan-ip-addressing-for-your-cluster)。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-KubeDnsServiceIP`        |
-|Default value    | `10.96.0.10`        |
-
+| パラメーター | 既定値 |
+|---|---|
+| `-KubeDnsServiceIP` | `10.96.0.10` |
 
 # <a name="interfacename"></a>[InterfaceName](#tab/InterfaceName)
 Windows ホストのネットワークインターフェイスの名前。 これは、を使用して見つけることができ `ipconfig` ます。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-InterfaceName`        |
-|Default value    | `Ethernet`        |
-
+| パラメーター | 既定値 |
+|---|---|
+| `-InterfaceName` | `Ethernet` |
 
 # <a name="logdir"></a>[LogDir](#tab/LogDir)
 Kubelet および kube ログがそれぞれの出力ファイルにリダイレクトされるディレクトリ。
 
-|  |  |
-|---------|---------|
-|パラメーター     | `-LogDir`        |
-|Default value    | `C:\k`        |
-
+| パラメーター | 既定値 |
+|---|---|
+| `-LogDir` | `C:\k` |
 
 ---
 

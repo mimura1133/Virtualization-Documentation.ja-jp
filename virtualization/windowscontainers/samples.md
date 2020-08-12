@@ -6,20 +6,20 @@ author: cwilhit
 ms.date: 12/19/2016
 ms.topic: article
 ms.assetid: 5c6f6350-f8d6-4426-b53d-9fb09c2bf267
-ms.openlocfilehash: fd96865f903542418016b4f75216fd901b47fb57
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 087aecdae317a81338071def3046fb01511ca152
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985416"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161911"
 ---
 # <a name="windows-container-samples"></a>Windows コンテナーのサンプル
 
 これは、Windows チームおよびコミュニティのメンバーによって送信されたサンプルと例のコレクションです。  これらのサンプルは、"現状のまま"、保証なしで提供されています。  他のサンプルのご提供や、現在のセットの改善については、ご自由にお寄せください。
 
-# <a name="categories"></a>［カテゴリ］
+## <a name="categories"></a>Categories
 
-## <a name="application-frameworks"></a>アプリケーション フレームワーク
+### <a name="application-frameworks"></a>アプリケーション フレームワーク
 
 [aspnet](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/aspnet)
 
@@ -39,7 +39,7 @@ ms.locfileid: "87985416"
 
 [nginx](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/nginx)
 
-## <a name="programing-languages"></a>プログラミング言語
+### <a name="programing-languages"></a>プログラミング言語
 
 [dotnet35](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/dotnet35)
 
@@ -57,7 +57,7 @@ ms.locfileid: "87985416"
 
 [server-jre-8u51-windows-x64](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/server-jre-8u51-windows-x64)
 
-## <a name="databases"></a>データベース
+### <a name="databases"></a>データベース
 
 [mongodb](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/mongodb)
 
@@ -69,14 +69,14 @@ ms.locfileid: "87985416"
 
 sqlserver-express - [Docker Hub イメージ](https://hub.docker.com/r/microsoft/mssql-server-windows-express/)または [dockerfile](https://github.com/Microsoft/mssql-docker/blob/master/windows/mssql-server-windows-express/dockerfile)
 
-## <a name="infrastructure-and-ci-tools"></a>インフラストラクチャと CI ツール
+### <a name="infrastructure-and-ci-tools"></a>インフラストラクチャと CI ツール
 
 [PowerShellDSC_iis-10.0](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/PowerShellDSC_iis-10.0)
 
-## <a name="just-for-fun"></a>遊び
+### <a name="just-for-fun"></a>遊び
 
 [MineCraft](https://github.com/Microsoft/Virtualization-Documentation/tree/master/windows-container-samples/MineCraft)
 
-## <a name="other"></a>その他
+### <a name="other"></a>その他
 
 [DirectX](https://github.com/MicrosoftDocs/Virtualization-Documentation/tree/master/windows-container-samples/directx) (GPU アクセラレーションを含む)

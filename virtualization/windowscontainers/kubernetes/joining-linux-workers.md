@@ -1,5 +1,5 @@
 ---
-title: Linux ノードの結合
+title: Linux ノードクラスターに参加しています
 author: daschott
 ms.author: daschott
 ms.date: 02/09/2018
@@ -7,17 +7,18 @@ ms.topic: how-to
 description: Linux ノードを Kubernetes クラスターに追加する (v 1.14)。
 keywords: kubernetes、1.14、windows、はじめに
 ms.assetid: 3b05d2c2-4b9b-42b4-a61b-702df35f5b17
-ms.openlocfilehash: aee0b6e2ad218ca7c64bbbd1ca87b00a5af6c436
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: ababeda847badc2058739c8cd2de36d7f46581d8
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985316"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161891"
 ---
 # <a name="joining-linux-nodes-to-a-cluster"></a>クラスターへの Linux ノードの参加
 
 [Kubernetes マスターノードを設定](creating-a-linux-master.md)し、目的の[ネットワークソリューションを選択](network-topologies.md)したら、Linux ノードをクラスターに参加させることができます。 これを行うには、参加する前に[Linux ノードの準備を](joining-linux-workers.md#preparing-a-linux-node)行う必要があります。
-> [!tip]
+
+> [!TIP]
 > Linux の手順は、 **Ubuntu 16.04**に合わせて調整されています。 Kubernetes を実行するために認定された他の Linux ディストリビューションにも、代替として使用できる同等のコマンドが用意されています。 また、Windows との相互運用も正常に行われます。
 
 ## <a name="preparing-a-linux-node"></a>Linux ノードの準備
@@ -49,7 +50,7 @@ docker run hello-world
 
 `kubeadm`Linux ディストリビューションのバイナリをダウンロードし、クラスターを初期化します。
 
-> [!Important]
+> [!IMPORTANT]
 > Linux ディストリビューションによっては、以下を正しいコードネームに置き換える必要がある場合があり `kubernetes-xenial` ます。 [codename](https://wiki.ubuntu.com/Releases)
 
 ``` bash
@@ -89,7 +90,7 @@ mkdir -p $HOME/.kube
 
 2. マスターから Kubernetes 証明書ファイル () をコピー `$HOME/.kube/config` し、ワーカーに名前を付けて保存し[from master](./creating-a-linux-master.md#collect-cluster-information) `$HOME/.kube/config` ます。
 
-> [!tip]
+> [!TIP]
 > [Winscp](https://winscp.net/eng/download.php)などの scp ベースのツールを使用して、構成ファイルをノード間で転送できます。
 
 3. コピーした構成ファイルのファイル所有権を次のように設定します。
@@ -108,7 +109,7 @@ kubeadm join <Master_IP>:6443 --token <some_token> --discovery-token-ca-cert-has
 
 成功した場合は、次のような出力が表示されます。
 
-![text](./media/node-join.png)
+![Bash のノード結合完了出力のスクリーンショット。](./media/node-join.png)
 
 ## <a name="next-steps"></a>次のステップ
 

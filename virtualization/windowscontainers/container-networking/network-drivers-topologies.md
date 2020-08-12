@@ -1,17 +1,17 @@
 ---
-title: Windows コンテナーネットワーク
+title: Windows コンテナーネットワークドライバー
 description: ネットワーク ドライバーと Windows コンテナーのトポロジ。
 keywords: Docker, コンテナー
 author: jmesser81
 ms.date: 03/27/2018
 ms.topic: conceptual
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 1a45bbf5588085df8b740687fd0e889055c84262
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 4f1bba4be783bc3def80b182880991bd90804f65
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985126"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161792"
 ---
 # <a name="windows-container-network-drivers"></a>Windows コンテナーネットワークドライバー
 
@@ -32,7 +32,7 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
   > が必要: このモードが仮想化シナリオで使用されている場合 (コンテナーホストが VM の場合)、 _MAC アドレスのスプーフィングが必要_です。
 
 - **overlay**: Docker エンジンが [swarm モード](../manage-containers/swarm-mode.md)で動作している場合、オーバーレイ ネットワークに接続されたコンテナーは、複数のコンテナー ホストの間で、同じネットワークに接続された他のコンテナーと通信できます。 Swarm クラスター上に作成される各オーバーレイ ネットワークは、プライベート IP プレフィックスによって定義される独自の IP サブネットを使って作成されます。 overlay ネットワーク ドライバーでは、VXLAN カプセル化が使用されます。 **適切なネットワーク制御プレーン (例: Flannel) を使用する場合は、Kubernetes と共に使用できます。**
-  > 必要条件: オーバーレイネットワークを作成するために必要な[前提条件](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks)を環境が満たしていることを確認します。
+  > 必要条件: オーバーレイネットワークを作成するために必要な [前提条件](https://docs.docker.com/network/overlay/#operations-for-all-overlay-networks) を環境が満たしていることを確認します。
 
   > が必要: Windows Server 2019 では、 [KB4489899](https://support.microsoft.com/help/4489899)が必要です。
 
@@ -41,23 +41,16 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
   >[!NOTE]
   >Windows Server 2019 では、Docker 群れによって作成されたオーバーレイネットワークは、送信接続用の VFP NAT ルールを活用します。 これは、特定のコンテナーが1つの IP アドレスを受け取ることを意味します。 また、やなどの ICMP ベースのツール `ping` は、 `Test-NetConnection` デバッグ状況で TCP/UDP オプションを使用して構成する必要があります。
 
-- **l2bridge** -ネットワークモードと同様に `transparent` 、"l2bridge" ドライバーを使用して作成されたネットワークに接続されているコンテナーは、*外部*hyper-v スイッチを介して物理ネットワークに接続されます。 L2bridge の違いは、受信と送信でのレイヤー2アドレス変換 (MAC の再書き込み) 操作によって、コンテナーエンドポイントがホストと同じ MAC アドレスを持つことです。 クラスタリングのシナリオでは、これにより、有効期間が短いコンテナーの MAC アドレスを学習する必要があるスイッチのストレスを軽減できます。 L2bridge ネットワークは、次の2つの異なる方法で構成できます。
+- **l2bridge** -ネットワークモードと同様に `transparent` 、"l2bridge" ドライバーを使用して作成されたネットワークに接続されているコンテナーは、 *外部* hyper-v スイッチを介して物理ネットワークに接続されます。 L2bridge の違いは、受信と送信でのレイヤー2アドレス変換 (MAC の再書き込み) 操作によって、コンテナーエンドポイントがホストと同じ MAC アドレスを持つことです。 クラスタリングのシナリオでは、これにより、有効期間が短いコンテナーの MAC アドレスを学習する必要があるスイッチのストレスを軽減できます。 L2bridge ネットワークは、次の2つの異なる方法で構成できます。
   1. L2bridge ネットワークは、コンテナーホストと同じ IP サブネットを使用して構成されています
   2. L2bridge ネットワークが新しいカスタム IP サブネットで構成されています
 
   構成2では、ゲートウェイとして機能するホストネットワークコンパートメントにエンドポイントを追加し、指定されたプレフィックスのルーティング機能を構成する必要があります。
-  > 必要: Windows Server 2016、Windows 10 の作成者の更新プログラム、またはそれ以降のリリースが必要です。
 
-
-- **l2bridge** -ネットワークモードと同様に `transparent` 、"l2bridge" ドライバーを使用して作成されたネットワークに接続されているコンテナーは、*外部*hyper-v スイッチを介して物理ネットワークに接続されます。 L2bridge の違いは、受信と送信でのレイヤー2アドレス変換 (MAC の再書き込み) 操作によって、コンテナーエンドポイントがホストと同じ MAC アドレスを持つことです。 クラスタリングのシナリオでは、これにより、有効期間が短いコンテナーの MAC アドレスを学習する必要があるスイッチのストレスを軽減できます。 L2bridge ネットワークは、次の2つの異なる方法で構成できます。
-  1. L2bridge ネットワークは、コンテナーホストと同じ IP サブネットを使用して構成されています
-  2. L2bridge ネットワークが新しいカスタム IP サブネットで構成されています
-
-  構成2では、ゲートウェイとして機能するホストネットワークコンパートメントにエンドポイントを追加し、指定されたプレフィックスのルーティング機能を構成する必要があります。
   >[!TIP]
-  >L2bridge を構成してインストールする方法の詳細については、[こちら](https://techcommunity.microsoft.com/t5/networking-blog/l2bridge-container-networking/ba-p/1180923)を参照してください。
+  >L2bridge を構成してインストールする方法の詳細については、 [こちら](https://techcommunity.microsoft.com/t5/networking-blog/l2bridge-container-networking/ba-p/1180923)を参照してください。
 
-- **l2tunnel** -l2bridge に似ています_が、このドライバーは Microsoft Cloud スタック (Azure) でのみ使用_してください。 コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
+- **l2tunnel** -l2bridge に似ています _が、このドライバーは Microsoft Cloud スタック (Azure) でのみ使用_してください。 コンテナーからのパケットは、SDN ポリシーが適用されている仮想化ホストに送信されます。
 
 
 ## <a name="network-topologies-and-ipam"></a>ネットワークトポロジと IPAM
@@ -90,8 +83,8 @@ Windows で Docker によって作成された既定の 'nat' ネットワーク
 
 サービスの検出は、特定の Windows ネットワーク ドライバーについてのみサポートされます。
 
-|  | ローカル サービス検出  | グローバル サービス検出 |
-| :---: | :---------------     |  :---                |
+| ドライバー名 | ローカル サービス検出  | グローバル サービス検出 |
+| :--- | :---------------     |  :---                |
 | nat | YES | Docker EE で使用可能 |
 | overlay | YES | はい (Docker EE または kube) |
 | transparent | NO | NO |
