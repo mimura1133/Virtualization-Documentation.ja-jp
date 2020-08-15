@@ -2,21 +2,21 @@
 title: Windows コンテナーネットワーク
 description: Windows コンテナー ネットワークのアーキテクチャを簡単に紹介します。
 keywords: Docker, コンテナー
-author: jmesser81
-ms.date: 03/27/2018
+author: daschott
+ms.date: 08/13/2020
 ms.topic: overview
 ms.assetid: 538871ba-d02e-47d3-a3bf-25cda4a40965
-ms.openlocfilehash: 5f9d554a4fcedd9bd233a849c6480589be61abbd
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: a243cda27ec7eb27ee1458585c49448991a94893
+ms.sourcegitcommit: aa139e6e77a27b8afef903fee5c7ef338e1c79d4
 ms.translationtype: MT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87984749"
+ms.lasthandoff: 08/15/2020
+ms.locfileid: "88251625"
 ---
 # <a name="windows-container-networking"></a>Windows コンテナーネットワーク
 
 >[!IMPORTANT]
->一般的な docker ネットワークコマンド、オプション、構文については、 [Docker コンテナーネットワーク](https://docs.docker.com/engine/userguide/networking/)に関するページを参照してください。 * * * サポートされて[いない機能とネットワークオプション](#unsupported-features-and-network-options)で説明されているケースを除き、すべての docker ネットワークコマンドは、Linux と同じ構文の Windows でサポートされています。 ただし、Windows と Linux のネットワークスタックは異なります。そのため、一部の Linux ネットワークコマンド (ifconfig など) は Windows ではサポートされていません。
+>一般的な Docker ネットワークのコマンド、オプション、構文については、[Docker コンテナーのネットワークに関するトピック](https://docs.docker.com/engine/userguide/networking/)を参照してください。 「サポートされて [いない機能とネットワークオプション](#unsupported-features-and-network-options)」で説明されているケースを除き、すべての Docker ネットワークコマンドは Linux と同じ構文の Windows でサポートされています。 ただし、Windows と Linux のネットワークスタックは異なります。そのため、一部の Linux ネットワークコマンド (ifconfig など) は Windows ではサポートされていません。
 
 ## <a name="basic-networking-architecture"></a>基本的なネットワーク アーキテクチャ
 
@@ -24,7 +24,7 @@ ms.locfileid: "87984749"
 
 ![text](media/windowsnetworkstack-simple.png)
 
-初めて Docker エンジンを実行したときに、内部 vSwitch と `WinNAT` という名前の Windows コンポーネントを使用する、既定の NAT ネットワーク 'nat' が作成されます。 PowerShell または Hyper-v マネージャーを使用して作成された既存の外部 vSwitches がホスト上に存在する場合、これらの仮想スイッチは、*透過的*なネットワークドライバーを使用して Docker でも使用でき、コマンドを実行すると表示され ``docker network ls`` ます。
+初めて Docker エンジンを実行したときに、内部 vSwitch と `WinNAT` という名前の Windows コンポーネントを使用する、既定の NAT ネットワーク 'nat' が作成されます。 PowerShell または Hyper-v マネージャーを使用して作成された既存の外部 vSwitches がホスト上に存在する場合、これらの仮想スイッチは、 *透過的* なネットワークドライバーを使用して Docker でも使用でき、コマンドを実行すると表示され ``docker network ls`` ます。
 
 ![text](media/docker-network-ls.png)
 
@@ -62,15 +62,15 @@ ms.locfileid: "87984749"
 
 ## <a name="unsupported-features-and-network-options"></a>サポートされていない機能とネットワーク オプション
 
-次のネットワークオプションは、現在 Windows ではサポートされて**いません**。
+次のネットワークオプションは、現在 Windows ではサポートされて **いません** 。
 
 - L2bridge、NAT、およびオーバーレイネットワークに接続されている Windows コンテナーは、IPv6 スタック経由の通信をサポートしていません。
 - IPsec 経由の暗号化されたコンテナー通信。
 - コンテナーの HTTP プロキシサポート。
-- [ホストモード](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/)ネットワーク
+- [ホストモード](https://docs.docker.com/ee/ucp/interlock/config/host-mode-networking/) ネットワーク
 - 透過的なネットワークドライバーを使用した、仮想化された Azure インフラストラクチャ上のネットワーク。
 
-| command        | サポートされていないオプション   |
+| コマンド        | サポートされていないオプション   |
 |---------------|:--------------------:|
 | ``docker run``|   ``--ip6``, ``--dns-option`` |
 | ``docker network create``| ``--aux-address``, ``--internal``, ``--ip-range``, ``--ipam-driver``, ``--ipam-opt``, ``--ipv6``, ``--opt encrypted`` |
