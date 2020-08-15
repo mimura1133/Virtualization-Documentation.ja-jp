@@ -44,13 +44,7 @@
 ### [概要](about/overview-container-orchestrators.md)
 ### Windows で使用する Kubernetes
 #### [Windows で使用する Kubernetes](kubernetes/getting-started-kubernetes-windows.md)
-#### [Kubernetes マスターを作成する](kubernetes/creating-a-linux-master.md)
-#### [ネットワーク ソリューションを選択する](kubernetes/network-topologies.md)
-#### [Windows ワーカーに参加する](kubernetes/joining-windows-workers.md)
-#### [Linux ワーカーに参加する](kubernetes/joining-linux-workers.md)
-#### [Kubernetes リソースをデプロイする](kubernetes/deploying-resources.md)
 #### [トラブルシューティング](kubernetes/common-problems.md)
-#### [Windows サービスとしての Kubernetes](kubernetes/kube-windows-services.md)
 #### [Kubernetes バイナリをコンパイルする](kubernetes/compiling-kubernetes-binaries.md)
 ### Service Fabric
 #### [Service Fabric とコンテナー](/azure/service-fabric/service-fabric-containers-overview)
