@@ -1,5 +1,5 @@
 ---
-title: Windows 10 上の Windows コンテナーおよび Linux コンテナー
+title: 最初の Windows コンテナーを実行する
 description: コンテナー展開のクイック スタート
 keywords: docker, コンテナー, LCOW
 author: cwilhit
@@ -7,12 +7,12 @@ ms.author: crwilhit
 ms.date: 11/12/2019
 ms.topic: quickstart
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 1422b2b449d469867e1b68aab50274f2463c2b0c
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 678e3d025dd8baa1dff1ead537b6bd2a747b7038
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985406"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161802"
 ---
 # <a name="get-started-run-your-first-windows-container"></a>作業の開始:最初の Windows コンテナーを実行する
 
