@@ -1,19 +1,19 @@
 ---
-title: Windows 10 上の Windows コンテナーおよび Linux コンテナー
+title: Windows 10 上での Linux コンテナーのセットアップ
 description: コンテナー展開のクイック スタート
 keywords: Docker、コンテナー、LCOW
 author: taylorb-microsoft
 ms.date: 08/16/2019
 ms.topic: tutorial
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: b94f71949ad2e6c7d0164e3afdfc479fde4262b8
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 0e29a8645e34845895fedcc8dc03c01ea12d07f2
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87984736"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161711"
 ---
-# <a name="linux-containers-on-windows-10"></a>Windows 10 上の Linux コンテナー
+# <a name="get-started-set-up-linux-containers-on-windows-10"></a>作業の開始:Windows 10 上での Linux コンテナーのセットアップ
 
 この演習では、Windows 10 での Linux コンテナーの作成と実行について説明します。
 

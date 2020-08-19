@@ -6,12 +6,12 @@ author: PatrickLang
 ms.date: 05/22/2019
 ms.topic: overview
 ms.assetid: 29fbe13a-228a-4eaa-9d4d-90ae60da5965
-ms.openlocfilehash: 383d3a15f7849e8b8122919bd27e697425107d1a
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: c9ea0e346f2b3be23c25d7152b7bbf49b6e709e5
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87984876"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161921"
 ---
 # <a name="about-building-container-ecosystems"></a>コンテナー エコシステムの構築について
 
@@ -23,9 +23,9 @@ Windows コンテナーは、大規模なコンテナー エコシステムの�
 
 コンテナー エコシステムでは、コンテナーで実行されるアプリの管理、共有、および開発を行う手段が提供されます。
 
-![](media/containerEcosystem.png)
+![コンテナー エコシステムの図。 さまざまな Microsoft 製品を、開発環境、コンテナー管理、コンテナー テクノロジ、Microsoft Cloud という 4 つのカテゴリーに分類しています。](media/containerEcosystem.png)
 
-マイクロソフトでは、開発者がこうした次世代アプリケーションを構築する際の選択肢と生産性を提供することで、開発者を支援します。 当社の目標は開発者の生産性を高めることです。これは、コードの変更、書き換え、または再構成をしなくても、アプリケーションを任意のマイクロソフト クラウド向けにできることを意味します。
+Microsoft は、これらの次世代のアプリを構築すると、開発者の選択肢と生産性を高めるしようとしました。 当社の目標は開発者の生産性を高めることです。これは、コードの変更、書き換え、または再構成をしなくても、アプリケーションを任意のマイクロソフト クラウド向けにできることを意味します。
 
 マイクロソフトは、オープンであり、エコシステムに適合することに注力しています。 当社では、技術革新を促進するため、Windows や Linux など、関心を持たれる複数の開発者エコシステムの連携を積極的に支援しています。
 

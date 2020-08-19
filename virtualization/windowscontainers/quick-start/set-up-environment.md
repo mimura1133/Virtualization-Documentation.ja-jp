@@ -1,5 +1,5 @@
 ---
-title: Windows 10 上の Windows コンテナーおよび Linux コンテナー
+title: Windows オペレーティング システム コンテナーの準備
 description: コンテナー用の Windows 10 または Windows Server をセットアップしたら、最初のコンテナー イメージの実行に進みます。
 keywords: docker, コンテナー, LCOW
 author: cwilhit
@@ -7,12 +7,12 @@ ms.author: crwilhit
 ms.date: 11/12/2019
 ms.topic: quickstart
 ms.assetid: bb9bfbe0-5bdc-4984-912f-9c93ea67105f
-ms.openlocfilehash: 1f65b74f423802c5bbcb818cd6f226df9342b787
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 3efd5594afbcf1a9123ea13e046193f18bfa29bc
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87984726"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161831"
 ---
 # <a name="get-started-prep-windows-for-containers"></a>作業の開始:コンテナー用の Windows を準備する
 

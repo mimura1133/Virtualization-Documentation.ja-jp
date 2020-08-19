@@ -6,18 +6,18 @@ author: Heidilohr
 ms.author: helohr
 ms.date: 05/22/2019
 ms.topic: overview
-ms.openlocfilehash: 85f533d065e647083c916bf26fa4ba601579c02b
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 2e3a69524bc0477321d839eb329311ac5c792c86
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87984846"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161931"
 ---
 # <a name="about-docker"></a>Docker について
 
 コンテナーについての資料で、必ず言及されるのが Docker です。 Docker Engineは、コンテナー イメージのパッケージ化と配信を行うコンテナー管理ツールセットです。 生成されたイメージは、コンテナーとして、オンプレミス、クラウド、または個人用マシンのいずれでも実行できます。
 
-![](media/docker.png)
+![一般的な Docker ワークフローを示す図で、ユーザーはコンテナーを作成した後、それをクラウド上で実行しています。](media/docker.png)
 
 Windows Server コンテナーは、他のコンテナーと同様、[Docker](https://www.docker.com) によって管理できます。
 

@@ -2,16 +2,16 @@
 title: 分離モード
 description: Hyper-V による分離とプロセスによる分離コンテナーの違いについて説明します。
 keywords: Docker, コンテナー
-author: crwilhit
+author: cwilhit
 ms.date: 09/26/2019
 ms.topic: conceptual
 ms.assetid: 42154683-163b-47a1-add4-c7e7317f1c04
-ms.openlocfilehash: b0e9b3607cf8dbf276aa25b6f4cff6c2d72478bc
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: c7bcb25b2c3b65be745971ae2dec4d509266a1b3
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985226"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161951"
 ---
 # <a name="isolation-modes"></a>分離モード
 
@@ -21,12 +21,12 @@ Windows コンテナーには、2 種類のランタイム分離モードがあ�
 
 これはコンテナーの "従来の" 分離モードであり、[Windows コンテナーの概要](../about/index.md)に関するページで説明されています。 プロセスによる分離を使用すると、名前空間、リソース管理、およびプロセス分離テクノロジを使用して実現する分離により、複数のコンテナー インスタンスを特定のホスト上で同時に実行できます。 このモードで実行する場合、コンテナーとホストは相互に同じカーネルを共有します。  これは、Linux コンテナーの実行方法とほぼ同じです。
 
-![](media/container-arch-process.png)
+![OS とハードウェアから分離したアプリケーション全体をコンテナーに格納している様子を示した図。](media/container-arch-process.png)
 
 ## <a name="hyper-v-isolation"></a>Hyper-V による分離
 この分離モードでは、セキュリティが強化され、ホストとコンテナーのバージョン間の互換性が広がります。 Hyper-V による分離では、ホスト上で複数のコンテナー インスタンスが同時に実行されます。ただし、各コンテナーは高度に最適化された仮想マシン内で実行され、独自のカーネルが効果的に取得されます。 仮想マシンが存在することで、各コンテナーとコンテナー ホストの間にハードウェア レベルの分離が実現します。
 
-![](media/container-arch-hyperv.png)
+![物理マシン内の OS で実行されている仮想マシン上の OS 内で分離されているコンテナーの図。](media/container-arch-hyperv.png)
 
 ## <a name="isolation-examples"></a>分離の例
 

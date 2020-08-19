@@ -6,12 +6,12 @@ author: patricklang
 ms.date: 09/25/2019
 ms.topic: conceptual
 ms.assetid: 88e6e080-cf8f-41d8-a301-035959dc5ce0
-ms.openlocfilehash: 1a2b364ca61f9a53b0c26f7a39f3a10d6084997c
-ms.sourcegitcommit: 186ebcd006eeafb2b51a19787d59914332aad361
+ms.openlocfilehash: 7fa5b50506fd9a2d7cd1c5fc84cc867dba412867
+ms.sourcegitcommit: bb18e6568393da748a6d511d41c3acbe38c62668
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87985286"
+ms.lasthandoff: 08/12/2020
+ms.locfileid: "88161961"
 ---
 # <a name="container-base-images"></a>コンテナーの基本イメージ
 
@@ -24,7 +24,7 @@ Windows には、ユーザーが作成できるコンテナーの基本イメー
             <article class="card has-outline-hover is-relative is-full-height has-padding-none">
                     <div class="cardImageOuter bgdAccent1 has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
                         <div class="cardImage centered has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
-                            <img src="media/Microsoft_logo.svg" alt="" data-linktype="relative-path">
+                            <img src="media/Microsoft_logo.svg" alt="Microsoft logo" data-linktype="relative-path">
                         </div>
                     </div>
                 <div class="card-content has-text-overflow-ellipsis has-padding-top-small">
@@ -44,7 +44,7 @@ Windows には、ユーザーが作成できるコンテナーの基本イメー
             <article class="card has-outline-hover is-relative is-full-height has-padding-none">
                     <div class="cardImageOuter bgdAccent1 has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
                         <div class="cardImage centered has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
-                            <img src="media/Microsoft_logo.svg" alt="" data-linktype="relative-path">
+                            <img src="media/Microsoft_logo.svg" alt="Microsoft logo." data-linktype="relative-path">
                         </div>
                     </div>
                 <div class="card-content has-text-overflow-ellipsis has-padding-top-small">
@@ -64,7 +64,7 @@ Windows には、ユーザーが作成できるコンテナーの基本イメー
             <article class="card has-outline-hover is-relative is-full-height has-padding-none">
                     <div class="cardImageOuter bgdAccent1 has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
                         <div class="cardImage centered has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
-                            <img src="media/Microsoft_logo.svg" alt="" data-linktype="relative-path">
+                            <img src="media/Microsoft_logo.svg" alt="Microsoft logo." data-linktype="relative-path">
                         </div>
                     </div>
                 <div class="card-content has-text-overflow-ellipsis has-padding-top-small">
@@ -84,7 +84,7 @@ Windows には、ユーザーが作成できるコンテナーの基本イメー
             <article class="card has-outline-hover is-relative is-full-height has-padding-none">
                     <div class="cardImageOuter bgdAccent1 has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
                         <div class="cardImage centered has-padding-top-large has-padding-bottom-large has-padding-left-large has-padding-right-large">
-                            <img src="media/Microsoft_logo.svg" alt="" data-linktype="relative-path">
+                            <img src="media/Microsoft_logo.svg" alt="Microsoft logo." data-linktype="relative-path">
                         </div>
                     </div>
                 <div class="card-content has-text-overflow-ellipsis has-padding-top-small">
@@ -142,4 +142,4 @@ Microsoft は、各コンテナーの基本イメージの "Insider" バージ�
 
 `Windows Server Core` と `Nanoserver` は、ターゲットとして最も一般的な基本イメージです。 これらのイメージの主な違いは、Nanoserver の API サーフェスが大幅に小さいことです。 PowerShell、WMI、および Windows サービス スタックは、Nanoserver イメージにはありません。
 
-Nanoserver は、.NET Core またはその他の最新のオープン ソース フレームワークに依存するアプリを実行するのに十分な API サーフェス を提供するために構築されました。 小さい API サーフェスとのトレードオフとして、Nanoserver イメージは、他の Windows 基本イメージよりもディスク上のフットプリントが大幅に小さくなっています。 Nano Server 上には、いつでもレイヤーを追加できることに注意してください。 この例については、[.NET Core の Nano Server の Dockerfile](https://github.com/dotnet/dotnet-docker/blob/master/2.1/sdk/nanoserver-1909/amd64/Dockerfile) をご覧ください。
+Nanoserver は、.NET Core またはその他の最新のオープン ソース フレームワークに依存するアプリを実行するのに十分な API サーフェス を提供するために構築されました。 小さい API サーフェスとのトレードオフとして、Nanoserver イメージは、残りの Windows 基本イメージよりもディスク上のフットプリントが大幅に小さくなっています。 Nano Server 上には、いつでもレイヤーを追加できることに注意してください。 この例については、[.NET Core の Nano Server の Dockerfile](https://github.com/dotnet/dotnet-docker/blob/master/src/sdk/2.1/nanoserver-1909/amd64/Dockerfile) をご覧ください。
