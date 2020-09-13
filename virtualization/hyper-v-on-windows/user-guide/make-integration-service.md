@@ -48,7 +48,7 @@ Windows 10 Anniversary Update以降、Hyper-V ソケット (新しいアドレ�
 * [Windows 10 SDK](https://developer.microsoft.com/windows/downloads/windows-10-sdk): Visual Studio 2015 with Update 3 以降でプレインストールされています。
 * 上記のいずれかのホスト オペレーティング システムと 1 つ以上の仮想マシンが実行されているコンピューター。 これは、アプリケーションのテスト用です。
 
-> **注:** Hyper-V ソケットの API は、Windows 10 Anniversary Update で公開されています。 HVSocket を使うアプリケーションは、あらゆる Widnows 10 ホストとゲストで実行できますが、開発には Windows SDK ビルド 14290 以降が必要です。
+> **注:** Hyper-V ソケットの API は、Windows 10 Anniversary Update で公開されています。 HVSocket を使うアプリケーションは、あらゆる Windows 10 ホストとゲストで実行できますが、開発には Windows SDK ビルド 14290 以降が必要です。
 
 ## <a name="register-a-new-application"></a>新しいアプリケーションの登録
 Hyper-V ソケットを使用するには、アプリケーションを Hyper-V ホストのレジストリに登録する必要があります。
